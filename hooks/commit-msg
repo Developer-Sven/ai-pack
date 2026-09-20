@@ -1,0 +1,46 @@
+#!/bin/sh
+# ki-managed-hook  (marker: the self-check in pre-commit/commit-msg/pre-push greps for it)
+# Global commit-msg (ki): block AI co-author / attribution trailers, then chain to repo-local hook.
+set -u
+
+# --- self-check -------------------------------------------------------------------------------
+# Tools that install hooks by following core.hooksPath (`lefthook install`, simple-git-hooks) write
+# their stubs into THIS shared dir and silently disable the ki gates in every repo (happened once:
+# lefthook replaced pre-commit, the JS gate was gone for weeks). One grep, warn loudly, never block.
+ki_hd=$(dirname "$0")
+ki_lost=$(cd "$ki_hd" 2>/dev/null && grep -L 'ki-managed-hook' pre-commit pre-push commit-msg pre-merge-commit 2>/dev/null)
+if [ -n "$ki_lost" ]; then
+  echo "[ki] WARNING: global hook(s) overwritten by another tool: $(echo $ki_lost)" >&2
+  echo "     Restore: git -C \"$(cd "$ki_hd/.." 2>/dev/null && pwd)\" checkout -- $(basename "$ki_hd")/" >&2
+  echo "     Then give the offending repo its own hooks dir: git config core.hooksPath .git/hooks" >&2
+fi
+
+msg_file=$1
+
+# Only inspect the REAL message: drop comment lines and everything after the `git commit -v`
+# scissors line — otherwise a verbose diff that happens to contain the words below blocks itself
+# (e.g. when editing these very rules/README files).
+clean=$(mktemp 2>/dev/null) || clean="${TMPDIR:-/tmp}/ki_commitmsg_$$"
+sed -e '/^# *-\{10,\} *>8 *-\{10,\}/,$d' -e '/^[[:space:]]*#/d' "$msg_file" > "$clean" 2>/dev/null || cp "$msg_file" "$clean"
+
+# Word boundaries are essential: a bare "ai" alternative matched "gm(ai)l" and "M(ai)k",
+# which blocked legitimate HUMAN co-authors. Keep \b around the short tokens.
+if grep -iEq '^[[:space:]]*co-authored-by:.*(claude|codex|anthropic|chatgpt|copilot|gemini|cursor|devin|\bgpt\b|\bllm\b|\bai\b|\bbot\b)' "$clean" \
+ || grep -iEq 'generated[ ]+(with|by)[ ]+.*(claude|codex|anthropic|\bai\b)' "$clean" \
+ || grep -q '🤖' "$clean"; then
+  rm -f "$clean" 2>/dev/null
+  echo "----------------------------------------------------------------"
+  echo "  Commit blocked by global ki commit-msg:"
+  echo "  AI co-author / attribution trailer is not allowed."
+  echo "  Remove the Co-Authored-By / 'Generated with ...' / robot line."
+  echo "  (Human co-authors are fine — only AI tools are blocked.)"
+  echo "----------------------------------------------------------------"
+  exit 1
+fi
+rm -f "$clean" 2>/dev/null
+
+gd=$(git rev-parse --git-common-dir 2>/dev/null)
+if [ -n "$gd" ] && [ -x "$gd/hooks/commit-msg" ]; then
+  exec "$gd/hooks/commit-msg" "$@"
+fi
+exit 0

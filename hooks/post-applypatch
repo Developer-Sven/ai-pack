@@ -1,0 +1,12 @@
+#!/bin/sh
+# ki-managed-hook  (marker: the self-check in pre-commit/commit-msg/pre-push greps for it)
+# Generic passthrough: run the repo-local hook of the same name if present.
+# A global core.hooksPath REPLACES the whole .git/hooks dir, so without a passthrough for a given
+# hook name that repo's own hook (git-lfs, husky, lefthook, commitizen ...) silently never runs.
+# --git-common-dir (not --git-dir) so linked worktrees resolve to the real hooks directory.
+gd=$(git rev-parse --git-common-dir 2>/dev/null)
+name=$(basename "$0")
+if [ -n "$gd" ] && [ -x "$gd/hooks/$name" ]; then
+  exec "$gd/hooks/$name" "$@"
+fi
+exit 0

@@ -1,0 +1,15 @@
+{
+  "name": "ai-pack",
+  "owner": {
+    "name": "Developer-Sven",
+    "url": "https://github.com/Developer-Sven"
+  },
+  "plugins": [
+    {
+      "name": "ai-pack",
+      "source": "./",
+      "description": "Skills, subagents and one rule set for full-stack web development, installed into every coding agent (Claude Code, Codex, OpenCode, Gemini CLI, Copilot, Cursor, ...).",
+      "version": "1.0.0"
+    }
+  ]
+}

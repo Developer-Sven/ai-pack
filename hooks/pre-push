@@ -1,0 +1,94 @@
+#!/bin/sh
+# ki-managed-hook  (marker: the self-check in pre-commit/commit-msg/pre-push greps for it)
+# Global pre-push (ki): quality gate (typecheck + tests) at the PUSH boundary, then chain to the
+# repo-local pre-push (e.g. git-lfs). Slow checks live here, NOT in pre-commit, so commits stay fast.
+#
+# Opt out for a repo:  git config ki.noPushCheck true   (or create a file .ki-no-push-check at root)
+# Everything graceful-skips when the tool/config is absent; it blocks ONLY on a real failure.
+#
+# IMPORTANT: git feeds the pushed refs on stdin. We capture them once and replay them to the
+# repo-local hook — otherwise a test runner that reads stdin swallows the ref list and the chained
+# git-lfs hook uploads nothing (pointer files without blobs). Every check gets </dev/null.
+set -u
+
+stdin_data=$(cat)
+
+# --- self-check -------------------------------------------------------------------------------
+# Tools that install hooks by following core.hooksPath (`lefthook install`, simple-git-hooks) write
+# their stubs into THIS shared dir and silently disable the ki gates in every repo (happened once:
+# lefthook replaced pre-commit, the JS gate was gone for weeks). One grep, warn loudly, never block.
+ki_hd=$(dirname "$0")
+ki_lost=$(cd "$ki_hd" 2>/dev/null && grep -L 'ki-managed-hook' pre-commit pre-push commit-msg pre-merge-commit 2>/dev/null)
+if [ -n "$ki_lost" ]; then
+  echo "[ki] WARNING: global hook(s) overwritten by another tool: $(echo $ki_lost)" >&2
+  echo "     Restore: git -C \"$(cd "$ki_hd/.." 2>/dev/null && pwd)\" checkout -- $(basename "$ki_hd")/" >&2
+  echo "     Then give the offending repo its own hooks dir: git config core.hooksPath .git/hooks" >&2
+fi
+
+root=$(git rev-parse --show-toplevel 2>/dev/null || echo ".")
+
+skip=$(git config --bool --get ki.noPushCheck 2>/dev/null || echo false)
+if [ "$skip" = "true" ] || [ -f "$root/.ki-no-push-check" ]; then
+  :
+else
+  fail=0
+
+  # --- TypeScript typecheck (only if tsconfig + a resolvable tsc exist) ---
+  if [ "$fail" -eq 0 ] && [ -f "$root/tsconfig.json" ] && command -v npx >/dev/null 2>&1 \
+     && ( cd "$root" && npx --no-install tsc --version >/dev/null 2>&1 </dev/null ); then
+    echo "[ki pre-push] tsc --noEmit ..."
+    if ! ( cd "$root" && npx --no-install tsc --noEmit --pretty </dev/null ); then
+      echo "  [x] TypeScript type errors — fix before pushing."; fail=1
+    fi
+  fi
+
+  # --- Node tests (real test script + installed deps; npm's placeholder is not a test) ---
+  if [ "$fail" -eq 0 ] && [ -f "$root/package.json" ] && [ -d "$root/node_modules" ] \
+     && command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then
+    ts=$(node -e "try{var s=(require(process.argv[1]).scripts||{}).test||'';process.stdout.write(s)}catch(e){}" "$root/package.json" 2>/dev/null </dev/null)
+    case "$ts" in
+      ""|*"no test specified"*) : ;;
+      *) echo "[ki pre-push] npm test ..."
+         if ! ( cd "$root" && npm test --silent </dev/null ); then echo "  [x] Tests failed — fix before pushing."; fail=1; fi ;;
+    esac
+  fi
+
+  # --- Python tests (only with a real pytest signal; rc 5 = "no tests collected" is not a failure) ---
+  # uv projects keep pytest in .venv, not in the global interpreter: run them via `uv run --frozen`
+  # (only when pytest is actually in uv.lock, so a project without it is skipped, not blocked).
+  if [ "$fail" -eq 0 ]; then
+    pytest_signal=0
+    [ -f "$root/pytest.ini" ] && pytest_signal=1
+    [ -f "$root/setup.cfg" ] && grep -q '\[tool:pytest\]' "$root/setup.cfg" 2>/dev/null && pytest_signal=1
+    [ -f "$root/pyproject.toml" ] && grep -q '\[tool\.pytest' "$root/pyproject.toml" 2>/dev/null && pytest_signal=1
+    [ -d "$root/tests" ] && pytest_signal=1
+    if [ "$pytest_signal" -eq 1 ]; then
+      rc=skip
+      if [ -f "$root/uv.lock" ] && command -v uv >/dev/null 2>&1 \
+         && grep -q '^name = "pytest"' "$root/uv.lock" 2>/dev/null; then
+        echo "[ki pre-push] uv run pytest ..."
+        ( cd "$root" && uv run --frozen pytest -x -q </dev/null ); rc=$?
+      elif command -v python >/dev/null 2>&1 && ( cd "$root" && python -c "import pytest" ) >/dev/null 2>&1 </dev/null; then
+        echo "[ki pre-push] pytest ..."
+        ( cd "$root" && python -m pytest -x -q </dev/null ); rc=$?
+      fi
+      if [ "$rc" != skip ] && [ "$rc" -ne 0 ] && [ "$rc" -ne 5 ]; then echo "  [x] pytest failed — fix before pushing."; fail=1; fi
+    fi
+  fi
+
+  if [ "$fail" -ne 0 ]; then
+    echo "------------------------------------------------------------"
+    echo "  Push blocked by global ki pre-push quality gate."
+    echo "  Fix the above, or skip for this repo:  git config ki.noPushCheck true"
+    echo "------------------------------------------------------------"
+    exit 1
+  fi
+fi
+
+# --- preserve repo-local pre-push (git-lfs etc.), replaying the ref list on stdin ---
+gd=$(git rev-parse --git-common-dir 2>/dev/null)
+if [ -n "$gd" ] && [ -x "$gd/hooks/pre-push" ]; then
+  printf '%s\n' "$stdin_data" | "$gd/hooks/pre-push" "$@"
+  exit $?
+fi
+exit 0

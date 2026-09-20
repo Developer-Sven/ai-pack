@@ -1,0 +1,7 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Security-first adversarial code reviews"
+  default_prompt: "Use $code-review to review this change for security, bugs, missing tests, and concrete fixes."
+
+policy:
+  allow_implicit_invocation: true

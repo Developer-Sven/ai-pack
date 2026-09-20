@@ -1,0 +1,2054 @@
+{
+ "name": "ai-pack",
+ "version": "1.0.0",
+ "tag_groups": {
+  "core": [
+   "core"
+  ],
+  "languages": [
+   "js",
+   "ts",
+   "python",
+   "java"
+  ],
+  "frontend": [
+   "react",
+   "next",
+   "vue",
+   "vite",
+   "design",
+   "a11y",
+   "seo",
+   "i18n"
+  ],
+  "backend": [
+   "node",
+   "express",
+   "nestjs",
+   "hono",
+   "bun",
+   "fastapi",
+   "django",
+   "spring",
+   "api",
+   "auth",
+   "jobs",
+   "uploads",
+   "realtime",
+   "webhooks",
+   "payments",
+   "email"
+  ],
+  "data": [
+   "database",
+   "postgres",
+   "mysql",
+   "sqlite",
+   "mongodb",
+   "redis",
+   "orm"
+  ],
+  "quality": [
+   "security",
+   "testing",
+   "performance",
+   "docs"
+  ],
+  "delivery": [
+   "git",
+   "github",
+   "devops",
+   "observability",
+   "cloudflare"
+  ],
+  "more": [
+   "ai",
+   "oss"
+  ]
+ },
+ "presets": {
+  "recommended": [
+   "js",
+   "ts",
+   "node",
+   "express",
+   "react",
+   "next",
+   "vite",
+   "python",
+   "fastapi",
+   "api",
+   "auth",
+   "jobs",
+   "uploads",
+   "realtime",
+   "webhooks",
+   "email",
+   "database",
+   "postgres",
+   "sqlite",
+   "mongodb",
+   "redis",
+   "orm",
+   "security",
+   "testing",
+   "performance",
+   "docs",
+   "git",
+   "github",
+   "devops",
+   "seo",
+   "a11y"
+  ]
+ },
+ "items": [
+  {
+   "name": "accessibility",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "a11y"
+   ],
+   "description": "WCAG 2.2 AA for web apps and dashboards: success criteria incl. the 2.2 additions, audit workflow (axe + Playwright, jsx-a11y, keyboard, NVDA, zoom/reflow, forced colors), severity reporting, and BFSG / EN 301 549 context. Use when auditing, specifying or signing off accessibility of a page or UI.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "agent-architecture-audit",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai"
+   ],
+   "description": "Audit an LLM or agent feature layer by layer (prompt wrappers, tool definitions, memory, retry/repair loops, output rendering) for the hidden cause of bad answers; severity-ranked, code-first fixes. Use when an LLM-powered bot or web feature misbehaves, or before shipping one.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "agents-sdk",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Build, debug, or review Cloudflare Agents SDK applications using the agents package.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "ai-sdk",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai"
+   ],
+   "description": "Answer questions about the AI SDK and help build AI-powered features. Use when developers: (1) Ask about AI SDK functions like generateText, streamText, ToolLoopAgent, embed, or tools, (2) Want to build AI agents, chatbots, RAG systems, or text generation features, (3) Have questions about AI providers (OpenAI, Anthropic, Google, etc.), streaming, tool calling, structured output, or embeddings, (4) Use React hooks like useChat or useCompletion. Triggers on: \"AI SDK\", \"Vercel AI SDK\", \"generateText\", \"streamText\", \"add AI to my app\", \"build an agent\", \"tool calling\", \"structured output\", \"useChat\".",
+   "source": "vercel/ai",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "api-connector-builder",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "api"
+   ],
+   "description": "Build a new API connector or provider by matching the target repo's existing integration pattern exactly. Use when adding one more integration without inventing a second architecture.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "api-design",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "api"
+   ],
+   "description": "REST API design patterns including resource naming, status codes, pagination, filtering, error responses, versioning, and rate limiting for production APIs. Use when designing or reviewing REST endpoints, resource names, status codes, pagination, or versioning.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "auth-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "auth",
+    "security"
+   ],
+   "description": "Web app authentication: server sessions in HttpOnly cookies (JWT only with a reason), OIDC code+PKCE+state+nonce, passkeys, TOTP + recovery codes, Argon2id, reset/verify tokens, rotation, revocation, rate limits, CSRF, library choice. Use when building or reviewing login, signup, sessions or MFA.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "backend-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "node",
+    "api"
+   ],
+   "description": "Backend architecture patterns, API design, database optimization, and server-side best practices for Node.js, Express, and Next.js API routes. Use when building or reviewing Node.js, Express, or Next.js API routes and their data access.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "backend-performance",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Performance",
+   "tags": [
+    "performance"
+   ],
+   "description": "Measure-first performance for Node/TS backends, Express APIs and Discord bots (plus Python/Java): profiling, event-loop blocking, pools, concurrency, caching, N+1, sharp/canvas/puppeteer, load tests. Use when a route, command, job or script is slow, leaks memory, fails under load or must get faster.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "background-jobs",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "jobs"
+   ],
+   "description": "Background jobs, queues, cron: BullMQ, pg-boss/graphile-worker, Celery/arq/RQ, Cloudflare Queues; idempotency keys, retries with backoff+jitter, dead letters, visibility timeouts, graceful shutdown, transactional outbox, single-runner schedules. Use when work leaves the request path.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "brainstorming",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "bun-runtime",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "bun"
+   ],
+   "description": "Bun as runtime, package manager, bundler, and test runner. When to choose Bun vs Node, migration notes, and Vercel support.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "canary-watch",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "devops"
+   ],
+   "description": "Use this skill to monitor and verify a deployed URL after releases — checks HTTP endpoints, SSE streams, static assets, console errors, and performance regressions after deploys, merges, or dependency upgrades. Smoke / canary / post-deploy verification.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "claude-api",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai"
+   ],
+   "description": "Reference for the Claude API / Anthropic SDK: model ids, pricing, params, streaming, tool use, MCP, agents, caching, token counting, model migration. Use BEFORE editing code that calls Claude or Anthropic (anthropic, @anthropic-ai, claude-* model ids) and whenever choosing, pricing or debugging an LLM integration whose provider is unstated. Skip when another provider (OpenAI, Gemini, Mistral, Cohere, Ollama, ...) is in use.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "click-path-audit",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing"
+   ],
+   "description": "Trace every user-facing button/touchpoint through its full state change sequence to find bugs where functions individually work but cancel each other out, produce wrong final state, or leave the UI in an inconsistent state. Use when: systematic debugging found no bugs but users report broken buttons, or after any major refactor touching shared state stores.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "cloudflare",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "cloudflare-email-service",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Implement or troubleshoot Cloudflare Email Sending and Email Routing integrations and their delivery configuration.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "cloudflare-one",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Design, configure, troubleshoot, or review Cloudflare One Zero Trust and SASE deployments. Use cloudflare-one-migrations for migration planning from other vendors.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "cloudflare-one-migrations",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Assess and plan migrations from existing VPN, SWG, or SASE platforms to Cloudflare One, including policy mapping, parity gaps, and rollout.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "code-review",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Review",
+   "tags": [
+    "core"
+   ],
+   "description": "Adversarial, security-first code review - map the attack surface, prove each finding with a PoC payload, propose fix diffs; also logic bugs, races, perf and missing tests. Use for /code-review, PR reviews, \"review this\", \"is this secure\", \"find bugs\" or a security audit of code.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "coding-standards",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Review",
+   "tags": [
+    "core"
+   ],
+   "description": "Baseline cross-project coding conventions for naming, readability, immutability, and code-quality review. Use detailed frontend or backend skills for framework-specific patterns. Use when reviewing code quality or naming with no framework-specific skill that applies.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "content-hash-cache-pattern",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Performance",
+   "tags": [
+    "performance"
+   ],
+   "description": "Cache expensive file processing results using SHA-256 content hashes — path-independent, auto-invalidating, with service layer separation. Use when repeated file processing is slow and results should be cached and invalidated by content rather than path.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "contract-first",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "api"
+   ],
+   "description": "Use when consumers and providers (frontend/backend, services, or a Discord bot and its dashboard sharing a settings store) must evolve an API, event or document schema without field drift or one side silently redefining the interface.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "data-layer",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "database",
+    "postgres",
+    "mysql",
+    "sqlite",
+    "mongodb",
+    "redis"
+   ],
+   "description": "Choose and structure the data layer: Postgres vs MySQL vs SQLite vs MongoDB vs JSON files vs Redis, repository/store adapters with swappable backends and contract tests, test databases, full-text search. Use when starting persistence, picking or switching a database, or testing data access.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "database-migrations",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "database",
+    "postgres",
+    "mysql",
+    "sqlite",
+    "mongodb",
+    "orm"
+   ],
+   "description": "Database migration best practices for schema changes, data migrations, rollbacks, and zero-downtime deployments across PostgreSQL, MySQL, and common ORMs (Prisma, Drizzle, Kysely, Django, TypeORM, golang-migrate). Use when writing a schema or data migration, planning a rollback, or aiming for zero-downtime deployment.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "deployment-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "devops"
+   ],
+   "description": "Deployment workflows - GitHub Actions CI/CD, Docker images, rolling/blue-green/canary releases, single-VPS systemd + Caddy + backups, health checks, env validation, rollback, readiness checklist. Use when setting up CI/CD, containerizing an app, deploying to a VPS, or planning a release or rollback.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "design-system",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "design"
+   ],
+   "description": "Use this skill to generate or audit design systems, check visual consistency, and review PRs that touch styling. Use when generating or auditing a design system, checking visual consistency, or reviewing a PR that touches styling.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "dispatching-parallel-agents",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "django-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "django"
+   ],
+   "description": "Django architecture patterns, REST API design with DRF, ORM best practices, caching, signals, middleware, and production-grade Django apps. Use when building or reviewing Django apps, DRF APIs, ORM queries, or caching.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "django-security",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "django"
+   ],
+   "description": "Django security best practices, authentication, authorization, CSRF protection, SQL injection prevention, XSS prevention, and secure deployment configurations. Use when reviewing Django authentication, authorization, input handling, or deployment settings.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "django-tdd",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "django"
+   ],
+   "description": "Django testing strategies with pytest-django, TDD methodology, factory_boy, mocking, coverage, and testing Django REST Framework APIs. Use when writing Django or DRF tests with pytest-django, or driving a Django feature test-first.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "django-verification",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "django"
+   ],
+   "description": "Verification loop for Django projects: migrations, linting, tests with coverage, security scans, and deployment readiness checks before release or PR.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "docker-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "devops"
+   ],
+   "description": "Docker and Compose for Node, Python and Java services and Discord bots - multi-stage Dockerfiles, dev vs prod compose, MongoDB/Redis, healthchecks, graceful stop, non-root hardening, secrets, networking. Use when writing or reviewing a Dockerfile, compose.yaml or container setup.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "durable-objects",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Build, debug, or review Cloudflare Durable Objects code for persistent state and coordination.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "e2e-testing",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing"
+   ],
+   "description": "Playwright Test 1.63 E2E suites: role-based locators, web-first assertions, page objects, storageState auth per role, allowed/denied permission paths, axe scans, CI sharding, traces and flaky-test handling. Use when writing or maintaining Playwright tests or fixing flaky E2E runs.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "email-best-practices",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Payments & email",
+   "tags": [
+    "email"
+   ],
+   "description": "Use when building email features, emails going to spam, high bounce rates, setting up SPF/DKIM/DMARC authentication, implementing email capture, ensuring compliance (CAN-SPAM, GDPR, CASL), handling webhooks, retry logic, making emails accessible (alt text, headings, contrast, screen readers), or deciding transactional vs marketing.",
+   "source": "resend/resend-skills",
+   "license": "MIT"
+  },
+  {
+   "name": "error-handling",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "node",
+    "python"
+   ],
+   "description": "Patterns for robust error handling across TypeScript, Python, and Go. Covers typed errors, error boundaries, retries, circuit breakers, and user-facing error messages. Use when designing error types, retries, circuit breakers, or user-facing failure messages in TypeScript, Python, or Go.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "executing-plans",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution, or no subagent tool is available",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "express-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "express",
+    "node"
+   ],
+   "description": "Express 5 APIs and bot dashboards on Node 22/24: app factory, async error propagation, zod 4 validation middleware, error handler that hides internals, env checks at boot, pino, trust proxy + rate limits, graceful shutdown, 4-to-5 migration. Use when building, reviewing or upgrading an Express app.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "fastapi-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "fastapi"
+   ],
+   "description": "FastAPI best practices: project structure, Pydantic v2 schemas, dependency injection, async handlers, PyJWT/pwdlib auth, authorization, transactional service layers, httpx + pytest tests. Use when building or reviewing FastAPI apps - Pydantic schemas, dependencies, async handlers, auth, or tests.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "file-uploads-storage",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "uploads"
+   ],
+   "description": "File uploads and object storage (S3, R2): presigned PUT/POST, server-enforced size and magic-byte type checks, private buckets with short signed GETs, tenant keys, sharp in jobs, malware-scan hook, multipart/resumable, orphan cleanup, CDN headers, local disk. Use when users upload files.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "finishing-a-development-branch",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "frontend-a11y",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "a11y",
+    "react"
+   ],
+   "description": "Accessibility patterns for React and Next.js — semantic HTML, ARIA attributes, form labeling, keyboard navigation, focus management, and screen reader support. Use when building any interactive UI component or form.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "frontend-design",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "design"
+   ],
+   "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "full-website-review",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security"
+   ],
+   "description": "Full production-readiness review of a website, dashboard or API: features, security (OWASP 2025), access control, validation, DB, secrets, errors, performance, UI/UX, deploy; then FIX the issues and report. Use for web review, production-ready check, full website audit or /full-website-review.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "gha-security-review",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security",
+    "github"
+   ],
+   "description": "GitHub Actions security review for workflow exploitation vulnerabilities. Use when asked to \"review GitHub Actions\", \"audit workflows\", \"check CI security\", \"GHA security\", \"workflow security review\", or review .github/workflows/ for pwn requests, expression injection, credential theft, and supply chain attacks. Exploitation-focused with concrete PoC scenarios.",
+   "source": "getsentry/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "github-helper",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Git & delivery",
+   "tags": [
+    "git",
+    "github"
+   ],
+   "description": "Git and GitHub operations end to end: clone, init, commit, push, pull, branches, merge/rebase with conflict resolution, PRs, tags/releases, cherry-pick, undo/recover, worktrees, submodules, bisect, Actions/CI, repo settings, issues. Use for any git or gh task, on github.com or GitHub Enterprise.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "hallmark",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design"
+   ],
+   "description": "Anti-AI-slop design skill for greenfield pages, audits, redesigns, and design extraction from URLs or screenshots. Use when the user asks to build a new app or landing page, wants to redesign something, invokes Hallmark by name, or uses audit/redesign/study.",
+   "source": "nutlope/hallmark",
+   "license": "MIT"
+  },
+  {
+   "name": "hono",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "hono"
+   ],
+   "description": "Use when building Hono web applications or when the user asks about Hono APIs, routing, middleware, JSX, validation, testing, or streaming. TRIGGER when code imports from 'hono' or 'hono/*', or user mentions Hono. Use Hono CLI to inspect and test the app.",
+   "source": "honojs/skills",
+   "license": "MIT"
+  },
+  {
+   "name": "i18n-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "i18n"
+   ],
+   "description": "Web app i18n: next-intl, react-i18next, vue-i18n, Babel; ICU plurals/select, locale negotiation and routing, hreflang and localized sitemaps, Intl dates/currency with explicit time zones, RTL, hydration-safe locale, missing-key CI checks, localized emails. Use when adding languages or formats.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "java-coding-standards",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "java"
+   ],
+   "description": "Java style rules: naming, records and immutability, Optional, streams, exceptions, JSpecify null-safety, constructor injection, logging, package layout, test naming. Use when writing or reviewing Java code structure or style; language features and JVM tuning live in java-modern.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "java-modern",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "java"
+   ],
+   "description": "Modern Java (JDK 21/25 LTS, 26/27): JDK choice, records/sealed/pattern-matching idioms, virtual threads, scoped values, JVM tuning (GC, AOT cache, JFR), Maven/Gradle toolchains and quality gates, Java vulnerabilities. Use when starting, upgrading, tuning or reviewing plain Java code.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "jpa-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "spring",
+    "java"
+   ],
+   "description": "JPA with Hibernate 7 / Jakarta Persistence 3.2 and Spring Data JPA: entities, relationships, N+1 fixes, fetch plans, projections, transactions, batching, locking, pagination, HikariCP, safe queries. Use when designing entities or fixing slow or wrong JPA queries and transactions.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "json-file-store",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "database"
+   ],
+   "description": "JSON and local-file persistence done safely: atomic write (temp, fsync, rename, Windows retry), write queue and cross-process lock, zod/pydantic validation, schemaVersion migrations, backups, corruption recovery, limits and moving to SQLite. Use when an app stores data or settings in JSON files.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "k6",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing",
+    "performance"
+   ],
+   "description": "Generate, validate, and review k6 test scripts — load, stress, spike, soak, smoke, breakpoint, functional, and protocol. Covers HTTP, WebSocket, gRPC, browser, all executors, thresholds, checks, custom metrics, the k6-testing library, k6 Cloud execution, and the xk6 extension ecosystem; uses the xk6-docs CLI (with grafana.com web fallback) for docs lookup and validates every script by running it. Use when writing, generating, validating, or debugging any k6 or load-test script (including plain-language asks like \"load test this API\" or \"stress test my service\"), choosing executors/scenarios, or setting thresholds. For end-to-end website performance suites use k6-perf-test-website; for documenting k6 itself use k6-docs.",
+   "source": "grafana/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "latency-critical-systems",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Performance",
+   "tags": [
+    "performance"
+   ],
+   "description": "Use for latency-sensitive systems such as realtime dashboards, market data, streaming agents, execution gateways, queues, caches, or HFT-like infrastructure where freshness and p95 latency matter. Use when p95 latency or data freshness matters — realtime dashboards, market data, streaming agents, queues, or caches.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "make-interfaces-feel-better",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design"
+   ],
+   "description": "Apply concrete design-engineering details that make interfaces feel polished. Use when reviewing or improving UI spacing, typography, borders, shadows, motion, hit areas, icons, text wrapping, and interaction states.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "mcp-builder",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai"
+   ],
+   "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "mongodb-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "mongodb"
+   ],
+   "description": "MongoDB with Node driver 7.x, mongoose 9 and PyMongo: one client per process, pools, timeouts, ESR indexes, explain(), aggregation, range pagination, atomic/bulk writes, transactions, schemas, operator-injection defense. Use when writing or reviewing Mongo queries, indexes, schemas or connections.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "motion-advanced",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design"
+   ],
+   "description": "Advanced motion patterns for React / Next.js — drag & drop, gestures, text animations, SVG path drawing, custom hooks, imperative sequences (useAnimate), loaders, and the full API decision tree. Requires motion-foundations. Use when building drag and drop, gestures, text or SVG animation, or imperative animation sequences in React or Next.js.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "motion-foundations",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design"
+   ],
+   "description": "Motion tokens, spring presets, performance rules, device adaptation, accessibility enforcement, and SSR safety for React / Next.js using motion/react. Foundation layer — all other motion skills depend on this. Use when setting up motion tokens, spring presets, reduced-motion handling, or SSR-safe animation in React or Next.js.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "motion-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design"
+   ],
+   "description": "Production-ready animation patterns for React / Next.js — button, modal, toast, stagger, page transitions, exit animations, scroll, and layout — built on motion-foundations tokens and springs. Use when animating a specific UI element in React or Next.js — button, modal, toast, stagger, page transition, or scroll.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "mysql-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "mysql"
+   ],
+   "description": "MySQL and MariaDB schema, query, indexing, transaction, replication, and connection-pool patterns for production backends. Use when designing MySQL or MariaDB schemas and indexes, or when a query, transaction, or replica lags.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "nestjs-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "nestjs"
+   ],
+   "description": "NestJS architecture patterns for modules, controllers, providers, DTO validation, guards, interceptors, config, and production-grade TypeScript backends. Use when building or reviewing a NestJS backend — modules, providers, DTO validation, guards, or interceptors.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "nextjs-on-cloudflare",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Build, migrate, and deploy Next.js apps on Cloudflare Workers with vinext. Use when starting a Next.js project on Cloudflare, moving an existing app to Workers, choosing between vinext and OpenNext, or setting up vinext for Workers. For setup, migration, or deployment, install vinext's upstream skills with `npx skills add cloudflare/vinext` if missing, then read and follow the applicable skill and docs.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "nextjs-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "next",
+    "react"
+   ],
+   "description": "Next.js 16 App Router (Sept 2026): version floors for next/RSC/vite/sharp CVEs, 16.x breaking changes (async request APIs, proxy.ts, Turbopack builds), Server Action and DAL security, 'use cache'. Use when creating, reviewing, upgrading or debugging a Next.js app, proxy.ts or 'use server' code.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "nuxt4-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Vue / Nuxt",
+   "tags": [
+    "vue"
+   ],
+   "description": "Nuxt 4 app patterns for hydration safety, performance, route rules, lazy loading, and SSR-safe data fetching with useFetch and useAsyncData. Use when building or reviewing a Nuxt 4 app, or debugging hydration mismatches and SSR-safe data fetching.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "observability-and-instrumentation",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "observability",
+    "devops"
+   ],
+   "description": "Instruments code so production behavior is visible and diagnosable. Use when adding logging, metrics, tracing, or alerting. Use when shipping any feature that runs in production and you need evidence it works. Use when production issues are reported but you can't tell what happened from the available data.",
+   "source": "addyosmani/agent-skills",
+   "license": "MIT"
+  },
+  {
+   "name": "opensource-pipeline",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Open source",
+   "tags": [
+    "oss"
+   ],
+   "description": "Open-source pipeline: fork, sanitize, and package private projects for safe public release. Chains 3 agents (forker, sanitizer, packager). Triggers: '/opensource', 'open source this', 'make this public', 'prepare for open source'. Use when a private project must be forked, stripped of secrets, and packaged for public release.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "orm-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "orm",
+    "database"
+   ],
+   "description": "TypeScript and Python ORMs and query builders: Prisma 7 (8 RC), Drizzle 0.45/1.0 RC, Kysely 0.29, TypeORM 1.x, Mongoose 9, SQLAlchemy 2 - choice, versions and shared traps: N+1, raw/unsafe injection, migration drift, pool exhaustion, mass assignment. Use when writing or reviewing ORM code.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "otel-instrumentation",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "observability"
+   ],
+   "description": "Configures trace spans, defines custom metrics, sets up log exporters, and optimizes sampling strategies for OpenTelemetry instrumentation. Use when instrumenting applications with traces, metrics, or logs. Triggers on requests for observability, telemetry, tracing, metrics collection, logging integration, or OTel setup.",
+   "source": "dash0hq/agent-skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "playwright-cli",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing"
+   ],
+   "description": "Automate browser interactions, test web pages and work with Playwright tests.",
+   "source": "microsoft/playwright-cli",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "production-audit",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "devops"
+   ],
+   "description": "Local-evidence production readiness audit for shipped apps, pre-launch reviews, post-merge checks, and \"what breaks in prod?\" questions without sending repo data to an external audit service. Use when auditing production readiness before launch, after a merge, or when asked what breaks in prod.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "python-modern-stack",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "python"
+   ],
+   "description": "Python 3.12-3.14 projects and small secure backends (Sept 2026): uv, pyproject, Ruff 0.16, type checkers, pytest 9, uv audit/pip-audit CVE floors, httpx2/requests timeouts, SSRF guard, PyMongo/Motor, Flask 3.1/FastAPI. Use when creating or modernizing a Python project, its deps or HTTP/DB code.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "python-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "python"
+   ],
+   "description": "Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications. Use when writing or reviewing Python code and idiomatic structure, typing, or PEP 8 is in question.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "python-testing",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "python"
+   ],
+   "description": "Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements. Use when writing pytest tests — fixtures, mocks, parametrization, or coverage.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "react-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react"
+   ],
+   "description": "React 19.x (19.3) patterns: hooks discipline, React Compiler 1.0 and eslint-plugin-react-hooks v7, Activity/useEffectEvent/ViewTransition, server/client boundaries, Suspense, form actions, state and data fetching. Use when writing or reviewing React components or hooks (.tsx/.jsx) in Vite or Next.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "react-performance",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react",
+    "next"
+   ],
+   "description": "React 19 / Next.js 16 performance rules by priority: waterfalls, bundle size, server rendering, re-renders, React Compiler, Activity, 'use cache', mapped to LCP/INP/CLS. Use when a React or Next.js page is slow, the bundle is large, components re-render too often, or when reviewing React perf.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "react-testing",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react"
+   ],
+   "description": "React component testing with Testing Library, Vitest 4/5 (jsdom or browser mode) or Jest, MSW network mocks and axe checks, plus when Playwright fits better (async Server Components, full flows). Use when writing, fixing or reviewing React component or hook tests.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "realtime-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "realtime"
+   ],
+   "description": "Realtime web features: SSE vs WebSocket vs polling, auth on upgrade (cookie or one-time ticket + Origin check), heartbeats, reconnect and Last-Event-ID resume, backpressure, caps, fan-out via Redis, Postgres LISTEN/NOTIFY or Durable Objects, proxy timeouts. Use when adding live updates or chat.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "receiving-code-review",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "redis-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "redis"
+   ],
+   "description": "Redis data structure patterns, caching strategies, distributed locks, rate limiting, pub/sub, and connection management for production applications. Use when adding caching, a distributed lock, rate limiting, or pub/sub with Redis, or when key design needs review.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "requesting-code-review",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "sandbox-stable",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Build or maintain Cloudflare Sandbox apps on the stable @cloudflare/sandbox package. Use sandbox-next for preview apps and sandbox-migrate-to-next for stable-to-preview migrations.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "secret-hygiene",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "core"
+   ],
+   "description": "Detect hardcoded secrets while working and move them to environment variables; audit repos and git history for leaks. Use proactively when code contains an API key, token, password, bot token, webhook URL or DB connection string, or when asked to externalize or scan secrets (/secret-hygiene).",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "security-review",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security"
+   ],
+   "description": "Security checklist mapped to OWASP Top 10:2025, API Top 10 and ASVS 5 for Node/Express 5, Next.js, SQL/Mongo, discord.js bots and LLM features: authz, sessions, CSRF/CORS, injection, SSRF, uploads, headers, CVE floors. Use when adding auth, endpoints, input handling, uploads, secrets or AI features.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "security-scan",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security"
+   ],
+   "description": "Scan your Claude Code configuration (.claude/ directory) for security vulnerabilities, misconfigurations, and injection risks using AgentShield. Checks CLAUDE.md, settings.json, MCP servers, hooks, and agent definitions. Use when auditing a .claude/ directory — CLAUDE.md, settings.json, MCP servers, hooks, or agent definitions.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "sentry-instrument",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "observability"
+   ],
+   "description": "Instrument an application with Sentry — detect the platform, install and initialize the SDK if needed, and wire up any signal — error monitoring, tracing/performance, logging, metrics, profiling, session replay, user feedback, cron check-ins, and AI/LLM monitoring (agent runs, token cost, and conversations for OpenAI, Anthropic, Vercel AI, LangChain, Google GenAI, Pydantic AI, and Laravel AI). Use to add Sentry to a project or to capture more than errors.",
+   "source": "getsentry/plugin-claude",
+   "license": "MIT"
+  },
+  {
+   "name": "seo",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "seo"
+   ],
+   "description": "Optimize for search engine visibility and ranking. Use when asked to \"improve SEO\", \"optimize for search\", \"fix meta tags\", \"add structured data\", \"sitemap optimization\", or \"search engine optimization\".",
+   "source": "addyosmani/web-quality-skills",
+   "license": "MIT"
+  },
+  {
+   "name": "ship",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Git & delivery",
+   "tags": [
+    "core"
+   ],
+   "description": "Safely ship finished work — run checks (syntax/typecheck/lint/test), make a clean Conventional Commit (no AI co-author), and push. Use when the user says \"ship it\", \"commit and push\", \"finish this up\", or invokes /ship.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "springboot-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "spring"
+   ],
+   "description": "Spring Boot 4 (Framework 7) service patterns: starters, REST controllers, validation, ProblemDetail, RestClient/HTTP service clients, API versioning, @Retryable, caching, virtual threads, config, observability, 3.5-to-4 migration. Use when building, reviewing or upgrading a Spring Boot backend.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "springboot-security",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "spring"
+   ],
+   "description": "Spring Security 7 on Boot 4: lambda-DSL SecurityFilterChain, deny-by-default and ownership checks, method security, OAuth2 resource server/JWT, sessions, CSRF, CORS, headers, MFA, passwords, actuator, rate limits, CVEs. Use when adding or reviewing auth, endpoints, secrets or Spring Security config.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "springboot-tdd",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "spring"
+   ],
+   "description": "Test-first Spring Boot 4: JUnit 6, AssertJ, Mockito 5 agent setup, @MockitoBean, slices (@WebMvcTest, @DataJpaTest, @DataMongoTest), MockMvcTester, RestTestClient, Testcontainers 2 with @ServiceConnection, JaCoCo gates. Use when adding features, fixing bugs or writing Spring tests.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "springboot-verification",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "spring"
+   ],
+   "description": "Pre-PR and pre-deploy gate for Spring Boot: wrapper build, tests and JaCoCo, SpotBugs+FindSecBugs, dependency CVEs (OSV-Scanner, dependency-check), secrets, actuator/config exposure, supported-version check, report. Use when preparing a PR or release, or after dependency upgrades.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "sql-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "database",
+    "postgres",
+    "mysql",
+    "sqlite"
+   ],
+   "description": "Engine-neutral SQL for Postgres, MySQL/MariaDB and SQLite: parameterized queries, allow-listed identifiers, IN/LIKE safety, constraints first, isolation levels and retries, keyset pagination, upserts, JSON columns, portable types. Use when writing or reviewing raw SQL or query-builder code.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "sqlite-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "sqlite"
+   ],
+   "description": "SQLite in production with better-sqlite3, node:sqlite, bun:sqlite, Python sqlite3, libSQL and D1: WAL, busy_timeout, BEGIN IMMEDIATE, STRICT tables, user_version migrations, online backups, FTS5, security, limits and when to move to Postgres. Use when writing or reviewing SQLite code.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "stripe-best-practices",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Payments & email",
+   "tags": [
+    "payments"
+   ],
+   "description": "Guides Stripe integration decisions across development and test environment planning (separate sandboxes vs the shared test mode sandbox), API selection (Checkout Sessions vs PaymentIntents), Connect platform setup (Accounts v2, controller properties), billing/subscriptions, tax and registrations (Stripe Tax, automatic_tax, product tax codes), Treasury financial accounts, integration options (Checkout, Payment Element), migrating from deprecated Stripe APIs, and security best practices (API key management, API key permissions, webhooks, OAuth). Use when planning, building, modifying, testing, or reviewing any Stripe integration, including choosing a development environment, accepting payments, building marketplaces, integrating Stripe, processing payments, setting up subscriptions, collecting sales tax, VAT, or GST, creating connected accounts, or implementing secure key handling.",
+   "source": "stripe/ai",
+   "license": "MIT"
+  },
+  {
+   "name": "subagent-driven-development",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when executing implementation plans with independent tasks in the current session",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "supabase-postgres-best-practices",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "postgres"
+   ],
+   "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search (pgvector), and restoring dumps (pg_restore) or importing data. Also load it when diagnosing slow queries, high CPU, timeouts, EXPLAIN plans, connection exhaustion, locking, bloat, or rows visible to the wrong user or tenant. This is not just a performance guide — schema, migration, security, and SQL authoring tasks need these rules too, even for a one-column change or a single query.",
+   "source": "supabase/agent-skills",
+   "license": "MIT"
+  },
+  {
+   "name": "supply-chain-security",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security"
+   ],
+   "description": "Harden npm/pnpm/yarn/bun, pip/uv and Maven/Gradle against malicious packages: lockfiles, install-script allowlists, release cooldowns, audit/OSV scans, trusted publishing, pinned Actions, compromise playbook. Use when adding deps, editing lockfiles or CI workflows, or after a supply-chain attack.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "systematic-debugging",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "test-driven-development",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when implementing any feature or bugfix, before writing implementation code",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "turnstile-spin",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Set up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "typescript-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "ts",
+    "js",
+    "node"
+   ],
+   "description": "TypeScript + Node.js for strict ESM-first code (Sept 2026): TS 6/7 tsconfig, removed options, typescript6 shim, Node 22/24/26, type stripping, ESM/CJS, require(esm), zod 4, ESLint 10, Vitest 5. Use when writing or reviewing .ts/.js Node or bot code, editing tsconfig/eslint config, upgrading TS/Node.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "ui-demo",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design"
+   ],
+   "description": "Record polished UI demo videos using Playwright. Use when the user asks to create a demo, walkthrough, screen recording, or tutorial video of a web application. Produces WebM videos with visible cursor, natural pacing, and professional feel.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "using-git-worktrees",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "using-superpowers",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "verification-before-completion",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "vite-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "vite",
+    "react",
+    "vue"
+   ],
+   "description": "Vite 8 (Rolldown/Oxc) with notes for Vite 6/7: config, plugins, env vars, dev-server CVE floors and exposure rules, proxy, SSR, library mode, codeSplitting and the 7-to-8 migration. Use when editing vite.config.*, writing Vite plugins, upgrading Vite, or debugging Vite dev/build issues.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "vue3-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Vue / Nuxt",
+   "tags": [
+    "vue"
+   ],
+   "description": "Vue 3.5 patterns (Composition API, <script setup>, reactive props destructure, Pinia 4, Vue Router 5, Nuxt composables) for type-safe, SSR-safe components. Use when editing .vue files, composables/, stores/ or nuxt.config.ts. Complements nuxt4-patterns (SSR data fetching).",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "web-perf",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "performance"
+   ],
+   "description": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "webapp-testing",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing"
+   ],
+   "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "workers-best-practices",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Cloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "wrangler",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, deployment, and Cloudflare resource management.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "writing-plans",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "writing-skills",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+   "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "a11y-architect",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "a11y"
+   ],
+   "description": "Web accessibility auditor and spec writer for WCAG 2.2 AA (React/Next/Vite apps, dashboards, forms, dialogs, data tables). Read-only - runs axe/lint where available, traces keyboard and screen-reader behaviour in code, and reports findings with SC, severity and fix. Use PROACTIVELY before releasing UI, for design-system components, or when WCAG/BFSG compliance matters.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "api-security-auditor",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security",
+    "api"
+   ],
+   "description": "Read-only per-endpoint audit of Express 5 routes, Next.js route handlers and Server Actions, webhooks and Discord interaction endpoints against OWASP API Top 10 (2023) - auth, object/property authz, validation, injection, SSRF, limits, errors. Use PROACTIVELY when adding or changing endpoints.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "architect",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Architecture",
+   "tags": [
+    "core"
+   ],
+   "description": "Software architecture specialist for system design, scalability, and technical decision-making. Use PROACTIVELY when planning new features, refactoring large systems, or making architectural decisions.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "auth-integration-engineer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "auth"
+   ],
+   "description": "Use this agent when implementing authentication and authorization — OAuth 2.1/OIDC flows, SAML enterprise SSO, session and token management, multi-tenant permission models, or MFA and passwordless login.",
+   "source": "VoltAgent/awesome-claude-code-subagents",
+   "license": "MIT"
+  },
+  {
+   "name": "build-error-resolver",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "ts",
+    "js",
+    "node"
+   ],
+   "description": "Fixes TypeScript/Node build, type-check and module-resolution errors with minimal diffs - TS 6/7 removed options, nodenext/ESM import errors, require(esm), missing types, tsgo/tsc6 tooling splits. Use PROACTIVELY when tsc, npm run build, eslint type-info or node startup fails.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "cloudflare-workers-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Read-only reviewer for Cloudflare Workers, Pages Functions, Durable Objects and wrangler config: secrets, runtime limits, floating promises, global state, bindings, observability. MUST BE USED for Workers code, wrangler.toml/jsonc, bindings or Cloudflare secrets.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "code-architect",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Architecture",
+   "tags": [
+    "core"
+   ],
+   "description": "Designs feature architectures by analyzing existing codebase patterns and conventions, then providing implementation blueprints with concrete files, interfaces, data flow, and build order.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "code-explorer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Architecture",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when the user asks how an existing feature works, where something is implemented, or to explain an unfamiliar codebase before changing it. Traces execution paths, maps architecture layers, and documents dependencies.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "code-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Review",
+   "tags": [
+    "core"
+   ],
+   "description": "Fallback code reviewer for changes no dedicated reviewer covers - shell scripts, CI/GitHub Actions YAML, Dockerfiles/Compose, config files, non-FiveM Lua, and mixed diffs. Use after writing or modifying such code. Dedicated reviewers take precedence - typescript-reviewer, react-reviewer, python-reviewer, java-reviewer, database-reviewer.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "data-layer-builder",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "database",
+    "postgres",
+    "mysql",
+    "sqlite",
+    "mongodb",
+    "orm"
+   ],
+   "description": "Builds a feature's data layer on the project's engine (Postgres, MySQL, SQLite, MongoDB, JSON files) and tool (SQL, Prisma, Drizzle, Kysely, TypeORM, Mongoose, SQLAlchemy): schema, migration, repository, seed, real-engine tests. Never migrates non-dev DBs. Use when adding or changing stored data.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "database-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "database",
+    "postgres",
+    "mysql",
+    "sqlite",
+    "mongodb",
+    "orm"
+   ],
+   "description": "Database reviewer for every engine - PostgreSQL, MySQL, SQLite, MongoDB, JSON-file stores, Redis - and ORMs (Prisma, Drizzle, Kysely, TypeORM, Mongoose, SQLAlchemy): injection, tenant isolation, integrity, concurrency, performance, migrations. Read-only. Use PROACTIVELY when code touches data.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "doc-updater",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Docs",
+   "tags": [
+    "docs"
+   ],
+   "description": "Documentation and codemap specialist. Use after a feature, route, command, env var, or setup step changed - updates README, .env.example, CLAUDE.md/AGENTS.md project notes, and optional docs/CODEMAPS/* so docs match the code. Generates from the source, never from memory.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "docs-lookup",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Docs",
+   "tags": [
+    "core"
+   ],
+   "description": "Looks up current library/framework/API documentation and latest package versions on the web instead of answering from training data. Use when the user asks how to use a library, needs current API details, setup steps, version/EOL facts, or up-to-date code examples - especially for fast-moving stacks (discord.js, Express 5, Next.js, zod, Vitest, Spring Boot, Cloudflare).",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "e2e-runner",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing"
+   ],
+   "description": "End-to-end testing specialist for Playwright Test (1.63). Use PROACTIVELY for generating, maintaining, and running E2E tests of critical user journeys (login-protected dashboards, settings that pair with a bot, checkout/admin flows). Uses role-based locators and web-first assertions, reuses auth via storageState, quarantines flaky tests with a reason, and collects traces/screenshots.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "fastapi-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "fastapi"
+   ],
+   "description": "Reviews FastAPI 0.14x apps (Starlette 1.x, Pydantic 2) for auth and ownership checks, async correctness, dependency injection, response models, lifespan-managed clients, CORS/TrustedHost/proxy config, rate limits, tests and CVE floors. Use for FastAPI changes; read-only.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "final-review-agent",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Review",
+   "tags": [
+    "core"
+   ],
+   "description": "Final completeness, quality and safety pass before a task is called done: fully implemented, nothing removed or broken, reviewers and checks ran, no leaked secrets, no AI co-author trailers. Use PROACTIVELY at the end of any non-trivial change. Read-mostly.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "fullstack-feature-builder",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Architecture",
+   "tags": [
+    "core"
+   ],
+   "description": "Builds one complete vertical slice of a web feature: schema/migration, validated route or action with authn, authz and ownership checks, typed client, UI with loading/empty/error states, unit + integration + e2e tests. Refuses UI without backend. Use when implementing a feature end to end.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "java-build-resolver",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "java",
+    "spring"
+   ],
+   "description": "Fixes failing Java builds with minimal changes - javac errors, Maven/Gradle config, dependency conflicts, JDK/toolchain mismatches, annotation processing (JDK 23+), and Spring Boot 4 / Jackson 3 / Testcontainers 2 / JUnit 6 upgrade breakages. Use when a Java build, compile or test run fails.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "java-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Java",
+   "tags": [
+    "java",
+    "spring"
+   ],
+   "description": "Read-only Java reviewer (plain Java, Spring Boot 3/4, JPA/Hibernate, Spring Data MongoDB, JDA bots): detects JDK, build and framework versions, reports security, correctness and performance findings with file:line and fixes. Use when Java or build files change. MUST BE USED for Java code changes.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "loop-operator",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Agent harness",
+   "tags": [
+    "ai"
+   ],
+   "description": "Runs and supervises long autonomous work - repeated fix/test iterations, batch migrations across many files or repos, scheduled or overnight agent runs, multi-agent workflows - with explicit stop conditions, checkpoints, budget limits and rollback. Use when a task will take many unattended iterations, when a running loop stalls, retries the same failure, or drifts in cost, or when the user asks to keep going until something passes.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "opensource-forker",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Open source",
+   "tags": [
+    "oss"
+   ],
+   "description": "Fork any project for open-sourcing. Copies files, strips secrets and credentials (20+ patterns), replaces internal references with placeholders, generates .env.example, and cleans git history. First stage of the opensource-pipeline skill.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "opensource-packager",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Open source",
+   "tags": [
+    "oss"
+   ],
+   "description": "Generate complete open-source packaging for a sanitized project. Produces CLAUDE.md, setup.sh, README.md, LICENSE, CONTRIBUTING.md, and GitHub issue templates. Makes any repo immediately usable with Claude Code. Third stage of the opensource-pipeline skill.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "opensource-sanitizer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Open source",
+   "tags": [
+    "oss"
+   ],
+   "description": "Verify an open-source fork is fully sanitized before release. Scans for leaked secrets, PII, internal references, and dangerous files using 20+ regex patterns. Generates a PASS/FAIL/PASS-WITH-WARNINGS report. Second stage of the opensource-pipeline skill. Use PROACTIVELY before any public release.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "performance-optimizer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Performance",
+   "tags": [
+    "performance"
+   ],
+   "description": "Measure-first performance engineer for Node/TS backends, Discord bots, Express/Next APIs and React/Next/Vite frontends. Baselines, profiles, finds the dominant bottleneck, applies one change at a time and proves the gain with before/after numbers. Use PROACTIVELY when something is slow, leaks memory, times out under load, or a bundle or Core Web Vital regresses.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "permission-auditor",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security",
+    "auth"
+   ],
+   "description": "Read-only authorization audit - roles, ownership, guild/org tenant isolation, IDOR, privilege escalation and fail-open checks across routes, Server Actions, Discord bot handlers and dashboards, as a resource x action matrix. Use PROACTIVELY for any app with users, roles, guilds or orgs.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "planner",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Expert planning specialist for complex features and refactoring. Use PROACTIVELY when users request feature implementation, architectural changes, or complex refactoring. Automatically activated for planning tasks.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "pr-test-analyzer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing"
+   ],
+   "description": "Reviews whether tests actually cover the changed behaviour - for a pull request or a local diff. Use after writing tests and before committing a feature or bug fix. Emphasis on behavioural coverage and real bug prevention.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "production-readiness-agent",
+   "kind": "agent",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "devops"
+   ],
+   "description": "Pre-deploy go/no-go reviewer: build, typecheck, lint, tests, runtime LTS/EOL, npm ci, env validation, health/readiness, graceful shutdown, process manager/Docker, log redaction, traces/metrics/alerts, tested backups, migration safety. Use PROACTIVELY before deploying, releasing or merging to main.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "python-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Python",
+   "tags": [
+    "python"
+   ],
+   "description": "Python 3.12-3.14 code reviewer for scripts, bots (py-cord), Flask/FastAPI backends and PyMongo - security (injection, SSRF, deserialisation, secrets), async pitfalls, HTTP timeouts, typing, uv/Ruff/pytest hygiene and CVE floors. Use for every Python change; read-only, reports findings with fixes.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "react-build-resolver",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react"
+   ],
+   "description": "Fixes React build, bundler and hydration failures with minimal diffs - Vite 5-8 (Rolldown/Oxc), Next.js 15/16 (Turbopack builds, async request APIs, proxy.ts), React 19 types, React Compiler, Tailwind v4. Use when `vite build`, `next build` or `next dev` fails, or on hydration errors. MUST BE USED when a React build fails.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "react-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react",
+    "next"
+   ],
+   "description": "React 19 / Next.js 16 reviewer - hooks and React Compiler lint rules, server/client boundaries, Server Action and DAL security, vulnerable next/react/vite versions, accessibility and render performance. Read-only, reports findings with fixes. MUST BE USED for .tsx/.jsx, app/ routes, proxy.ts, next.config or 'use server' changes, alongside typescript-reviewer.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "refactor-cleaner",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Review",
+   "tags": [
+    "core"
+   ],
+   "description": "Dead code cleanup and consolidation specialist. Use PROACTIVELY for removing unused code, duplicates, and refactoring. Runs analysis tools (knip for JS/TS, vulture/ruff for Python, maven dependency:analyze for Java) to identify dead code and safely removes it without changing behavior.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "security-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security"
+   ],
+   "description": "Security review of code changes (Node/TypeScript, Express, Next.js, MongoDB, discord.js, Python) for OWASP Top 10:2025 issues, with fixes. Use PROACTIVELY after writing code that handles user input, auth, endpoints, uploads, outbound URLs, secrets or LLM features.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "settings-system-agent",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "api"
+   ],
+   "description": "Builds and verifies end-to-end settings: a value saved in a UI is validated, persisted and actually used by every consumer (backend, worker or bot). Use when adding or auditing configuration/settings, or when one app's setting must drive another. No \"dead\" settings.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "silent-failure-hunter",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Review",
+   "tags": [
+    "core"
+   ],
+   "description": "Review code for silent failures, swallowed errors, bad fallbacks, and missing error propagation. Use PROACTIVELY after any backend, Discord bot, or API change - finds empty catch blocks, swallowed exceptions, unhandled promise rejections, .catch(() => []) fallbacks, and missing async error propagation.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "tdd-guide",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Testing",
+   "tags": [
+    "testing"
+   ],
+   "description": "Test-Driven Development specialist enforcing write-tests-first methodology. Use PROACTIVELY when writing new features, fixing bugs (failing reproducer first), or refactoring code in a project that has a test runner. Follows the Definition of Done in rules §11 - behavioural coverage of the change, not a fixed percentage.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "type-design-analyzer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "ts"
+   ],
+   "description": "Reviews TypeScript type and zod 4 schema design so illegal states are unrepresentable - unions, brands, readonly data, input vs output types, TS 6/7 erasable syntax. Use when adding or reworking domain types, interfaces, discriminated unions, enums or schemas.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "typescript-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "ts",
+    "js",
+    "node"
+   ],
+   "description": "TypeScript/JavaScript reviewer for Node 22/24 ESM services, Express 5 APIs, discord.js bots and React code - type safety, async correctness, zod 4 validation, Node/web security, TS 6/7 config. Use for every TS/JS change; read-only, reports findings with fixes.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "ui-polish-agent",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "design",
+    "react",
+    "vue"
+   ],
+   "description": "UI/UX polish for existing web frontends (React/Next/Vite/Tailwind): spacing, consistency, loading/empty/error states, responsiveness, focus and motion, verified in a browser, without changing behaviour. Use when a UI works but feels unfinished, inconsistent or rough.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "vue-nuxt-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Vue / Nuxt",
+   "tags": [
+    "vue"
+   ],
+   "description": "Reviews Vue 3 and Nuxt code for correctness — reactivity loss, composable/SSR safety, Pinia usage, hydration mismatches, and secrets leaking into the client bundle. MUST BE USED for changes to .vue files, composables/, stores/, or nuxt.config. Read-only — reports findings + fixes.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "web-security-auditor",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security"
+   ],
+   "description": "Read-only security audit plus ship verdict for a web app or bot dashboard (Express 5, Next.js, MongoDB) against OWASP Top 10:2025: version floors, SSRF, uploads, sessions/CSRF/CORS, CSP, LLM features. Use PROACTIVELY before shipping a site or a feature touching auth, input, files or outbound calls.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "webhook-engineer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Payments & email",
+   "tags": [
+    "webhooks",
+    "payments"
+   ],
+   "description": "Use this agent when consuming or delivering webhooks — signature verification, idempotent handlers, retry and backoff policies, event ordering, dead-letter queues, or designing an outbound webhook system for your own API.",
+   "source": "VoltAgent/awesome-claude-code-subagents",
+   "license": "MIT"
+  }
+ ]
+}

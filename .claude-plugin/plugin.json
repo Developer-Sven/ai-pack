@@ -1,0 +1,21 @@
+{
+  "name": "ai-pack",
+  "version": "1.0.0",
+  "description": "Skills, subagents and one rule set for full-stack web development, installed into every coding agent (Claude Code, Codex, OpenCode, Gemini CLI, Copilot, Cursor, ...).",
+  "author": {
+    "name": "Developer-Sven",
+    "url": "https://github.com/Developer-Sven"
+  },
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agents",
+    "full-stack",
+    "security",
+    "typescript",
+    "react",
+    "python"
+  ],
+  "homepage": "https://github.com/Developer-Sven/ai-pack",
+  "repository": "https://github.com/Developer-Sven/ai-pack"
+}

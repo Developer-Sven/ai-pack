@@ -1,0 +1,73 @@
+#!/bin/sh
+# ki-managed-hook  (marker: the self-check in pre-commit/commit-msg/pre-push greps for it)
+# Global pre-commit (ki): JavaScript syntax gate on the STAGED content, then chain to repo-local hook.
+#
+set -u
+
+# --- self-check -------------------------------------------------------------------------------
+# Tools that install hooks by following core.hooksPath (`lefthook install`, simple-git-hooks) write
+# their stubs into THIS shared dir and silently disable the ki gates in every repo (happened once:
+# lefthook replaced pre-commit, the JS gate was gone for weeks). One grep, warn loudly, never block.
+ki_hd=$(dirname "$0")
+ki_lost=$(cd "$ki_hd" 2>/dev/null && grep -L 'ki-managed-hook' pre-commit pre-push commit-msg pre-merge-commit 2>/dev/null)
+if [ -n "$ki_lost" ]; then
+  echo "[ki] WARNING: global hook(s) overwritten by another tool: $(echo $ki_lost)" >&2
+  echo "     Restore: git -C \"$(cd "$ki_hd/.." 2>/dev/null && pwd)\" checkout -- $(basename "$ki_hd")/" >&2
+  echo "     Then give the offending repo its own hooks dir: git config core.hooksPath .git/hooks" >&2
+fi
+
+# --- JavaScript syntax check on the staged blob (always blocks broken code) -------------------
+# Checks what is actually staged, not the working tree — those can differ (`git add` then edit,
+# or `git commit --only`). -z output is never quoted, so spaces, quotes and non-ASCII paths survive;
+# it is turned into one path per line because POSIX sh (dash on Debian/Ubuntu) has no `read -d ''`
+# (with it the loop read nothing there and the gate passed everything). Only a path that itself
+# contains a newline is not checked.
+if command -v node >/dev/null 2>&1; then
+  names_file=$(mktemp 2>/dev/null) || names_file="${TMPDIR:-/tmp}/ki_jscheck_$$"
+  if ! git -c core.quotePath=false diff --cached -z --name-only --diff-filter=ACM > "$names_file" 2>/dev/null \
+     || ! tr '\000' '\n' < "$names_file" > "$names_file.nl" 2>/dev/null; then
+    echo "[ki pre-commit] could not list staged files — aborting to stay safe." >&2
+    rm -f "$names_file" "$names_file.nl" 2>/dev/null
+    exit 1
+  fi
+  # `node --check` reading from stdin parses as CommonJS, so every valid ESM
+  # file was reported as a syntax error — `.mjs` always, and `.js` in any
+  # package with `"type": "module"`. The blob has no path once it is on stdin,
+  # so Node cannot find the package.json that would tell it which one it is:
+  # the goal has to come from the extension instead.
+  #
+  # `.js` is genuinely ambiguous, so it is a failure only when BOTH parses
+  # fail. That cannot mask a real error — no syntax is broken under one goal
+  # and fine under the other; the differences (import/export, top-level await)
+  # are what each goal ALLOWS, not what it rejects.
+  check_blob() {  # $1 = staged path
+    case "$1" in
+      *.cjs) git show ":$1" 2>/dev/null | node --check >/dev/null 2>&1 ;;
+      *.mjs) git show ":$1" 2>/dev/null | node --check --input-type=module >/dev/null 2>&1 ;;
+      *)     git show ":$1" 2>/dev/null | node --check >/dev/null 2>&1 \
+             || git show ":$1" 2>/dev/null | node --check --input-type=module >/dev/null 2>&1 ;;
+    esac
+  }
+  js_fail=0
+  while IFS= read -r f; do
+    case "$f" in *.js|*.cjs|*.mjs) ;; *) continue ;; esac
+    if ! check_blob "$f"; then
+      [ "$js_fail" -eq 0 ] && echo "  [x] JavaScript syntax error in staged file(s):"
+      echo "        $f"
+      js_fail=1
+    fi
+  done < "$names_file.nl"
+  rm -f "$names_file" "$names_file.nl" 2>/dev/null
+  if [ "$js_fail" -ne 0 ]; then
+    echo "  Fix the syntax error(s) before committing (staged content checked)."
+    exit 1
+  fi
+fi
+
+# Preserve any existing repo-local pre-commit hook (project tooling, git-lfs).
+# --git-common-dir (not --git-dir) so linked worktrees still find the real hooks dir.
+gd=$(git rev-parse --git-common-dir 2>/dev/null)
+if [ -n "$gd" ] && [ -x "$gd/hooks/pre-commit" ]; then
+  exec "$gd/hooks/pre-commit" "$@"
+fi
+exit 0
