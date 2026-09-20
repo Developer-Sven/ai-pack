@@ -92,6 +92,7 @@ const HARNESSES = [
     agents: { mode: 'subdir', dir: H('.claude', 'agents', 'ai-pack') },
     rules: { mode: 'file', file: H('.claude', 'rules', 'ai-pack.md') } },
   { id: 'codex', name: 'OpenAI Codex (CLI, IDE extension, app)', detect: anyOf(bin('codex'), dir(CODEX_HOME)),
+    // ~/.codex/skills is not in Codex's documented discovery list (only ~/.agents/skills is): links there are removed
     skills: { reads: [AGENTS_SKILLS, p(CODEX_HOME, 'skills')], legacy: [p(CODEX_HOME, 'skills')], dedupe: false },
     agents: { format: 'codex', dir: p(CODEX_HOME, 'agents') },
     rules: { mode: 'inline', file: p(CODEX_HOME, 'AGENTS.md'), maxBytes: 32 * 1024, fallback: 'min', shadowedBy: p(CODEX_HOME, 'AGENTS.override.md') } },
@@ -108,7 +109,10 @@ const HARNESSES = [
     agents: { format: 'gemini', dir: p(GEMINI_HOME, 'agents') },
     rules: { mode: 'import', file: p(GEMINI_HOME, 'GEMINI.md') } },
   { id: 'antigravity', name: 'Google Antigravity', detect: anyOf(dir(H('.gemini', 'config')), () => entries(H('.gemini')).some((e) => e.startsWith('antigravity')), dir(H('.antigravity'))),
-    skills: { reads: [H('.gemini', 'config', 'skills')] } },
+    skills: { reads: [H('.gemini', 'config', 'skills')] },
+    // same global file as the Gemini CLI, so only write it when that tool is not being served
+    rules: { mode: 'import', file: p(GEMINI_HOME, 'GEMINI.md'), servedBy: ['gemini'] },
+    notes: ['Antigravity CLI keeps its own `~/.gemini/antigravity-cli/{skills,rules}` - not written'] },
   { id: 'copilot', name: 'GitHub Copilot CLI', detect: anyOf(bin('copilot'), dir(p(COPILOT_HOME, 'config.json')), dir(p(COPILOT_HOME, 'session-store.db'))),
     skills: { reads: [AGENTS_SKILLS, p(COPILOT_HOME, 'skills')] },
     agents: { format: 'copilot', dir: p(COPILOT_HOME, 'agents') },
@@ -118,15 +122,17 @@ const HARNESSES = [
       otherwise: { mode: 'file', file: COPILOT_INSTRUCTIONS, header: APPLY_ALL } } },
   { id: 'vscode-copilot', name: 'GitHub Copilot in VS Code', detect: anyOf(hasExt('github.copilot-chat'), dir(p(VSCODE_USER, 'globalStorage', 'github.copilot-chat'))),
     skills: { reads: [AGENTS_SKILLS, CLAUDE_SKILLS, p(COPILOT_HOME, 'skills')] },
-    agents: { format: 'copilot', dir: p(COPILOT_HOME, 'agents'), servedBy: ['claude', 'copilot'] },
-    rules: { mode: 'file', file: COPILOT_INSTRUCTIONS, header: APPLY_ALL, servedBy: ['claude', 'copilot'] } },
+    // ~/.copilot/agents is documented for the Copilot CLI only, not for VS Code: nothing written here
+    rules: { mode: 'file', file: COPILOT_INSTRUCTIONS, header: APPLY_ALL, servedBy: ['claude', 'copilot'],
+      note: 'VS Code reads user-level instructions in Agent Host sessions; classic Copilot Chat uses its profile settings' } },
   { id: 'cursor', name: 'Cursor (IDE, CLI)', detect: anyOf(bin('cursor'), bin('cursor-agent'), dir(H('.cursor'))),
     skills: { reads: [AGENTS_SKILLS, CLAUDE_SKILLS, H('.cursor', 'skills'), p(CODEX_HOME, 'skills')], dedupe: 'unverified' },
     agents: { format: 'cursor', dir: H('.cursor', 'agents'), servedBy: ['claude'] },
     rules: { mode: 'manual', note: 'Cursor keeps user rules in Settings > Rules only: paste rules/global-work-rules.md there once' } },
   { id: 'cline', name: 'Cline', detect: anyOf(dir(H('.cline')), bin('cline'), hasExt('saoudrizwan.claude-dev')),
-    skills: { reads: [AGENTS_SKILLS, H('.cline', 'skills')] },
-    rules: { mode: 'file', file: H('.cline', 'rules', 'ai-pack.md') } },
+    skills: { reads: [H('.cline', 'skills')] }, // Cline's docs list ~/.cline/skills, never ~/.agents/skills
+    rules: { mode: 'file', file: H('.cline', 'rules', 'ai-pack.md'),
+      note: 'Cline also reads ~/Documents/Cline/Rules - copy the file there if your install uses that folder' } },
   { id: 'zoo', name: 'Zoo Code / Roo Code', detect: anyOf(dir(H('.roo')), hasExt('zoocodorganization.zoo-code'), hasExt('rooveterinaryinc.roo-cline')),
     skills: { reads: [AGENTS_SKILLS, H('.roo', 'skills')] },
     rules: { mode: 'file', file: H('.roo', 'rules', 'ai-pack.md') } },
@@ -134,7 +140,7 @@ const HARNESSES = [
     skills: { reads: [AGENTS_SKILLS, H('.codeium', 'windsurf', 'skills')] },
     rules: { mode: 'inline-min', file: H('.codeium', 'windsurf', 'memories', 'global_rules.md'), maxChars: 6000 } },
   { id: 'goose', name: 'goose', detect: anyOf(bin('goose'), dir(GOOSE_CFG)),
-    skills: { reads: [AGENTS_SKILLS, p(GOOSE_CFG, 'skills'), CLAUDE_SKILLS] },
+    skills: { reads: [AGENTS_SKILLS, CLAUDE_SKILLS] }, // goose documents ~/.agents/skills and ~/.claude/skills, no dir of its own
     agents: { format: 'goose', dir: H('.agents', 'agents'), servedBy: ['claude'] },
     rules: { mode: 'import', file: p(GOOSE_CFG, '.goosehints') } },
   { id: 'pi', name: 'pi coding agent', detect: dir(PI_DIR),
@@ -150,7 +156,9 @@ const HARNESSES = [
     skills: { reads: [AGENTS_SKILLS] },
     rules: { mode: 'inline', file: p(ZED_CFG, 'AGENTS.md') } },
   { id: 'crush', name: 'Crush', detect: anyOf(bin('crush'), dir(p(XDG, 'crush'))),
-    skills: { reads: [AGENTS_SKILLS, p(XDG, 'crush', 'skills'), CLAUDE_SKILLS] },
+    // Crush auto-scans project folders only; a global skills dir must be named in its config, and its
+    // subagent support is still an unmerged PR - so neither is wired up here
+    notes: [`skills: add {"options":{"skills_paths":["${posix(p(PACK, 'skills'))}"]}} to ${posix(p(XDG, 'crush', 'crush.json'))}`],
     rules: { mode: 'inline', file: p(XDG, 'crush', 'CRUSH.md') } },
   { id: 'qwen', name: 'Qwen Code', detect: anyOf(bin('qwen'), dir(H('.qwen'))),
     skills: { reads: [H('.qwen', 'skills')] },
@@ -172,7 +180,9 @@ const HARNESSES = [
     skills: { reads: [AGENTS_SKILLS, H('.openhands', 'skills')] },
     notes: ['rules: OpenHands reads only a project AGENTS.md'] },
   { id: 'commandcode', name: 'Command Code', detect: dir(H('.commandcode')),
-    skills: { reads: [AGENTS_SKILLS, H('.commandcode', 'skills')] } },
+    skills: { reads: [AGENTS_SKILLS, H('.commandcode', 'skills')] },
+    agents: { format: 'commandcode', dir: H('.commandcode', 'agents') },
+    rules: { mode: 'import', file: H('.commandcode', 'AGENTS.md') } },
 ];
 const harness = (id) => HARNESSES.find((h) => h.id === id);
 
@@ -804,6 +814,10 @@ const CONVERTERS = {
   goose(fm, body, name) {
     return { file: `${name}.md`, text: md([`name: ${yamlStr(name)}`, `description: ${yamlStr(fm.description)}`], HEAD(name) + (readOnly(fm) ? RO_NOTE : '') + body) };
   },
+  commandcode(fm, body, name) {
+    // its `tools` field has no read-only preset and its tool ids are undocumented: restrict by instruction
+    return { file: `${name}.md`, text: md([`name: ${yamlStr(name)}`, `description: ${yamlStr(fm.description)}`, 'model: inherit'], HEAD(name) + (readOnly(fm) ? RO_NOTE : '') + body) };
+  },
 };
 CONVERTERS.qwen = CONVERTERS.gemini;
 
@@ -998,7 +1012,7 @@ function installRules(h, ctx) {
   const done = (lines) => {
     ctx.provided.rules.add(h.id);
     dropRules(h.id, state, r.file);
-    return lines;
+    return r.note ? [...lines, `  note  ${r.note}`] : lines; // e.g. a second location the tool also reads
   };
   const via = throughLink(path.dirname(r.file));
   if (via && insidePack(via.resolved)) return done([`  ok    rules: already reach the pack via ${via.at}`]);
@@ -1215,7 +1229,8 @@ async function doctor() {
     const [fm] = frontmatterSplit(readText(p(skillsDir, s, 'SKILL.md')) || '');
     chars += s.length + 2 + String(fm.description || '').length;
   }
-  check(chars < 24000, `enabled skill list ~${Math.round(chars / 4)} tokens for ${names.length} skills (keep under ~6k: pick only your tags - node install.mjs tags)`);
+  // Codex budgets the catalogue at 2% of the context window, 10,000 tokens at most
+  check(chars < 24000, `enabled skill list ~${Math.round(chars / 4)} tokens for ${names.length} skills (Codex shortens past 2% of its context: pick only your tags - node install.mjs tags)`);
   if (loadLocal().updating) check(false, 'an update was interrupted - run `node install.mjs update` again');
   console.log(problems ? `\n${problems} problem(s).` : '\nall good.');
   if (problems) process.exitCode = 1;

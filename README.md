@@ -104,11 +104,11 @@ back before pulling and re-applies your choice afterwards.
 | OpenCode | `~/.agents/skills` | `~/.config/opencode/agents` (converted) | `~/.config/opencode/AGENTS.md` |
 | Kilo Code (CLI, VS Code) | `~/.agents/skills` | `~/.config/kilo/agents` (converted) | manual step |
 | Gemini CLI | `~/.agents/skills` | `~/.gemini/agents` (converted) | `~/.gemini/GEMINI.md` |
-| Google Antigravity | `~/.gemini/config/skills` | — | — |
+| Google Antigravity | `~/.gemini/config/skills` | — | `~/.gemini/GEMINI.md` (only without Gemini CLI) |
 | GitHub Copilot CLI | `~/.agents/skills` | `~/.copilot/agents` (converted) | `~/.copilot/copilot-instructions.md` (without Claude Code: `~/.copilot/instructions/ai-pack.instructions.md`) |
-| GitHub Copilot in VS Code | `~/.agents/skills` | `~/.copilot/agents` (converted, only without Claude Code / GitHub Copilot CLI) | `~/.copilot/instructions/ai-pack.instructions.md` (only without Claude Code / GitHub Copilot CLI) |
+| GitHub Copilot in VS Code | `~/.agents/skills` | — | `~/.copilot/instructions/ai-pack.instructions.md` (only without Claude Code / GitHub Copilot CLI) |
 | Cursor (IDE, CLI) | `~/.agents/skills` | `~/.cursor/agents` (converted, only without Claude Code) | manual step |
-| Cline | `~/.agents/skills` | — | `~/.cline/rules/ai-pack.md` |
+| Cline | `~/.cline/skills` | — | `~/.cline/rules/ai-pack.md` |
 | Zoo Code / Roo Code | `~/.agents/skills` | — | `~/.roo/rules/ai-pack.md` |
 | Windsurf / Devin Desktop | `~/.agents/skills` | — | `~/.codeium/windsurf/memories/global_rules.md` |
 | goose | `~/.agents/skills` | `~/.agents/agents` (converted, only without Claude Code) | `~/.config/goose/.goosehints` |
@@ -116,25 +116,38 @@ back before pulling and re-applies your choice afterwards.
 | Hermes Agent | `~/.hermes/skills` | — | — |
 | Amp | `~/.agents/skills` | — | `~/.config/amp/AGENTS.md` |
 | Zed | `~/.agents/skills` | — | `~/.config/zed/AGENTS.md` |
-| Crush | `~/.agents/skills` | — | `~/.config/crush/CRUSH.md` |
+| Crush | — | — | `~/.config/crush/CRUSH.md` |
 | Qwen Code | `~/.qwen/skills` | `~/.qwen/agents` (converted) | `~/.qwen/QWEN.md` |
 | Kiro (IDE, CLI) | `~/.kiro/skills` | `~/.kiro/agents` (converted) | `~/.kiro/steering/ai-pack.md` |
 | Factory Droid | `~/.agents/skills` | `~/.factory/droids` (converted) | `~/.factory/AGENTS.md` |
 | Augment / Auggie | `~/.agents/skills` | `~/.augment/agents` (converted) | `~/.augment/rules/ai-pack.md` |
 | OpenHands | `~/.agents/skills` | — | — |
-| Command Code | `~/.agents/skills` | — | — |
+| Command Code | `~/.agents/skills` | `~/.commandcode/agents` (converted) | `~/.commandcode/AGENTS.md` |
 
-Paths are for macOS/Linux; Windows uses the same ones under `%USERPROFILE%`, except goose
-(`%APPDATA%\Block\goose\config`), Zed (`%APPDATA%\Zed`) and Hermes (`%LOCALAPPDATA%\hermes` with its
-native installer). `CODEX_HOME`, `COPILOT_HOME`, `GEMINI_CLI_HOME`, `HERMES_HOME`,
-`PI_CODING_AGENT_DIR` and `XDG_CONFIG_HOME` are respected. `~/.agents/skills` is the shared standard
-folder most tools read, so skills are linked there once instead of into every tool's own folder;
-Claude Code, Qwen, Kiro, Hermes and Antigravity get their own links. A tool that reads both
-`~/.agents/skills` and `~/.claude/skills` keeps one copy per name (Cursor: unverified — `doctor` lists
-such cases). Agents are linked live for Claude Code and converted for the rest (Codex needs TOML);
-read-only reviewers stay read-only (goose: by instruction, it has no tool switch). Gemini, Qwen, goose
-and Amp import the rules file with one `@` line (inline copy if the path has spaces); Windsurf gets
-the condensed rules (6,000-character cap), and so does Codex if `AGENTS.md` would pass 32 KiB.
+Every path above was checked against the tool's own documentation in September 2026. Paths are for
+macOS/Linux; Windows uses the same ones under `%USERPROFILE%`, except goose
+(`%APPDATA%\Block\goose\config`) and Zed (`%APPDATA%\Zed`); Hermes uses `%LOCALAPPDATA%\hermes` only
+when that folder exists, otherwise `~/.hermes`. `CODEX_HOME`, `COPILOT_HOME`, `GEMINI_CLI_HOME`,
+`HERMES_HOME`, `PI_CODING_AGENT_DIR` and `XDG_CONFIG_HOME` are respected.
+
+`~/.agents/skills` is the shared standard folder most tools read, so skills are linked there once
+instead of into every tool's own folder; Claude Code, Qwen, Kiro, Hermes, Cline and Antigravity
+document only their own directory and get their own links. A tool that reads both `~/.agents/skills`
+and `~/.claude/skills` keeps one copy per name (Cursor: its docs do not say — `doctor` lists such
+cases). Agents are linked live for Claude Code and converted for the rest (Codex needs TOML);
+read-only reviewers stay read-only through the tool's own switch, or by instruction where it has none
+(goose, Command Code). Gemini, Qwen, goose, Amp and Command Code import the rules file with one `@`
+line (inline copy if the path has spaces); Windsurf gets the condensed rules (6,000-character cap),
+and so does Codex if `AGENTS.md` would pass its 32 KiB budget.
+
+Four tools need one manual step, because they have no global file to write:
+**Cursor** keeps user rules in Settings › Rules — paste `rules/global-work-rules.md` there once.
+**Kilo** loads global rules through the `instructions` key in `~/.config/kilo/kilo.jsonc`.
+**Crush** scans project folders for skills, so a global folder has to be named in
+`~/.config/crush/crush.json` (`{"options":{"skills_paths":["<this folder>/skills"]}}`); its subagent
+support is still an unmerged pull request, so no agents are written. **Cline** also reads
+`~/Documents/Cline/Rules` in some installs — copy the rules file there if yours does.
+The installer prints each of these as a `todo` or `note` line for the tools you actually have.
 
 Also works alongside **OpenSpec**, **Spec Kit** (per-project, nothing to install), **cmux** (macOS
 terminal) and **graphify** (installs its own skill next to ours). **claude.ai / ChatGPT**: run
@@ -209,7 +222,7 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 ## Tips
 
 - **Keep the list lean.** Every enabled skill's description is sent to the model in every session;
-  Codex caps the list at about 2 % of its context. Choose only the tags you use —
+  Codex caps that catalogue at 2 % of the model's context window (10,000 tokens at most). Choose only the tags you use —
   `node install.mjs doctor` shows the size.
 - **Claude Code plugin** (all skills + agents, no rules, no tags):
   `/plugin marketplace add Developer-Sven/ai-pack` then `/plugin install ai-pack@ai-pack`. Use either the
