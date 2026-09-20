@@ -499,6 +499,19 @@
    "license": "MIT"
   },
   {
+   "name": "doc-coauthoring",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Docs",
+   "tags": [
+    "docs",
+    "core"
+   ],
+   "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
    "name": "docker-patterns",
    "kind": "skill",
    "enabled": true,
@@ -509,6 +522,18 @@
    "description": "Docker and Compose for Node, Python and Java services and Discord bots - multi-stage Dockerfiles, dev vs prod compose, MongoDB/Redis, healthchecks, graceful stop, non-root hardening, secrets, networking. Use when writing or reviewing a Dockerfile, compose.yaml or container setup.",
    "source": "affaan-m/ECC",
    "license": "MIT"
+  },
+  {
+   "name": "docx",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Docs",
+   "tags": [
+    "docs"
+   ],
+   "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
   },
   {
    "name": "durable-objects",
@@ -977,6 +1002,18 @@
    "license": "Apache-2.0"
   },
   {
+   "name": "pdf",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Docs",
+   "tags": [
+    "docs"
+   ],
+   "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
    "name": "playwright-cli",
    "kind": "skill",
    "enabled": true,
@@ -987,6 +1024,34 @@
    "description": "Automate browser interactions, test web pages and work with Playwright tests.",
    "source": "microsoft/playwright-cli",
    "license": "Apache-2.0"
+  },
+  {
+   "name": "pptx",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Docs",
+   "tags": [
+    "docs"
+   ],
+   "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user mentions \"deck,\" \"slides,\" \"presentation,\" or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. If a .pptx or .potx file needs to be opened, created, or touched, use this skill.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "prisma-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Data",
+   "tags": [
+    "database",
+    "orm",
+    "postgres",
+    "mysql",
+    "sqlite"
+   ],
+   "description": "Prisma ORM patterns for TypeScript backends — schema design, query optimization, transactions, pagination, and critical traps like updateMany returning count not records, $transaction timeouts, migrate dev resetting the DB, @updatedAt skipped on bulk writes, and serverless connection exhaustion. Use when writing a Prisma schema or query, or debugging transactions, migrations, or serverless connection limits.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
   },
   {
    "name": "production-audit",
@@ -1206,6 +1271,18 @@
    "license": "MIT"
   },
   {
+   "name": "skill-creator",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
+  },
+  {
    "name": "springboot-patterns",
    "kind": "skill",
    "enabled": true,
@@ -1338,6 +1415,22 @@
    ],
    "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
    "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "tailwind-v4",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "design",
+    "next",
+    "react",
+    "vue",
+    "vite"
+   ],
+   "description": "Best practices, configuration, and migration guide for Tailwind CSS v4. Use when styling, configuring, or upgrading Tailwind CSS in modern web projects (Vite, Next.js, React, Vue), replacing legacy tailwind.config.js with CSS-first @theme.",
+   "source": "ai-pack",
    "license": "MIT"
   },
   {
@@ -1523,6 +1616,18 @@
    "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
    "source": "obra/superpowers",
    "license": "MIT"
+  },
+  {
+   "name": "xlsx",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Docs",
+   "tags": [
+    "docs"
+   ],
+   "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
   },
   {
    "name": "a11y-architect",
@@ -1962,6 +2067,19 @@
    "license": "MIT"
   },
   {
+   "name": "spec-miner",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core",
+    "testing"
+   ],
+   "description": "Extracts behavioral specs from existing codebases for OpenSpec. Produces flat Requirement and Invariant blocks with structured metadata (entities, enforced, id, test anchors). Outputs openspec/specs/<capability>/spec.md. Fully self-bootstrapping — no dependency on codebase-onboarding. Use when onboarding a brownfield project to spec-driven development.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
    "name": "tdd-guide",
    "kind": "agent",
    "enabled": true,
@@ -2023,6 +2141,18 @@
    ],
    "description": "Reviews Vue 3 and Nuxt code for correctness — reactivity loss, composable/SSR safety, Pinia usage, hydration mismatches, and secrets leaking into the client bundle. MUST BE USED for changes to .vue files, composables/, stores/, or nuxt.config. Read-only — reports findings + fixes.",
    "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "vue-reviewer",
+   "kind": "agent",
+   "enabled": true,
+   "area": "Vue / Nuxt",
+   "tags": [
+    "vue"
+   ],
+   "description": "Expert Vue.js code reviewer specializing in Composition API correctness, reactivity pitfalls, component architecture, template security, and Vue-specific performance. Use for any change touching .vue, .ts/.js files with Vue imports, or Vue ecosystem code (Pinia, Vue Router, Nuxt). MUST BE USED for Vue projects.",
+   "source": "affaan-m/ECC",
    "license": "MIT"
   },
   {

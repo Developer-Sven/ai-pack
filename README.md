@@ -5,7 +5,7 @@ agent on your machine with one command.** Claude Code, Codex, OpenCode, Gemini C
 Cursor, Cline, Roo/Kilo, Goose, Windsurf, pi, Hermes and more read the same folder, so every agent
 works the same way.
 
-- **116 skills + 42 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
+- **124 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
   Python/FastAPI/Django, Java/Spring, databases (Postgres, MySQL, SQLite, MongoDB, Redis, JSON files,
   Prisma/Drizzle/Kysely), auth (sessions, OIDC, passkeys), payments and webhooks, background jobs,
   uploads/S3, realtime, i18n, email, SEO, observability, security (OWASP 2025, supply chain, GitHub
@@ -44,8 +44,8 @@ cd "$HOME\ai-pack"
 `install.cmd` runs in PowerShell and cmd without touching the execution policy (`.\install.ps1`
 works where scripts are allowed); `node install.mjs` works everywhere. Preview first with `--dry-run`.
 
-**The first run asks for your tags** — press Enter for `recommended` (71 skills +
-34 agents, [see Tags](#tags)), type `all`, or a list such as `ts,react,next,postgres,github`
+**The first run asks for your tags** — press Enter for `recommended` (79 skills +
+35 agents, [see Tags](#tags)), type `all`, or a list such as `ts,react,next,postgres,github`
 or `recommended +java -python`. Scripts answer with `--tags recommended`; without a terminal
 nothing is asked and everything stays on. `core` (planning, debugging, reviews, shipping) is always on.
 
@@ -162,12 +162,12 @@ chosen. `core` is always on. `node install.mjs list <tag>` shows what a tag cont
 
 | Group | Tags (skills + agents) |
 |---|---|
-| core | `core` 18+10 |
+| core | `core` 20+11 |
 | languages | `js` 1+2 · `ts` 1+3 · `python` 4+1 · `java` 3+2 |
-| frontend | `react` 6+3 · `next` 2+1 · `vue` 3+2 · `vite` 1+0 · `design` 8+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
+| frontend | `react` 7+3 · `next` 3+1 · `vue` 4+3 · `vite` 2+0 · `design` 9+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
 | backend | `node` 4+2 · `express` 1+0 · `nestjs` 1+0 · `hono` 1+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 4+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 1+1 · `email` 1+0 |
-| data | `database` 5+2 · `postgres` 4+2 · `mysql` 4+2 · `sqlite` 4+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 2+2 |
-| quality | `security` 6+4 · `testing` 5+3 · `performance` 5+1 · `docs` 0+1 |
+| data | `database` 6+2 · `postgres` 5+2 · `mysql` 5+2 · `sqlite` 5+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 3+2 |
+| quality | `security` 6+4 · `testing` 5+4 · `performance` 5+1 · `docs` 5+1 |
 | delivery | `git` 1+0 · `github` 2+0 · `devops` 5+1 · `observability` 3+0 · `cloudflare` 11+1 |
 | more | `ai` 4+1 · `oss` 1+3 |
 
@@ -180,10 +180,11 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | AI / LLM apps | `agent-architecture-audit`, `ai-sdk`, `claude-api`, `mcp-builder` |
 | Backend (Node/TS) | `api-connector-builder`, `api-design`, `backend-patterns`, `background-jobs`, `bun-runtime`, `contract-first`, `error-handling`, `express-patterns`, `file-uploads-storage`, `hono`, `nestjs-patterns`, `realtime-patterns`, `typescript-patterns` |
 | Cloudflare | `agents-sdk`, `cloudflare`, `cloudflare-email-service`, `cloudflare-one`, `cloudflare-one-migrations`, `durable-objects`, `nextjs-on-cloudflare`, `sandbox-stable`, `turnstile-spin`, `workers-best-practices`, `wrangler` |
-| Data | `data-layer`, `database-migrations`, `json-file-store`, `mongodb-patterns`, `mysql-patterns`, `orm-patterns`, `redis-patterns`, `sql-patterns`, `sqlite-patterns`, `supabase-postgres-best-practices` |
+| Data | `data-layer`, `database-migrations`, `json-file-store`, `mongodb-patterns`, `mysql-patterns`, `orm-patterns`, `prisma-patterns`, `redis-patterns`, `sql-patterns`, `sqlite-patterns`, `supabase-postgres-best-practices` |
 | Design | `hallmark`, `make-interfaces-feel-better`, `motion-advanced`, `motion-foundations`, `motion-patterns`, `ui-demo` |
 | DevOps | `canary-watch`, `deployment-patterns`, `docker-patterns`, `observability-and-instrumentation`, `otel-instrumentation`, `production-audit`, `sentry-instrument` |
-| Frontend | `accessibility`, `design-system`, `frontend-a11y`, `frontend-design`, `i18n-patterns`, `nextjs-patterns`, `react-patterns`, `react-performance`, `react-testing`, `seo`, `vite-patterns`, `web-perf` |
+| Docs | `doc-coauthoring`, `docx`, `pdf`, `pptx`, `xlsx` |
+| Frontend | `accessibility`, `design-system`, `frontend-a11y`, `frontend-design`, `i18n-patterns`, `nextjs-patterns`, `react-patterns`, `react-performance`, `react-testing`, `seo`, `tailwind-v4`, `vite-patterns`, `web-perf` |
 | Git & delivery | `github-helper`, `ship` |
 | Java | `java-coding-standards`, `java-modern`, `jpa-patterns`, `springboot-patterns`, `springboot-security`, `springboot-tdd`, `springboot-verification` |
 | Open source | `opensource-pipeline` |
@@ -194,7 +195,7 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | Security | `auth-patterns`, `full-website-review`, `gha-security-review`, `secret-hygiene`, `security-review`, `security-scan`, `supply-chain-security` |
 | Testing | `click-path-audit`, `e2e-testing`, `k6`, `playwright-cli`, `webapp-testing` |
 | Vue / Nuxt | `nuxt4-patterns`, `vue3-patterns` |
-| Workflow | `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `receiving-code-review`, `requesting-code-review`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills` |
+| Workflow | `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `receiving-code-review`, `requesting-code-review`, `skill-creator`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills` |
 
 ### Agents
 
@@ -216,8 +217,8 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | Review | `code-reviewer`, `final-review-agent`, `refactor-cleaner`, `silent-failure-hunter` |
 | Security | `api-security-auditor`, `auth-integration-engineer`, `permission-auditor`, `security-reviewer`, `web-security-auditor` |
 | Testing | `e2e-runner`, `pr-test-analyzer`, `tdd-guide` |
-| Vue / Nuxt | `vue-nuxt-reviewer` |
-| Workflow | `planner` |
+| Vue / Nuxt | `vue-nuxt-reviewer`, `vue-reviewer` |
+| Workflow | `planner`, `spec-miner` |
 
 ## Tips
 

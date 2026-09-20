@@ -586,6 +586,20 @@ function installSkills(hs, ctx) {
     const how = h.skills.dedupe === false ? 'it lists such skills twice' : h.skills.dedupe === 'unverified' ? 'it may list such skills twice' : 'it keeps one copy per skill name';
     console.log(`  note  ${h.id} reads ${ds.length} of these dirs; ${how}`);
   }
+  if (hs.some((h) => h.id === 'antigravity')) {
+    const agCfg = H('.gemini', 'config', 'skills.json');
+    if (!DRY) {
+      mkdirp(path.dirname(agCfg));
+      let cfg = { entries: [] };
+      try { cfg = JSON.parse(fs.readFileSync(agCfg, 'utf8')); } catch {}
+      if (!Array.isArray(cfg.entries)) cfg.entries = [];
+      const entryPath = posix(p(PACK, 'skills'));
+      if (!cfg.entries.some((e) => norm(e.path) === norm(entryPath))) {
+        cfg.entries.push({ path: entryPath });
+        fs.writeFileSync(agCfg, JSON.stringify(cfg, null, 2) + '\n', 'utf8');
+      }
+    }
+  }
 }
 
 // One link per skill (or copy, with --copy). Everything else in the folder stays the user's.
