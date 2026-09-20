@@ -127,6 +127,32 @@
    "license": "MIT"
   },
   {
+   "name": "agent-self-evaluation",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Review",
+   "tags": [
+    "core",
+    "testing"
+   ],
+   "description": "Use after completing any non-trivial task. The agent self-rates its output on 5 axes — accuracy, completeness, clarity, actionability, conciseness — with concrete evidence per criterion. Produces a structured 1-5 scorecard with specific improvement suggestions.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "agentic-memory-engine",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai",
+    "core"
+   ],
+   "description": "Embedded, zero-external-DB hybrid memory engine for coding agents. Combines SQLite-vec/LanceDB vector search, FTS5 BM25 keyword search, Weibull temporal decay, and deterministic PreToolUse instinct extraction.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
    "name": "agents-sdk",
    "kind": "skill",
    "enabled": true,
@@ -225,6 +251,19 @@
    "license": "MIT"
   },
   {
+   "name": "blast-radius-sentinel",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Security",
+   "tags": [
+    "security",
+    "core"
+   ],
+   "description": "Least-Agency security gate for autonomous agents. Enforces Meta's Agents Rule of Two, Fact-Forcing PreToolUse interception (GateGuard pattern), Directory Freezing, and Markdown exfiltration filtering.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
    "name": "brainstorming",
    "kind": "skill",
    "enabled": true,
@@ -234,6 +273,19 @@
    ],
    "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
    "source": "obra/superpowers",
+   "license": "MIT"
+  },
+  {
+   "name": "budget-and-spend-governor",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai",
+    "payments"
+   ],
+   "description": "Autonomous spend and token controller. Enforces immutable cost tracking, dynamic model routing (Haiku -> Sonnet -> Opus), fail-closed circuit breakers, and x402 agent payment policies.",
+   "source": "ai-pack",
    "license": "MIT"
   },
   {
@@ -259,6 +311,20 @@
    "description": "Use this skill to monitor and verify a deployed URL after releases — checks HTTP endpoints, SSE streams, static assets, console errors, and performance regressions after deploys, merges, or dependency upgrades. Smoke / canary / post-deploy verification.",
    "source": "affaan-m/ECC",
    "license": "MIT"
+  },
+  {
+   "name": "canvas-design",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design",
+    "react",
+    "vue"
+   ],
+   "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
   },
   {
    "name": "claude-api",
@@ -381,6 +447,18 @@
    "license": "MIT"
   },
   {
+   "name": "cost-tracking",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai"
+   ],
+   "description": "Track and report Claude Code token usage, spending, and budgets from the local ECC cost-tracker metrics log. Use when the user asks about costs, spending, usage, tokens, budgets, or cost breakdowns by model, session, or date.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
    "name": "data-layer",
    "kind": "skill",
    "enabled": true,
@@ -411,6 +489,20 @@
     "orm"
    ],
    "description": "Database migration best practices for schema changes, data migrations, rollbacks, and zero-downtime deployments across PostgreSQL, MySQL, and common ORMs (Prisma, Drizzle, Kysely, Django, TypeORM, golang-migrate). Use when writing a schema or data migration, planning a rollback, or aiming for zero-downtime deployment.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "delivery-gate",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "devops",
+    "git",
+    "github"
+   ],
+   "description": "Stop hook that blocks Claude from finishing until quality checks pass. Detects rationalization patterns (surface text heuristics), stale learning logs (filesystem mtime), and low disk space. Complements self-audit by mechanically enforcing learning capture habits. Use when Claude should be mechanically blocked from declaring work finished before quality checks and learning capture actually pass.",
    "source": "affaan-m/ECC",
    "license": "MIT"
   },
@@ -622,6 +714,20 @@
    "license": "MIT"
   },
   {
+   "name": "fastify-schema",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "node",
+    "ts",
+    "api"
+   ],
+   "description": "High-throughput, schema-first Node.js microservice architecture with Fastify, utilizing Type Providers (TypeBox / Zod) for compile-time and runtime type safety, automated OpenAPI generation, and fast JSON serialization.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
    "name": "file-uploads-storage",
    "kind": "skill",
    "enabled": true,
@@ -733,6 +839,21 @@
    "license": "MIT"
   },
   {
+   "name": "hono-rpc",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Backend (Node/TS)",
+   "tags": [
+    "hono",
+    "node",
+    "ts",
+    "api"
+   ],
+   "description": "Runtime-agnostic API development and end-to-end type safety using Hono, middleware chaining, schema validation (zValidator), and type-safe client consumption via hc. Use when building or reviewing Hono APIs and RPC clients.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
    "name": "i18n-patterns",
    "kind": "skill",
    "enabled": true,
@@ -742,6 +863,18 @@
    ],
    "description": "Web app i18n: next-intl, react-i18next, vue-i18n, Babel; ICU plurals/select, locale negotiation and routing, hreflang and localized sitemaps, Intl dates/currency with explicit time zones, RTL, hydration-safe locale, missing-key CI checks, localized emails. Use when adding languages or formats.",
    "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
+   "name": "intent-driven-development",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Turn ambiguous or high-impact product and engineering changes into scoped, verifiable acceptance criteria before or alongside implementation. Use when a user asks to clarify a feature, define acceptance criteria, de-risk a security/data/migration/integration change, prepare implementation requirements for another agent, or make a complex request testable. Do not trigger for trivial edits, straightforward fixes, active debugging, code review, or implementation requests whose acceptance conditions are already clear unless the user explicitly invokes this skill.",
+   "source": "affaan-m/ECC",
    "license": "MIT"
   },
   {
@@ -805,6 +938,18 @@
    "description": "Generate, validate, and review k6 test scripts — load, stress, spike, soak, smoke, breakpoint, functional, and protocol. Covers HTTP, WebSocket, gRPC, browser, all executors, thresholds, checks, custom metrics, the k6-testing library, k6 Cloud execution, and the xk6 extension ecosystem; uses the xk6-docs CLI (with grafana.com web fallback) for docs lookup and validates every script by running it. Use when writing, generating, validating, or debugging any k6 or load-test script (including plain-language asks like \"load test this API\" or \"stress test my service\"), choosing executors/scenarios, or setting thresholds. For end-to-end website performance suites use k6-perf-test-website; for documenting k6 itself use k6-docs.",
    "source": "grafana/skills",
    "license": "Apache-2.0"
+  },
+  {
+   "name": "kubernetes-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "DevOps",
+   "tags": [
+    "devops"
+   ],
+   "description": "Kubernetes workload patterns, resource management, RBAC, probes, autoscaling, ConfigMap/Secret handling, and kubectl debugging for production-grade deployments. Use when writing or reviewing Kubernetes manifests, or debugging probes, RBAC, autoscaling, or resource limits.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
   },
   {
    "name": "latency-critical-systems",
@@ -1002,6 +1147,18 @@
    "license": "Apache-2.0"
   },
   {
+   "name": "parallel-execution-optimizer",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Workflow",
+   "tags": [
+    "core"
+   ],
+   "description": "Use when the user wants a task done much faster through parallel work, concurrent agents, batched tool calls, isolated worktrees, or many independent verification lanes without losing correctness.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
    "name": "pdf",
    "kind": "skill",
    "enabled": true,
@@ -1102,6 +1259,20 @@
    "license": "MIT"
   },
   {
+   "name": "react-native-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react",
+    "ts",
+    "js"
+   ],
+   "description": "React Native and Expo app patterns — Expo Router navigation, state separation (server/client/route/form), TanStack Query data fetching with Zod, performant lists, NativeWind/StyleSheet styling, native APIs, and secure storage. Use when building or editing React Native / Expo screens, components, navigation, or data layers.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
    "name": "react-patterns",
    "kind": "skill",
    "enabled": true,
@@ -1136,6 +1307,21 @@
    ],
    "description": "React component testing with Testing Library, Vitest 4/5 (jsdom or browser mode) or Jest, MSW network mocks and axe checks, plus when Playwright fits better (async Server Components, full flows). Use when writing, fixing or reviewing React component or hook tests.",
    "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
+   "name": "react19-fullstack",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react",
+    "next",
+    "ts",
+    "js"
+   ],
+   "description": "Idiomatic React 19 and Next.js 15/16 action lifecycle patterns: Server Actions security, useActionState, useOptimistic, use(), and React Compiler compliance. Use when building or reviewing modern React 19 and Next.js fullstack applications.",
+   "source": "ai-pack",
    "license": "MIT"
   },
   {
@@ -1185,6 +1371,18 @@
    "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
    "source": "obra/superpowers",
    "license": "MIT"
+  },
+  {
+   "name": "sandbox-next",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Cloudflare",
+   "tags": [
+    "cloudflare"
+   ],
+   "description": "Build or maintain Cloudflare Sandbox apps on @cloudflare/sandbox@next (SDK 1.0 preview). Use sandbox-migrate-to-next when porting a stable app.",
+   "source": "cloudflare/skills",
+   "license": "Apache-2.0"
   },
   {
    "name": "sandbox-stable",
@@ -1406,6 +1604,19 @@
    "license": "MIT"
   },
   {
+   "name": "svelte5-runes",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "ts",
+    "js"
+   ],
+   "description": "Idiomatic Svelte 5 and SvelteKit 2 development utilizing the Runes reactivity system ($state, $derived, $effect, $props, $bindable), Snippets ({#snippet} / {@render}), and universal reactivity in .svelte.ts. Prevents agents from falling back to deprecated Svelte 3/4 syntax.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
    "name": "systematic-debugging",
    "kind": "skill",
    "enabled": true,
@@ -1434,6 +1645,20 @@
    "license": "MIT"
   },
   {
+   "name": "tanstack-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Frontend",
+   "tags": [
+    "react",
+    "ts",
+    "js"
+   ],
+   "description": "Fullstack architecture with TanStack Query v5, TanStack Table v8, TanStack Router, and TanStack Start. Eliminates hallucinations around Query v4 syntax, Table headless rendering, and type-safe file routing. Use when building or reviewing TanStack apps.",
+   "source": "ai-pack",
+   "license": "MIT"
+  },
+  {
    "name": "test-driven-development",
    "kind": "skill",
    "enabled": true,
@@ -1444,6 +1669,18 @@
    "description": "Use when implementing any feature or bugfix, before writing implementation code",
    "source": "obra/superpowers",
    "license": "MIT"
+  },
+  {
+   "name": "theme-factory",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "design"
+   ],
+   "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
   },
   {
    "name": "turnstile-spin",
@@ -1534,6 +1771,18 @@
    "license": "MIT"
   },
   {
+   "name": "vue-patterns",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Vue / Nuxt",
+   "tags": [
+    "vue"
+   ],
+   "description": "Vue.js 3 Composition API patterns, component architecture, reactivity best practices, Pinia state management, Vue Router navigation, and Nuxt SSR patterns. Activates for Vue, Nuxt, Vite, or Pinia projects. Use when building or reviewing Vue 3, Nuxt, or Pinia code — Composition API, reactivity, or router navigation.",
+   "source": "affaan-m/ECC",
+   "license": "MIT"
+  },
+  {
    "name": "vue3-patterns",
    "kind": "skill",
    "enabled": true,
@@ -1544,6 +1793,19 @@
    "description": "Vue 3.5 patterns (Composition API, <script setup>, reactive props destructure, Pinia 4, Vue Router 5, Nuxt composables) for type-safe, SSR-safe components. Use when editing .vue files, composables/, stores/ or nuxt.config.ts. Complements nuxt4-patterns (SSR data fetching).",
    "source": "ai-pack",
    "license": "MIT"
+  },
+  {
+   "name": "web-artifacts-builder",
+   "kind": "skill",
+   "enabled": true,
+   "area": "AI / LLM apps",
+   "tags": [
+    "ai",
+    "core"
+   ],
+   "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+   "source": "anthropics/skills",
+   "license": "Apache-2.0"
   },
   {
    "name": "web-perf",

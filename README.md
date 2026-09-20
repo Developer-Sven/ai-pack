@@ -5,7 +5,7 @@ agent on your machine with one command.** Claude Code, Codex, OpenCode, Gemini C
 Cursor, Cline, Roo/Kilo, Goose, Windsurf, pi, Hermes and more read the same folder, so every agent
 works the same way.
 
-- **124 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
+- **144 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
   Python/FastAPI/Django, Java/Spring, databases (Postgres, MySQL, SQLite, MongoDB, Redis, JSON files,
   Prisma/Drizzle/Kysely), auth (sessions, OIDC, passkeys), payments and webhooks, background jobs,
   uploads/S3, realtime, i18n, email, SEO, observability, security (OWASP 2025, supply chain, GitHub
@@ -44,7 +44,7 @@ cd "$HOME\ai-pack"
 `install.cmd` runs in PowerShell and cmd without touching the execution policy (`.\install.ps1`
 works where scripts are allowed); `node install.mjs` works everywhere. Preview first with `--dry-run`.
 
-**The first run asks for your tags** — press Enter for `recommended` (79 skills +
+**The first run asks for your tags** — press Enter for `recommended` (94 skills +
 35 agents, [see Tags](#tags)), type `all`, or a list such as `ts,react,next,postgres,github`
 or `recommended +java -python`. Scripts answer with `--tags recommended`; without a terminal
 nothing is asked and everything stays on. `core` (planning, debugging, reviews, shipping) is always on.
@@ -162,14 +162,14 @@ chosen. `core` is always on. `node install.mjs list <tag>` shows what a tag cont
 
 | Group | Tags (skills + agents) |
 |---|---|
-| core | `core` 20+11 |
-| languages | `js` 1+2 · `ts` 1+3 · `python` 4+1 · `java` 3+2 |
-| frontend | `react` 7+3 · `next` 3+1 · `vue` 4+3 · `vite` 2+0 · `design` 9+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
-| backend | `node` 4+2 · `express` 1+0 · `nestjs` 1+0 · `hono` 1+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 4+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 1+1 · `email` 1+0 |
+| core | `core` 26+11 |
+| languages | `js` 5+2 · `ts` 7+3 · `python` 4+1 · `java` 3+2 |
+| frontend | `react` 11+3 · `next` 4+1 · `vue` 6+3 · `vite` 2+0 · `design` 11+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
+| backend | `node` 6+2 · `express` 1+0 · `nestjs` 1+0 · `hono` 2+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 6+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 2+1 · `email` 1+0 |
 | data | `database` 6+2 · `postgres` 5+2 · `mysql` 5+2 · `sqlite` 5+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 3+2 |
-| quality | `security` 6+4 · `testing` 5+4 · `performance` 5+1 · `docs` 5+1 |
-| delivery | `git` 1+0 · `github` 2+0 · `devops` 5+1 · `observability` 3+0 · `cloudflare` 11+1 |
-| more | `ai` 4+1 · `oss` 1+3 |
+| quality | `security` 7+4 · `testing` 6+4 · `performance` 5+1 · `docs` 5+1 |
+| delivery | `git` 2+0 · `github` 3+0 · `devops` 7+1 · `observability` 3+0 · `cloudflare` 12+1 |
+| more | `ai` 8+1 · `oss` 1+3 |
 
 Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `next`, `vite`, `python`, `fastapi`, `api`, `auth`, `jobs`, `uploads`, `realtime`, `webhooks`, `email`, `database`, `postgres`, `sqlite`, `mongodb`, `redis`, `orm`, `security`, `testing`, `performance`, `docs`, `git`, `github`, `devops`, `seo`, `a11y`.
 
@@ -177,25 +177,25 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 
 | Area | Skills |
 |---|---|
-| AI / LLM apps | `agent-architecture-audit`, `ai-sdk`, `claude-api`, `mcp-builder` |
-| Backend (Node/TS) | `api-connector-builder`, `api-design`, `backend-patterns`, `background-jobs`, `bun-runtime`, `contract-first`, `error-handling`, `express-patterns`, `file-uploads-storage`, `hono`, `nestjs-patterns`, `realtime-patterns`, `typescript-patterns` |
-| Cloudflare | `agents-sdk`, `cloudflare`, `cloudflare-email-service`, `cloudflare-one`, `cloudflare-one-migrations`, `durable-objects`, `nextjs-on-cloudflare`, `sandbox-stable`, `turnstile-spin`, `workers-best-practices`, `wrangler` |
+| AI / LLM apps | `agent-architecture-audit`, `agentic-memory-engine`, `ai-sdk`, `budget-and-spend-governor`, `claude-api`, `cost-tracking`, `mcp-builder`, `web-artifacts-builder` |
+| Backend (Node/TS) | `api-connector-builder`, `api-design`, `backend-patterns`, `background-jobs`, `bun-runtime`, `contract-first`, `error-handling`, `express-patterns`, `fastify-schema`, `file-uploads-storage`, `hono`, `hono-rpc`, `nestjs-patterns`, `realtime-patterns`, `typescript-patterns` |
+| Cloudflare | `agents-sdk`, `cloudflare`, `cloudflare-email-service`, `cloudflare-one`, `cloudflare-one-migrations`, `durable-objects`, `nextjs-on-cloudflare`, `sandbox-next`, `sandbox-stable`, `turnstile-spin`, `workers-best-practices`, `wrangler` |
 | Data | `data-layer`, `database-migrations`, `json-file-store`, `mongodb-patterns`, `mysql-patterns`, `orm-patterns`, `prisma-patterns`, `redis-patterns`, `sql-patterns`, `sqlite-patterns`, `supabase-postgres-best-practices` |
-| Design | `hallmark`, `make-interfaces-feel-better`, `motion-advanced`, `motion-foundations`, `motion-patterns`, `ui-demo` |
-| DevOps | `canary-watch`, `deployment-patterns`, `docker-patterns`, `observability-and-instrumentation`, `otel-instrumentation`, `production-audit`, `sentry-instrument` |
+| Design | `canvas-design`, `hallmark`, `make-interfaces-feel-better`, `motion-advanced`, `motion-foundations`, `motion-patterns`, `theme-factory`, `ui-demo` |
+| DevOps | `canary-watch`, `delivery-gate`, `deployment-patterns`, `docker-patterns`, `kubernetes-patterns`, `observability-and-instrumentation`, `otel-instrumentation`, `production-audit`, `sentry-instrument` |
 | Docs | `doc-coauthoring`, `docx`, `pdf`, `pptx`, `xlsx` |
-| Frontend | `accessibility`, `design-system`, `frontend-a11y`, `frontend-design`, `i18n-patterns`, `nextjs-patterns`, `react-patterns`, `react-performance`, `react-testing`, `seo`, `tailwind-v4`, `vite-patterns`, `web-perf` |
+| Frontend | `accessibility`, `design-system`, `frontend-a11y`, `frontend-design`, `i18n-patterns`, `nextjs-patterns`, `react-native-patterns`, `react-patterns`, `react-performance`, `react-testing`, `react19-fullstack`, `seo`, `svelte5-runes`, `tailwind-v4`, `tanstack-patterns`, `vite-patterns`, `web-perf` |
 | Git & delivery | `github-helper`, `ship` |
 | Java | `java-coding-standards`, `java-modern`, `jpa-patterns`, `springboot-patterns`, `springboot-security`, `springboot-tdd`, `springboot-verification` |
 | Open source | `opensource-pipeline` |
 | Payments & email | `email-best-practices`, `stripe-best-practices` |
 | Performance | `backend-performance`, `content-hash-cache-pattern`, `latency-critical-systems` |
 | Python | `django-patterns`, `django-security`, `django-tdd`, `django-verification`, `fastapi-patterns`, `python-modern-stack`, `python-patterns`, `python-testing` |
-| Review | `code-review`, `coding-standards` |
-| Security | `auth-patterns`, `full-website-review`, `gha-security-review`, `secret-hygiene`, `security-review`, `security-scan`, `supply-chain-security` |
+| Review | `agent-self-evaluation`, `code-review`, `coding-standards` |
+| Security | `auth-patterns`, `blast-radius-sentinel`, `full-website-review`, `gha-security-review`, `secret-hygiene`, `security-review`, `security-scan`, `supply-chain-security` |
 | Testing | `click-path-audit`, `e2e-testing`, `k6`, `playwright-cli`, `webapp-testing` |
-| Vue / Nuxt | `nuxt4-patterns`, `vue3-patterns` |
-| Workflow | `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `receiving-code-review`, `requesting-code-review`, `skill-creator`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills` |
+| Vue / Nuxt | `nuxt4-patterns`, `vue-patterns`, `vue3-patterns` |
+| Workflow | `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `intent-driven-development`, `parallel-execution-optimizer`, `receiving-code-review`, `requesting-code-review`, `skill-creator`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills` |
 
 ### Agents
 
