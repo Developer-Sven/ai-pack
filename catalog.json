@@ -16,6 +16,8 @@
    "next",
    "vue",
    "vite",
+   "svelte",
+   "tanstack",
    "design",
    "a11y",
    "seo",
@@ -24,6 +26,7 @@
   "backend": [
    "node",
    "express",
+   "fastify",
    "nestjs",
    "hono",
    "bun",
@@ -282,7 +285,8 @@
    "area": "AI / LLM apps",
    "tags": [
     "ai",
-    "payments"
+    "payments",
+    "security"
    ],
    "description": "Autonomous spend and token controller. Enforces immutable cost tracking, dynamic model routing (Haiku -> Sonnet -> Opus), fail-closed circuit breakers, and x402 agent payment policies.",
    "source": "ai-pack",
@@ -719,6 +723,7 @@
    "enabled": true,
    "area": "Backend (Node/TS)",
    "tags": [
+    "fastify",
     "node",
     "ts",
     "api"
@@ -1609,6 +1614,7 @@
    "enabled": true,
    "area": "Frontend",
    "tags": [
+    "svelte",
     "ts",
     "js"
    ],
@@ -1650,6 +1656,7 @@
    "enabled": true,
    "area": "Frontend",
    "tags": [
+    "tanstack",
     "react",
     "ts",
     "js"
@@ -1801,7 +1808,9 @@
    "area": "AI / LLM apps",
    "tags": [
     "ai",
-    "core"
+    "core",
+    "react",
+    "design"
    ],
    "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
    "source": "anthropics/skills",

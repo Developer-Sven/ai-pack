@@ -44,7 +44,7 @@ cd "$HOME\ai-pack"
 `install.cmd` runs in PowerShell and cmd without touching the execution policy (`.\install.ps1`
 works where scripts are allowed); `node install.mjs` works everywhere. Preview first with `--dry-run`.
 
-**The first run asks for your tags** — press Enter for `recommended` (94 skills +
+**The first run asks for your tags** — press Enter for `recommended` (95 skills +
 35 agents, [see Tags](#tags)), type `all`, or a list such as `ts,react,next,postgres,github`
 or `recommended +java -python`. Scripts answer with `--tags recommended`; without a terminal
 nothing is asked and everything stays on. `core` (planning, debugging, reviews, shipping) is always on.
@@ -164,10 +164,10 @@ chosen. `core` is always on. `node install.mjs list <tag>` shows what a tag cont
 |---|---|
 | core | `core` 26+11 |
 | languages | `js` 5+2 · `ts` 7+3 · `python` 4+1 · `java` 3+2 |
-| frontend | `react` 11+3 · `next` 4+1 · `vue` 6+3 · `vite` 2+0 · `design` 11+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
-| backend | `node` 6+2 · `express` 1+0 · `nestjs` 1+0 · `hono` 2+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 6+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 2+1 · `email` 1+0 |
+| frontend | `react` 12+3 · `next` 4+1 · `vue` 6+3 · `vite` 2+0 · `svelte` 1+0 · `tanstack` 1+0 · `design` 12+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
+| backend | `node` 6+2 · `express` 1+0 · `fastify` 1+0 · `nestjs` 1+0 · `hono` 2+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 6+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 2+1 · `email` 1+0 |
 | data | `database` 6+2 · `postgres` 5+2 · `mysql` 5+2 · `sqlite` 5+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 3+2 |
-| quality | `security` 7+4 · `testing` 6+4 · `performance` 5+1 · `docs` 5+1 |
+| quality | `security` 8+4 · `testing` 6+4 · `performance` 5+1 · `docs` 5+1 |
 | delivery | `git` 2+0 · `github` 3+0 · `devops` 7+1 · `observability` 3+0 · `cloudflare` 12+1 |
 | more | `ai` 8+1 · `oss` 1+3 |
 
