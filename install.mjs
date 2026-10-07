@@ -432,7 +432,7 @@ function record(s, action) {
 }
 const recOf = (s, type, x) => s.actions.find((a) => a.type === type && samePath(a.path, x));
 const ours = (s, type, x) => Boolean(recOf(s, type, x));
-const KIND = { skills: ['item'], agents: ['link', 'generated'], rules: ['rules-file', 'block'] };
+const KIND = { skills: ['item', 'json-entry'], agents: ['link', 'generated'], rules: ['rules-file', 'block'] };
 const had = (s, hid, kind) => s.actions.some((a) => KIND[kind].includes(a.type) && (a.harness === hid || (a.harnesses || []).includes(hid)));
 const connectedIds = (s) => HARNESSES.filter((h) => Object.keys(KIND).some((k) => had(s, h.id, k))).map((h) => h.id);
 function loadLocal() {
@@ -586,20 +586,53 @@ function installSkills(hs, ctx) {
     const how = h.skills.dedupe === false ? 'it lists such skills twice' : h.skills.dedupe === 'unverified' ? 'it may list such skills twice' : 'it keeps one copy per skill name';
     console.log(`  note  ${h.id} reads ${ds.length} of these dirs; ${how}`);
   }
-  if (hs.some((h) => h.id === 'antigravity')) {
-    const agCfg = H('.gemini', 'config', 'skills.json');
-    if (!DRY) {
-      mkdirp(path.dirname(agCfg));
-      let cfg = { entries: [] };
-      try { cfg = JSON.parse(fs.readFileSync(agCfg, 'utf8')); } catch {}
-      if (!Array.isArray(cfg.entries)) cfg.entries = [];
-      const entryPath = posix(p(PACK, 'skills'));
-      if (!cfg.entries.some((e) => norm(e.path) === norm(entryPath))) {
-        cfg.entries.push({ path: entryPath });
-        fs.writeFileSync(agCfg, JSON.stringify(cfg, null, 2) + '\n', 'utf8');
-      }
+  if (hs.some((h) => h.id === 'antigravity')) registerAntigravity(state);
+}
+
+// Antigravity reads the skill roots listed in ~/.gemini/config/skills.json, so the links alone are
+// not enough. Recorded like every other change, so uninstall takes the entry back out again.
+function registerAntigravity(state) {
+  const file = H('.gemini', 'config', 'skills.json');
+  const entry = posix(p(PACK, 'skills'));
+  const had = exists(file);
+  let cfg = { entries: [] };
+  if (had) {
+    try {
+      cfg = JSON.parse(readText(file) || '{}') || {};
+    } catch {
+      return console.log(`  skip  ${file} is not valid JSON - add {"path": "${entry}"} to its entries by hand`);
     }
   }
+  if (!Array.isArray(cfg.entries)) cfg.entries = [];
+  const already = cfg.entries.some((e) => e && samePath(e.path, entry));
+  if (!already) {
+    cfg.entries.push({ path: entry });
+    if (!DRY) {
+      mkdirp(path.dirname(file));
+      fs.writeFileSync(file, JSON.stringify(cfg, null, 2) + '\n', 'utf8');
+    }
+    console.log(`  ${DRY ? 'would add' : 'gen  '} skills root in ${file} (antigravity)`);
+  }
+  // also record an entry an earlier run left behind unrecorded - otherwise uninstall walks past it
+  record(state, { type: 'json-entry', path: file, entry, harness: 'antigravity', created: !had });
+}
+
+// take our entry back out; a file we created and emptied goes away, anything else stays
+function removeJsonEntry(a) {
+  const t = readText(a.path);
+  if (t === null) return;
+  let cfg;
+  try {
+    cfg = JSON.parse(t);
+  } catch {
+    return; // the user broke or replaced it: never rewrite a file we cannot read
+  }
+  if (!Array.isArray(cfg?.entries)) return;
+  const left = cfg.entries.filter((e) => !(e && samePath(e.path, a.entry)));
+  if (left.length === cfg.entries.length || DRY) return;
+  if (a.created && !left.length) return fs.rmSync(a.path, { force: true });
+  cfg.entries = left;
+  fs.writeFileSync(a.path, JSON.stringify(cfg, null, 2) + '\n', 'utf8');
 }
 
 // One link per skill (or copy, with --copy). Everything else in the folder stays the user's.
@@ -1132,6 +1165,9 @@ function undo(a, state) {
   } else if (a.type === 'block') {
     removeBlock(a.path, a.created);
     log('clean', a.path);
+  } else if (a.type === 'json-entry') {
+    removeJsonEntry(a);
+    log(a.created ? 'remove' : 'clean', a.path);
   } else if (a.type === 'legacy-unlink') {
     log('keep', `${a.path} stays removed (it only duplicated skills/agents)`);
   } else if (a.type === 'hooks') {

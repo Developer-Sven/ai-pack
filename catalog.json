@@ -1445,7 +1445,7 @@
    "tags": [
     "observability"
    ],
-   "description": "Instrument an application with Sentry — detect the platform, install and initialize the SDK if needed, and wire up any signal — error monitoring, tracing/performance, logging, metrics, profiling, session replay, user feedback, cron check-ins, and AI/LLM monitoring (agent runs, token cost, and conversations for OpenAI, Anthropic, Vercel AI, LangChain, Google GenAI, Pydantic AI, and Laravel AI). Use to add Sentry to a project or to capture more than errors.",
+   "description": "Instrument an application with Sentry — detect the platform, install and initialize the SDK if needed, and wire up any signal — error monitoring, tracing/performance, logging, metrics, profiling, session replay, user feedback, cron check-ins, uptime monitors for the deployed app, and AI/LLM monitoring (agent runs, token cost, and conversations for OpenAI, Anthropic, Vercel AI, LangChain, Google GenAI, Pydantic AI, Laravel AI, Eve, Flue, the Cloudflare Agents SDK, and Workers AI). Use to add Sentry to a project or to capture more than errors.",
    "source": "getsentry/plugin-claude",
    "license": "MIT"
   },
@@ -1860,7 +1860,7 @@
    "tags": [
     "cloudflare"
    ],
-   "description": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, deployment, and Cloudflare resource management.",
+   "description": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.",
    "source": "cloudflare/skills",
    "license": "Apache-2.0"
   },
