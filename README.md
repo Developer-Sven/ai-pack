@@ -5,7 +5,7 @@ agent on your machine with one command.** Claude Code, Codex, OpenCode, Gemini C
 Cursor, Cline, Roo/Kilo, Goose, Windsurf, pi, Hermes and more read the same folder, so every agent
 works the same way.
 
-- **148 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
+- **153 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
   Python/FastAPI/Django, Java/Spring, databases (Postgres, MySQL, SQLite, MongoDB, Redis, JSON files,
   Prisma/Drizzle/Kysely), auth (sessions, OIDC, passkeys), payments and webhooks, background jobs,
   uploads/S3, realtime, i18n, email, SEO, observability, security (OWASP 2025, supply chain, GitHub
@@ -163,7 +163,7 @@ chosen. `core` is always on. `node install.mjs list <tag>` shows what a tag cont
 | Group | Tags (skills + agents) |
 |---|---|
 | core | `core` 26+11 |
-| languages | `js` 5+2 · `ts` 7+3 · `python` 4+1 · `java` 3+2 |
+| languages | `js` 5+2 · `ts` 7+3 · `python` 4+1 · `java` 3+2 · `sap` 5+0 |
 | frontend | `react` 12+3 · `next` 4+1 · `vue` 6+3 · `vite` 2+0 · `svelte` 1+0 · `tanstack` 1+0 · `design` 12+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
 | backend | `node` 6+2 · `express` 1+0 · `fastify` 1+0 · `nestjs` 1+0 · `hono` 2+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 6+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 2+1 · `email` 1+0 |
 | data | `database` 6+2 · `postgres` 5+2 · `mysql` 5+2 · `sqlite` 5+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 3+2 |
@@ -193,6 +193,7 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | Proxies & scraping | `proxy-manager`, `proxy-optimizer`, `scraper`, `spend-audit` |
 | Python | `django-patterns`, `django-security`, `django-tdd`, `django-verification`, `fastapi-patterns`, `python-modern-stack`, `python-patterns`, `python-testing` |
 | Review | `agent-self-evaluation`, `code-review`, `coding-standards` |
+| SAP / ABAP | `abap-atc-remediation`, `abap-clean-core-check`, `abap-clean-refactor`, `abap-clean-review`, `abap-rap-bo-design` |
 | Security | `auth-patterns`, `blast-radius-sentinel`, `full-website-review`, `gha-security-review`, `secret-hygiene`, `security-review`, `security-scan`, `supply-chain-security` |
 | Testing | `click-path-audit`, `e2e-testing`, `k6`, `playwright-cli`, `webapp-testing` |
 | Vue / Nuxt | `nuxt4-patterns`, `vue-patterns`, `vue3-patterns` |

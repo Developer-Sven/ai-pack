@@ -50,6 +50,10 @@ Each keeps its original license; the full texts are in `licenses/`. Skills that 
 
 `hono`
 
+## [matt1as/claude-abap-skills](https://github.com/matt1as/claude-abap-skills) — Apache-2.0 (`licenses/claude-abap-skills-Apache-2.0.txt`)
+
+`abap-atc-remediation` (modified), `abap-clean-core-check` (modified), `abap-clean-refactor` (modified), `abap-clean-review` (modified), `abap-rap-bo-design` (modified)
+
 ## [microsoft/playwright-cli](https://github.com/microsoft/playwright-cli) — Apache-2.0 (`licenses/microsoft-playwright-cli-Apache-2.0.txt`)
 
 `playwright-cli`

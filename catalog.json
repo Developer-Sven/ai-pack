@@ -9,7 +9,8 @@
    "js",
    "ts",
    "python",
-   "java"
+   "java",
+   "sap"
   ],
   "frontend": [
    "react",
@@ -106,6 +107,66 @@
   ]
  },
  "items": [
+  {
+   "name": "abap-atc-remediation",
+   "kind": "skill",
+   "enabled": true,
+   "area": "SAP / ABAP",
+   "tags": [
+    "sap"
+   ],
+   "description": "Walk through ATC (ABAP Test Cockpit) violations methodically, grouped by category, with concrete fixes per finding. Use when the user asks to fix, remediate, address, or triage ATC findings on an ABAP object, package, or transport. Refuses pseudo-comment suppressions by default. Applies the rule set in references/abap-rules.md (read it first). Targets modern ABAP — BTP ABAP Environment and S/4HANA on-prem in the ABAP Cloud development model.",
+   "source": "matt1as/claude-abap-skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "abap-clean-core-check",
+   "kind": "skill",
+   "enabled": true,
+   "area": "SAP / ABAP",
+   "tags": [
+    "sap"
+   ],
+   "description": "Check an ABAP object or package for clean core compliance — unreleased APIs, direct SELECT on SAP-owned tables, classic constructs disallowed in ABAP Cloud, modifications to SAP standard. Use when the user asks to audit, verify, or check clean core compliance, ABAP Cloud compatibility, released API usage, or extension point usage. Produces a categorised report with hard violations and soft warnings. Read-only — never writes back. Targets BTP ABAP Environment and S/4HANA on-prem in the ABAP Cloud development model.",
+   "source": "matt1as/claude-abap-skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "abap-clean-refactor",
+   "kind": "skill",
+   "enabled": true,
+   "area": "SAP / ABAP",
+   "tags": [
+    "sap"
+   ],
+   "description": "Refactor existing ABAP code to Clean ABAP style without changing behavior. Use when the user asks to refactor, clean up, modernize, or tidy ABAP code. Applies the rule set in references/abap-rules.md in deterministic passes (naming, declaration, expression, method shape, error, class) and asks before writing back via MCP. Targets modern ABAP only — BTP ABAP Environment or S/4HANA on-prem in the ABAP Cloud development model.",
+   "source": "matt1as/claude-abap-skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "abap-clean-review",
+   "kind": "skill",
+   "enabled": true,
+   "area": "SAP / ABAP",
+   "tags": [
+    "sap"
+   ],
+   "description": "Review existing ABAP code against the Clean ABAP rule set in references/abap-rules.md (read it first). Use when the user asks to review, audit, or check ABAP for clean-code violations — magic numbers, naming, method shape, error handling, table reads, classes, etc. Outputs a structured report grouped by severity, ATC-checkable findings first. Targets modern ABAP only — BTP ABAP Environment or S/4HANA on-prem in the ABAP Cloud development model.",
+   "source": "matt1as/claude-abap-skills",
+   "license": "Apache-2.0"
+  },
+  {
+   "name": "abap-rap-bo-design",
+   "kind": "skill",
+   "enabled": true,
+   "area": "SAP / ABAP",
+   "tags": [
+    "sap"
+   ],
+   "description": "Design a complete RAP business object end-to-end and create it via the official SAP ABAP MCP. Use when the user asks to design, scaffold, generate, or create a new RAP BO, OData service, Fiori UI service, or RAP managed/unmanaged behavior. Prefers the MCP x-ui-service / ui-service / webapi-service generators; falls back to hand-crafted CDS/BDEF skeletons when no generator fits. Applies the ABAP Cloud / RAP overlay rules in references/abap-rules.md (read it first). Targets BTP ABAP Environment and S/4HANA on-prem in the ABAP Cloud development model.",
+   "source": "matt1as/claude-abap-skills",
+   "license": "Apache-2.0"
+  },
   {
    "name": "accessibility",
    "kind": "skill",
