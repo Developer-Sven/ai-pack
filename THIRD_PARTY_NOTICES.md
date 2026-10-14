@@ -78,6 +78,10 @@ Each keeps its original license; the full texts are in `licenses/`. Skills that 
 
 `ai-sdk`
 
+## [webshare-proxy/skills](https://github.com/webshare-proxy/skills) — MIT (`licenses/webshare-skills-MIT.txt`)
+
+`proxy-manager`, `proxy-optimizer`, `scraper`, `spend-audit`
+
 ## Original work of this pack — MIT
 
 `agentic-memory-engine`, `api-security-auditor`, `auth-patterns`, `backend-performance`, `background-jobs`, `blast-radius-sentinel`, `budget-and-spend-governor`, `cloudflare-workers-reviewer`, `code-review`, `data-layer`, `data-layer-builder`, `express-patterns`, `fastify-schema`, `file-uploads-storage`, `final-review-agent`, `full-website-review`, `fullstack-feature-builder`, `github-helper`, `hono-rpc`, `i18n-patterns`, `java-modern`, `json-file-store`, `mongodb-patterns`, `nextjs-patterns`, `orm-patterns`, `permission-auditor`, `production-readiness-agent`, `python-modern-stack`, `react19-fullstack`, `realtime-patterns`, `secret-hygiene`, `settings-system-agent`, `ship`, `sql-patterns`, `sqlite-patterns`, `supply-chain-security`, `svelte5-runes`, `tailwind-v4`, `tanstack-patterns`, `typescript-patterns`, `ui-polish-agent`, `vue-nuxt-reviewer`, `vue3-patterns`, `web-security-auditor`

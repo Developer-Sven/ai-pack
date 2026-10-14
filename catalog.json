@@ -66,7 +66,8 @@
   ],
   "more": [
    "ai",
-   "oss"
+   "oss",
+   "proxy"
   ]
  },
  "presets": {
@@ -1228,6 +1229,30 @@
    "license": "MIT"
   },
   {
+   "name": "proxy-manager",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Proxies & scraping",
+   "tags": [
+    "proxy"
+   ],
+   "description": "Manage Webshare proxies with the webshare CLI: list active proxies, dump the proxy list to a file, refresh rotating pools, read and update proxy config, manage IP allowlists, build proxy URLs, inspect subscription plans and usage, and kick off an express-checkout flow to buy more proxies. Use when the user wants to work with webshare.io proxies — not scraping, just provisioning and ops.",
+   "source": "webshare-proxy/skills",
+   "license": "MIT"
+  },
+  {
+   "name": "proxy-optimizer",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Proxies & scraping",
+   "tags": [
+    "proxy"
+   ],
+   "description": "Optimize your Webshare proxy pool for a specific target website. Tests all proxies against the target, identifies blocked IPs by country/ASN/subnet using data from the webshare CLI, and replaces them via the Webshare MCP. Use when proxies are failing on a site, when setting up a new scraping target, or when you want to tune your proxy pool. Invoke with a target URL as argument.",
+   "source": "webshare-proxy/skills",
+   "license": "MIT"
+  },
+  {
    "name": "python-modern-stack",
    "kind": "skill",
    "enabled": true,
@@ -1402,6 +1427,18 @@
    "license": "Apache-2.0"
   },
   {
+   "name": "scraper",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Proxies & scraping",
+   "tags": [
+    "proxy"
+   ],
+   "description": "Create web scraper scripts using Playwright. Use when the user wants to scrape a website, extract data from web pages, build a scraping pipeline, initialize a scraping project, or automate data collection from websites. Supports Python and Node.js ecosystems. Handles proxy configuration, stealth mode with patchright, and data export to CSV, JSON, or database.",
+   "source": "webshare-proxy/skills",
+   "license": "MIT"
+  },
+  {
    "name": "secret-hygiene",
    "kind": "skill",
    "enabled": true,
@@ -1484,6 +1521,18 @@
    "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
    "source": "anthropics/skills",
    "license": "Apache-2.0"
+  },
+  {
+   "name": "spend-audit",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Proxies & scraping",
+   "tags": [
+    "proxy"
+   ],
+   "description": "Audits a Webshare account for wasted proxy spend and recommends plan adjustments based on the account's own historical usage, using the webshare CLI. Use periodically (e.g. monthly) or whenever asked to review proxy costs, find savings, cut spend, or right-size plans. Strictly read-only — it recommends, it never changes the account.",
+   "source": "webshare-proxy/skills",
+   "license": "MIT"
   },
   {
    "name": "springboot-patterns",

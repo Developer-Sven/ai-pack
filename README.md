@@ -5,7 +5,7 @@ agent on your machine with one command.** Claude Code, Codex, OpenCode, Gemini C
 Cursor, Cline, Roo/Kilo, Goose, Windsurf, pi, Hermes and more read the same folder, so every agent
 works the same way.
 
-- **144 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
+- **148 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
   Python/FastAPI/Django, Java/Spring, databases (Postgres, MySQL, SQLite, MongoDB, Redis, JSON files,
   Prisma/Drizzle/Kysely), auth (sessions, OIDC, passkeys), payments and webhooks, background jobs,
   uploads/S3, realtime, i18n, email, SEO, observability, security (OWASP 2025, supply chain, GitHub
@@ -169,7 +169,7 @@ chosen. `core` is always on. `node install.mjs list <tag>` shows what a tag cont
 | data | `database` 6+2 · `postgres` 5+2 · `mysql` 5+2 · `sqlite` 5+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 3+2 |
 | quality | `security` 8+4 · `testing` 6+4 · `performance` 5+1 · `docs` 5+1 |
 | delivery | `git` 2+0 · `github` 3+0 · `devops` 7+1 · `observability` 3+0 · `cloudflare` 12+1 |
-| more | `ai` 8+1 · `oss` 1+3 |
+| more | `ai` 8+1 · `oss` 1+3 · `proxy` 4+0 |
 
 Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `next`, `vite`, `python`, `fastapi`, `api`, `auth`, `jobs`, `uploads`, `realtime`, `webhooks`, `email`, `database`, `postgres`, `sqlite`, `mongodb`, `redis`, `orm`, `security`, `testing`, `performance`, `docs`, `git`, `github`, `devops`, `seo`, `a11y`.
 
@@ -190,6 +190,7 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | Open source | `opensource-pipeline` |
 | Payments & email | `email-best-practices`, `stripe-best-practices` |
 | Performance | `backend-performance`, `content-hash-cache-pattern`, `latency-critical-systems` |
+| Proxies & scraping | `proxy-manager`, `proxy-optimizer`, `scraper`, `spend-audit` |
 | Python | `django-patterns`, `django-security`, `django-tdd`, `django-verification`, `fastapi-patterns`, `python-modern-stack`, `python-patterns`, `python-testing` |
 | Review | `agent-self-evaluation`, `code-review`, `coding-standards` |
 | Security | `auth-patterns`, `blast-radius-sentinel`, `full-website-review`, `gha-security-review`, `secret-hygiene`, `security-review`, `security-scan`, `supply-chain-security` |
