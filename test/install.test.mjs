@@ -821,3 +821,82 @@ test('first install asks for tags (Enter = recommended), asks again after a typo
   assert.match(run([], home2, root2, { env: { AI_PACK_ASK: '1' }, status: 1 }).stderr, /no answer/);
   assert.ok(!exists(J(home2, '.ai-pack')) && !exists(J(root2, '.ai-pack-local.json')) && exists(J(root2, 'skills', 'gamma')));
 });
+
+test('agent mode: one line after the rules in every delivery form, replaced in place, gone again, nothing for the default', () => {
+  const root = makePack();
+  const home = makeHome(['.claude', '.codex', '.gemini', '.codeium/windsurf/memories'], { '.gemini/settings.json': '{}\n' });
+  const before = tree(home);
+  const files = { claude: J(home, '.claude/rules/ai-pack.md'), codex: J(home, '.codex/AGENTS.md'), gemini: J(home, '.gemini/GEMINI.md'), windsurf: J(home, '.codeium/windsurf/memories/global_rules.md') };
+  const lines = (f) => read(f).split('Agent mode:').length - 1;
+  run(['--tags', 'web'], home, root);
+  for (const f of Object.values(files)) assert.equal(lines(f), 0, `${f}: the default mode adds no line`);
+  assert.match(out(['status'], home, root), /^agent mode: balanced \(up to 5 agents per task/m);
+
+  assert.match(out(['mode', 'lean'], home, root), /agent mode: lean \(up to 3 agents per task\)/);
+  for (const [name, f] of Object.entries(files)) {
+    const t = read(f);
+    assert.equal(lines(f), 1, `${name}: exactly one line`);
+    assert.ok(t.trimEnd().endsWith('Agent mode: lean') || t.includes('Agent mode: lean\n<!-- ai-pack:end -->'), `${name}: it closes the rules`);
+  }
+  const claude = read(files.claude);
+  assert.ok(claude.indexOf('Agent mode: lean') > claude.indexOf('The full rule set.'), 'after the rules text, so it overrides the default');
+  assert.ok(read(files.windsurf).includes('The short rule set.'), 'the condensed rules carry it too');
+
+  run(['mode', 'wide'], home, root); // replaced, not stacked
+  for (const f of Object.values(files)) assert.ok(read(f).includes('Agent mode: wide') && !read(f).includes('Agent mode: lean') && lines(f) === 1, f);
+  const menu = out(['mode'], home, root);
+  assert.match(menu, /^ {2}wide +8 .*<- now$/m);
+  assert.match(menu, /^ {2}solo +0 /m);
+
+  run(['mode', 'balanced'], home, root);
+  for (const f of Object.values(files)) assert.equal(lines(f), 0, `${f}: back to the default`);
+  assert.equal(JSON.parse(read(J(root, '.ai-pack-local.json'))).agentMode, 'balanced');
+
+  assert.match(run(['mode', 'turbo'], home, root, { status: 1 }).stderr, /unknown agent mode "turbo"/);
+  assert.match(run(['mode', 'lean', 'wide'], home, root, { status: 1 }).stderr, /usage: node install\.mjs mode/);
+  assert.match(run(['status', '--agent-mode', 'lean'], home, root, { status: 2 }).stderr, /--agent-mode belongs to install/);
+  run(['mode', 'solo'], home, root);
+  run(['uninstall'], home, root);
+  assert.equal(tree(home), before, 'uninstall takes the line with the rest');
+});
+
+test('first install asks for the agent mode after the tags (Enter = balanced) and takes --agent-mode without asking', () => {
+  const root = makePack();
+  const home = makeHome(['.claude']);
+  const r = run([], home, root, { env: { AI_PACK_ASK: '1' }, input: 'recommended\nlean\n' });
+  assert.match(r.stdout, /Agent mode - how many subagents may one task use\?/);
+  assert.equal(JSON.parse(read(J(root, '.ai-pack-local.json'))).agentMode, 'lean');
+  assert.match(read(J(home, '.claude/rules/ai-pack.md')), /\n\nAgent mode: lean\n$/);
+  assert.doesNotMatch(run([], home, root, { env: { AI_PACK_ASK: '1' } }).stdout, /Agent mode - how many/, 'asked once');
+
+  // a bad answer asks again; input that ends after the tags keeps the default instead of aborting
+  const root2 = makePack();
+  const home2 = makeHome(['.claude']);
+  const r2 = run([], home2, root2, { env: { AI_PACK_ASK: '1' }, input: 'recommended\nturbo\n' });
+  assert.match(r2.stdout, /unknown mode "turbo"/);
+  assert.equal(JSON.parse(read(J(root2, '.ai-pack-local.json'))).agentMode, 'balanced');
+  assert.doesNotMatch(read(J(home2, '.claude/rules/ai-pack.md')), /Agent mode:/);
+  const home3 = makeHome(['.claude']);
+  const root3 = makePack();
+  run([], home3, root3, { env: { AI_PACK_ASK: '1' }, input: 'recommended\n' });
+  assert.equal(JSON.parse(read(J(root3, '.ai-pack-local.json'))).agentMode, 'balanced');
+
+  // scripts answer it with the flag
+  const root4 = makePack();
+  const home4 = makeHome(['.claude']);
+  run(['--tags', 'web', '--agent-mode', 'wide'], home4, root4);
+  assert.match(read(J(home4, '.claude/rules/ai-pack.md')), /Agent mode: wide/);
+  assert.match(run(['--agent-mode', 'turbo'], makeHome(['.claude']), makePack(), { status: 1 }).stderr, /unknown agent mode/);
+});
+
+test('the agent modes say the same numbers in the installer and in the rules text', () => {
+  const caps = { solo: 0, lean: 3, balanced: 5, wide: 8 };
+  const rules = read(J(PACK, 'rules', 'global-work-rules.md'));
+  const menu = out(['mode'], makeHome()); // the pack's own installer, read-only
+  for (const [m, n] of Object.entries(caps)) {
+    assert.match(rules, new RegExp(`\\|\\s*\`${m}\`[^|]*\\|\\s*${n}\\s*\\|`), `${m} = ${n} in the rules table`);
+    assert.match(menu, new RegExp(`^ {2}${m} +${n} `, 'm'), `${m} = ${n} in the installer`);
+  }
+  assert.match(read(J(PACK, 'rules', 'global-work-rules.min.md')), /solo 0, lean 3, balanced 5/);
+  assert.match(rules, /The default mode is `balanced`/);
+});

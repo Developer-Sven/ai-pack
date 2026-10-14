@@ -15,8 +15,8 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const NODE_MAJOR = Number(process.versions.node.split('.')[0]);
-const COMMAND_NAMES = ['install', 'uninstall', 'status', 'doctor', 'tags', 'enable', 'disable', 'update', 'zip', 'list', 'help', 'table'];
-const FLAGS = { only: 'value', skip: 'value', home: 'value', root: 'value', platform: 'value', tags: 'value', all: 1, 'no-skills': 1, 'no-agents': 1, 'no-rules': 1, copy: 1, force: 1, 'with-git-hooks': 1, 'dry-run': 1 };
+const COMMAND_NAMES = ['install', 'uninstall', 'status', 'doctor', 'tags', 'mode', 'enable', 'disable', 'update', 'zip', 'list', 'help', 'table'];
+const FLAGS = { only: 'value', skip: 'value', home: 'value', root: 'value', platform: 'value', tags: 'value', 'agent-mode': 'value', all: 1, 'no-skills': 1, 'no-agents': 1, 'no-rules': 1, copy: 1, force: 1, 'with-git-hooks': 1, 'dry-run': 1 };
 const ARGS = parseArgs(process.argv.slice(2));
 const CMD = ARGS.help ? 'help' : ARGS._[0] || 'install';
 const PACK = path.resolve(ARGS.root || path.dirname(fileURLToPath(import.meta.url)));
@@ -46,6 +46,28 @@ const OPT = {
   only: listArg(ARGS.only), skip: listArg(ARGS.skip), all: Boolean(ARGS.all), copy: Boolean(ARGS.copy), force: Boolean(ARGS.force),
   skills: !ARGS['no-skills'], agents: !ARGS['no-agents'], rules: !ARGS['no-rules'], hooks: Boolean(ARGS['with-git-hooks']), resync: false,
 };
+
+// Agent mode: how many subagents one task may use. rules/global-work-rules.md section 2a defines the modes
+// (a test keeps both in step); the installer only records the choice and appends one line to the rules it
+// delivers. The default adds nothing, so a plain install writes exactly what it always wrote.
+const AGENT_MODES = { solo: 0, lean: 3, balanced: 5, wide: 8 };
+const DEFAULT_MODE = 'balanced';
+const MODE_HELP = {
+  solo: 'no agents unless you ask - review inline',
+  lean: 'everyday tasks',
+  balanced: 'a feature with its reviews, a focused audit',
+  wide: 'whole-codebase audits, migrations, broad sweeps',
+};
+let MODE_NOW; // set by setMode, so a dry run and the re-sync right after it already see the new choice
+const modeOf = (local) => (Object.hasOwn(AGENT_MODES, local.agentMode) ? local.agentMode : DEFAULT_MODE);
+const modeTail = () => {
+  const m = MODE_NOW ?? modeOf(loadLocal());
+  return m === DEFAULT_MODE ? '' : `\n\nAgent mode: ${m}\n`;
+};
+const modeMenu = (now) => [
+  'Agent mode - how many subagents may one task use? (rules/global-work-rules.md, section 2a)',
+  ...Object.entries(AGENT_MODES).map(([m, n]) => `  ${m.padEnd(9)} ${String(n).padStart(2)}   ${MODE_HELP[m]}${m === DEFAULT_MODE ? '  (default)' : ''}${m === now ? '  <- now' : ''}`),
+].join('\n');
 
 // ------------------------------------------------------------------------------------------ registry
 // Global (user-level) locations only; project files are the project's business. Sources: each
@@ -196,6 +218,7 @@ commands
                      The first run asks which tags you use (Enter = recommended)
   tags               show your tags;  tags ts,react,postgres = exactly these;  tags +java -vue;
                      tags recommended / tags all. Items without a chosen tag go to *-disabled/
+  mode [name]        how many subagents one task may use: solo (0), lean (3), balanced (5, default), wide (8)
   enable <x..>       add tags (java, vue, ...) or turn one skill/agent on (skill:<name> if a tag has its name)
   disable <x..>      remove tags or turn one skill/agent off (your per-item choice beats the tags)
   status             which tools are connected, your tags
@@ -207,6 +230,7 @@ commands
 
 options
   --tags a,b         answer the tag question without asking (install), e.g. --tags recommended
+  --agent-mode m     answer the agent-mode question without asking (install), e.g. --agent-mode lean
   --only a,b         only these tools (ids: ${HARNESSES.map((h) => h.id).join(', ')})
   --skip a,b         all detected tools except these
   --all              also set up tools that are not detected yet
@@ -442,7 +466,9 @@ function loadLocal() {
       const l = JSON.parse(t);
       const tags = l.tags === 'all' || (Array.isArray(l.tags) && l.tags.every((x) => typeof x === 'string')) ? l.tags : undefined;
       if (l.tags !== undefined && tags === undefined) console.log(`warn  ${LOCAL_FILE}: "tags" is not a list - ignoring it (choose again: node install.mjs tags ...)`);
-      return { ...l, tags, enabled: Array.isArray(l.enabled) ? l.enabled : [], disabled: Array.isArray(l.disabled) ? l.disabled : [] };
+      const agentMode = Object.hasOwn(AGENT_MODES, l.agentMode) ? l.agentMode : undefined;
+      if (l.agentMode !== undefined && agentMode === undefined) console.log(`warn  ${LOCAL_FILE}: unknown agentMode ${JSON.stringify(l.agentMode)} - using ${DEFAULT_MODE} (set one: node install.mjs mode ...)`);
+      return { ...l, tags, agentMode, enabled: Array.isArray(l.enabled) ? l.enabled : [], disabled: Array.isArray(l.disabled) ? l.disabled : [] };
     } catch {
       // not fatal: the skills/ and skills-disabled/ folders still show every choice, and the next
       // tags/enable/disable/update rewrites the file from them - but say so instead of silently resetting
@@ -532,7 +558,14 @@ async function install() {
     return;
   }
   // before anything is linked, so the tools see only the chosen items (re-syncs keep the choice)
-  if (!interrupted && !OPT.resync && (OPT.skills || OPT.agents)) await chooseTags();
+  if (!interrupted && !OPT.resync) {
+    try {
+      if (OPT.skills || OPT.agents) await chooseTags();
+      if (OPT.rules || ARGS['agent-mode']) await chooseMode();
+    } finally {
+      closeAsker();
+    }
+  }
   const ids = new Set(hs.map((h) => h.id));
   const ctx = { state, ids, provided: { agents: new Set(), rules: new Set() } };
   // a re-sync (enable/disable/update) refreshes what is there and never adds tools or kinds the user left out
@@ -1061,17 +1094,20 @@ function installRules(h, ctx) {
     dropRules(h.id, state, r.file);
     return r.note ? [...lines, `  note  ${r.note}`] : lines; // e.g. a second location the tool also reads
   };
+  const tail = modeTail(); // "Agent mode: lean" - empty for the default mode
+  // a file that is a link into the pack is the pack's own file: it cannot carry a line of ours
+  const linked = tail ? [`  note  agent mode: ${r.file} reads the pack's rules directly and cannot carry the "Agent mode:" line - change the default in rules/global-work-rules.md`] : [];
   const via = throughLink(path.dirname(r.file));
-  if (via && insidePack(via.resolved)) return done([`  ok    rules: already reach the pack via ${via.at}`]);
+  if (via && insidePack(via.resolved)) return done([`  ok    rules: already reach the pack via ${via.at}`, ...linked]);
   if (via && !OPT.force) return [`  skip  rules: ${r.file} lies inside ${via.at}, a link to ${via.target} (--force writes through it)`];
-  if (isLink(r.file) && insidePack(realOr(r.file))) return done([`  ok    rules: ${r.file} links into the pack`]);
+  if (isLink(r.file) && insidePack(realOr(r.file))) return done([`  ok    rules: ${r.file} links into the pack`, ...linked]);
   const full = readText(RULES);
   if (full === null) return [`  skip  rules: ${RULES} missing`];
   const notes = [];
   if (r.shadowedBy && exists(r.shadowedBy)) notes.push(`  note  ${h.id} reads ${r.shadowedBy} instead of ${r.file} while that file exists`);
   if (r.replaces && !exists(r.file) && exists(r.replaces)) notes.push(`  note  ${h.id} stops falling back to ${r.replaces} once ${r.file} exists`);
   if (r.mode === 'file') {
-    const res = placeFile(r.file, (r.header || '') + full, 'rules-file', h.id, state);
+    const res = placeFile(r.file, (r.header || '') + full + tail, 'rules-file', h.id, state);
     if (res === 'foreign') return [...notes, `  skip  rules: ${r.file} exists and is not the pack's`];
     if (res === 'edited') return done([...notes, `  keep  rules: ${r.file} (you changed it; delete it to get the pack's version)`]);
     return done([...notes, `  ${res === 'written' ? 'copy' : 'ok  '}  rules -> ${r.file}`]);
@@ -1087,10 +1123,10 @@ function installRules(h, ctx) {
   const prev = readText(r.file);
   const limit = r.maxBytes ? `${r.maxBytes} bytes` : `${r.maxChars} characters`;
   const tooBig = (t) => (r.maxBytes && Buffer.byteLength(t) > r.maxBytes) || (r.maxChars && [...t].length > r.maxChars);
-  let next = withBlock(prev ?? '', block(body));
+  let next = withBlock(prev ?? '', block(body + tail));
   if (next === null) return [...notes, `  skip  rules: ${r.file} has a damaged ai-pack block (a begin or end marker is missing) - fix it by hand`];
   if (tooBig(next) && r.fallback === 'min' && min !== null) {
-    next = withBlock(prev ?? '', block(min));
+    next = withBlock(prev ?? '', block(min + tail));
     notes.push(`  note  ${r.file}: the full rules would pass ${limit} - using the condensed rules`);
   }
   if (tooBig(next)) return [...notes, `  skip  rules: ${r.file} would exceed ${limit} - shorten it, or add the rules by hand`];
@@ -1221,7 +1257,8 @@ async function status() {
     const all = (k) => c.items.filter((i) => i.kind === k).length;
     const own = [...local.enabled.map((x) => `+${x}`), ...local.disabled.map((x) => `-${x}`)];
     console.log(`ai-pack ${c.version} at ${PACK}\nskills on ${on('skill')}/${all('skill')}, agents on ${on('agent')}/${all('agent')}`);
-    console.log(`tags: ${tagLabel(local.tags)}${own.length ? `\nyour own per-item choices: ${short(own, 10)}` : ''}\n`);
+    console.log(`tags: ${tagLabel(local.tags)}${own.length ? `\nyour own per-item choices: ${short(own, 10)}` : ''}`);
+    console.log(`agent mode: ${modeOf(local)} (${AGENT_MODES[modeOf(local)] ? `up to ${AGENT_MODES[modeOf(local)]} agents per task` : 'no agents unless you ask'}; change: node install.mjs mode <${Object.keys(AGENT_MODES).join('|')}>)\n`);
   } else console.log(`pack at ${PACK}\n`);
   const con = new Set(connectedIds(state));
   for (const h of HARNESSES) {
@@ -1438,6 +1475,27 @@ ${groups.map(([g, ts]) => `  ${g.padEnd(10)} ${ts.map((t) => `${t}(${count(t)})`
   all        everything (${onFor('all')})
   a list     e.g.  ts,react,next,postgres,github   or   recommended +java -python
 `);
+  const { ask } = await asker();
+  for (;;) {
+    let a;
+    try {
+      a = (await ask('tags> ')).trim();
+    } catch {
+      throw new Error('no answer (input closed) - nothing changed; choose later: node install.mjs tags ...');
+    }
+    a = a || (rec ? 'recommended' : 'all');
+    try {
+      return parseTags([a], undefined, c);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+}
+// One input session for all first-run questions: piped input can hand over several answers at once, so
+// lines are queued here, and a second readline on the same stdin would find them gone.
+let ASKER = null;
+async function asker() {
+  if (ASKER) return ASKER;
   const readline = await import('node:readline');
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   rl.on('SIGINT', () => {
@@ -1445,36 +1503,68 @@ ${groups.map(([g, ts]) => `  ${g.padEnd(10)} ${ts.map((t) => `${t}(${count(t)})`
     console.log('\ncancelled - nothing changed.');
     process.exit(130);
   });
-  // lines are queued: piped input can deliver several answers before the next question is asked
   const lines = [];
   let waiting = null;
   let closed = false;
-  const noAnswer = () => new Error('no answer (input closed) - nothing changed; choose later: node install.mjs tags ...');
   rl.on('line', (l) => (waiting ? (waiting.resolve(l), (waiting = null)) : lines.push(l)));
   rl.on('close', () => {
     closed = true;
-    waiting?.reject(noAnswer());
+    waiting?.reject(new Error('input closed'));
     waiting = null;
   });
   const ask = (q) => {
+    // piped input is usually closed by the second question: answers already queued still count, and a
+    // closed interface must not be asked to prompt
+    if (closed) return lines.length ? Promise.resolve(lines.shift()) : Promise.reject(new Error('input closed'));
     rl.setPrompt(q);
     rl.prompt();
     if (lines.length) return Promise.resolve(lines.shift());
-    if (closed) return Promise.reject(noAnswer());
     return new Promise((resolve, reject) => (waiting = { resolve, reject }));
   };
-  try {
-    for (;;) {
-      const a = (await ask('tags> ')).trim() || (rec ? 'recommended' : 'all');
-      try {
-        return parseTags([a], undefined, c);
-      } catch (e) {
-        console.log(e.message);
-      }
+  ASKER = { ask, close: () => rl.close() };
+  return ASKER;
+}
+const closeAsker = () => {
+  ASKER?.close();
+  ASKER = null;
+};
+// first install: how many subagents one task may use (Enter = balanced); --agent-mode answers without asking
+async function chooseMode() {
+  const local = loadLocal();
+  if (ARGS['agent-mode']) return void setMode(local, ARGS['agent-mode']);
+  if (local.agentMode !== undefined) return;
+  const interactive = process.env.AI_PACK_ASK === '1' || (process.stdin.isTTY && process.stdout.isTTY && !process.env.CI);
+  if (DRY || !interactive) return; // no question: the default mode applies and nothing is written
+  console.log(`${modeMenu()}\n  Enter      ${DEFAULT_MODE}\n(change it any time: node install.mjs mode <name>)\n`);
+  const { ask } = await asker();
+  for (;;) {
+    let a = '';
+    try {
+      a = (await ask('agents> ')).trim().toLowerCase();
+    } catch {
+      // input closed: the tag answer is already applied, so keep the default instead of aborting
     }
-  } finally {
-    rl.close();
+    a = a || DEFAULT_MODE;
+    if (Object.hasOwn(AGENT_MODES, a)) return void (setMode(local, a), console.log(''));
+    console.log(`unknown mode "${a}" - one of: ${Object.keys(AGENT_MODES).join(', ')}`);
   }
+}
+function setMode(local, name) {
+  const m = String(name).trim().toLowerCase();
+  if (!Object.hasOwn(AGENT_MODES, m)) throw new Error(`unknown agent mode "${name}" - one of: ${Object.keys(AGENT_MODES).join(', ')}`);
+  MODE_NOW = m;
+  local.agentMode = m;
+  saveLocal(local);
+  console.log(`${DRY ? '[dry-run] ' : ''}agent mode: ${m} (${AGENT_MODES[m] ? `up to ${AGENT_MODES[m]} agents per task` : 'no agents unless you ask'})`);
+}
+// `mode` shows the choice; `mode <name>` changes it and refreshes the rules of every connected tool
+async function mode(xs) {
+  const local = loadLocal();
+  const names = Object.keys(AGENT_MODES).join('|');
+  if (!xs.length) return void console.log(`${modeMenu(modeOf(local))}\n\nchange: node install.mjs mode <${names}>   (every tool that got the rules follows)`);
+  if (xs.length > 1) throw new Error(`usage: node install.mjs mode [${names}]`);
+  setMode(local, xs[0]);
+  await resync();
 }
 // `tags` shows the choice; `tags <list|+x -y|recommended|all>` changes it
 async function tags(xs) {
@@ -1705,7 +1795,7 @@ claude.ai: Customize > Skills > + > Upload a skill      ChatGPT: Skills > Create
 }
 
 // ------------------------------------------------------------------------------------------ cli (last: everything above is initialized)
-const COMMANDS = { install, uninstall, status, doctor, tags, enable, disable, update, zip, list, help, table };
+const COMMANDS = { install, uninstall, status, doctor, tags, mode, enable, disable, update, zip, list, help, table };
 if (NODE_MAJOR < 18) {
   console.error(`ai-pack needs Node.js 18+ (found ${process.versions.node})`);
   process.exit(1);
@@ -1716,6 +1806,10 @@ if (ARGS.bad.length) {
 }
 if (ARGS.tags && CMD !== 'install') {
   console.error(`--tags belongs to install - to change your tags run: node install.mjs tags ${ARGS.tags}`);
+  process.exit(2);
+}
+if (ARGS['agent-mode'] && CMD !== 'install') {
+  console.error(`--agent-mode belongs to install - to change the mode run: node install.mjs mode ${ARGS['agent-mode']}`);
   process.exit(2);
 }
 if (!COMMAND_NAMES.includes(CMD)) {

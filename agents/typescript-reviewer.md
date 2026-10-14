@@ -124,6 +124,7 @@ End with `Checks run:` (commands + result), `Not verified:` (what you could not 
 ## References
 
 `typescript-patterns` (tsconfig, TS 6/7, zod 4, ESM, Node runtime, lint/test tooling),
-`express-patterns` (Express 5), `mongodb-patterns`,
+`express-patterns` (Express 5), `discordbots` (bot architecture), `mongodb-patterns`,
 `security-review` (deep checklists). Pair with `react-reviewer` for React,
-`api-security-auditor` / `web-security-auditor` for routes and pages, `silent-failure-hunter` for backend error paths, `type-design-analyzer` for new domain types.
+`api-security-auditor` / `web-security-auditor` for routes and pages, `discord-bot-auditor` for bot
+code, `silent-failure-hunter` for backend error paths, `type-design-analyzer` for new domain types.

@@ -310,7 +310,7 @@ app.post('/interactions', express.raw({ type: 'application/json', limit: '100kb'
   if (!ok) return res.status(401).end();
   const interaction = JSON.parse(req.body);
   if (interaction.type === 1) return res.json({ type: 1 });           // PING -> PONG
-  // ... same who/permission/guild/custom-id checks as a gateway bot handler
+  // ... same who/permission/guild/custom-id checks as a gateway bot (discordbots skill, section 16)
 });
 
 // HMAC webhooks (GitHub-style "sha256=<hex>")

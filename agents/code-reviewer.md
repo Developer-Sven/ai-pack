@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: Fallback code reviewer for changes no dedicated reviewer covers - shell scripts, CI/GitHub Actions YAML, Dockerfiles/Compose, config files, non-FiveM Lua, and mixed diffs. Use after writing or modifying such code. Dedicated reviewers take precedence - typescript-reviewer, react-reviewer, python-reviewer, java-reviewer, database-reviewer.
+description: Fallback code reviewer for changes no dedicated reviewer covers - shell scripts, CI/GitHub Actions YAML, Dockerfiles/Compose, config files, non-FiveM Lua, and mixed diffs. Use after writing or modifying such code. Dedicated reviewers take precedence - typescript-reviewer, react-reviewer, python-reviewer, java-reviewer, discord-bot-auditor, database-reviewer.
 tools: ["Read", "Grep", "Glob", "Bash"]
 model: sonnet
 ---
@@ -26,6 +26,7 @@ You are the **fallback**. The binding routing table (rules §4) sends these else
 | TypeScript / JavaScript | `typescript-reviewer` (React UI: `react-reviewer`) |
 | Python (FastAPI: `fastapi-reviewer`) | `python-reviewer` |
 | Java / Spring | `java-reviewer` |
+| discord.js bot code | `discord-bot-auditor` |
 | SQL, schema, migrations | `database-reviewer` |
 | Vue / Nuxt | `vue-nuxt-reviewer` |
 | Cloudflare Workers / `wrangler.*` | `cloudflare-workers-reviewer` |

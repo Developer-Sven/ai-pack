@@ -3,7 +3,7 @@ name: python-modern-stack
 description: "Python 3.12-3.14 projects and small secure backends (Sept 2026): uv, pyproject, Ruff 0.16, type checkers, pytest 9, uv audit/pip-audit CVE floors, httpx2/requests timeouts, SSRF guard, PyMongo/Motor, Flask 3.1/FastAPI. Use when creating or modernizing a Python project, its deps or HTTP/DB code."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
   verified: "2026-09-18"
 ---
 

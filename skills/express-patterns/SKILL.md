@@ -3,7 +3,7 @@ name: express-patterns
 description: "Express 5 APIs and bot dashboards on Node 22/24: app factory, async error propagation, zod 4 validation middleware, error handler that hides internals, env checks at boot, pino, trust proxy + rate limits, graceful shutdown, 4-to-5 migration. Use when building, reviewing or upgrading an Express app."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
   verified: "2026-09-18"
 ---
 
@@ -18,7 +18,7 @@ passes. Full files: `references/reference-app.md`. Upgrading an Express 4 app:
 Related: `typescript-patterns` (tsconfig, zod 4, ESM), `api-design` (resource/status/pagination
 shape), `mongodb-patterns` (driver, indexes, operator injection), `security-review` (deep
 checklists: auth, sessions, CSRF, uploads), `backend-performance` (profiling, load tests),
-`settings-system-agent` (settings saved in a UI must drive the backend). Review with
+`discordbots` + `settings-system-agent` (bot <-> dashboard pairs). Review with
 `typescript-reviewer` + `api-security-auditor`; run `silent-failure-hunter` on backend changes.
 
 ## 1. Version and security floors

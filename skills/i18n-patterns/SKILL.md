@@ -3,7 +3,7 @@ name: i18n-patterns
 description: "Web app i18n: next-intl, react-i18next, vue-i18n, Babel; ICU plurals/select, locale negotiation and routing, hreflang and localized sitemaps, Intl dates/currency with explicit time zones, RTL, hydration-safe locale, missing-key CI checks, localized emails. Use when adding languages or formats."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # i18n Patterns

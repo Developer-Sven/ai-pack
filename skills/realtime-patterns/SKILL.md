@@ -3,7 +3,7 @@ name: realtime-patterns
 description: "Realtime web features: SSE vs WebSocket vs polling, auth on upgrade (cookie or one-time ticket + Origin check), heartbeats, reconnect and Last-Event-ID resume, backpressure, caps, fan-out via Redis, Postgres LISTEN/NOTIFY or Durable Objects, proxy timeouts. Use when adding live updates or chat."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Realtime Patterns

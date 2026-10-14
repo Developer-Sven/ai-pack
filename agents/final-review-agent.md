@@ -40,6 +40,7 @@ deploy, release, or merge-to-main, say "run production-readiness-agent" instead 
 | Feature | tests where a runner exists, typecheck + lint pass, matching reviewer approved, committed |
 | Bug fix | RED reproducer seen failing, then GREEN, regression test kept — or, with no runner, the exact manual repro + observed before/after |
 | Refactor | no behaviour change, existing tests still green |
+| Discord bot change | `discord-bot-auditor` pass, command/component registered, web↔bot pairing verified |
 | Web route / API | auditor pass, input validated (zod/joi/pydantic), backend permission + ownership check, no raw error to the client |
 
 ## Quality & safety

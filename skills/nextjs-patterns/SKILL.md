@@ -3,7 +3,7 @@ name: nextjs-patterns
 description: "Next.js 16 App Router (Sept 2026): version floors for next/RSC/vite/sharp CVEs, 16.x breaking changes (async request APIs, proxy.ts, Turbopack builds), Server Action and DAL security, 'use cache'. Use when creating, reviewing, upgrading or debugging a Next.js app, proxy.ts or 'use server' code."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
   verified: 2026-09-18 (next 16.3.5, react 19.3.0)
 ---
 

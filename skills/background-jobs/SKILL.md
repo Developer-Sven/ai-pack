@@ -3,7 +3,7 @@ name: background-jobs
 description: "Background jobs, queues, cron: BullMQ, pg-boss/graphile-worker, Celery/arq/RQ, Cloudflare Queues; idempotency keys, retries with backoff+jitter, dead letters, visibility timeouts, graceful shutdown, transactional outbox, single-runner schedules. Use when work leaves the request path."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Background Jobs

@@ -3,7 +3,7 @@ name: sqlite-patterns
 description: "SQLite in production with better-sqlite3, node:sqlite, bun:sqlite, Python sqlite3, libSQL and D1: WAL, busy_timeout, BEGIN IMMEDIATE, STRICT tables, user_version migrations, online backups, FTS5, security, limits and when to move to Postgres. Use when writing or reviewing SQLite code."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # SQLite Patterns

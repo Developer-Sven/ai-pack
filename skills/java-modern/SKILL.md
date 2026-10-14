@@ -3,7 +3,7 @@ name: java-modern
 description: "Modern Java (JDK 21/25 LTS, 26/27): JDK choice, records/sealed/pattern-matching idioms, virtual threads, scoped values, JVM tuning (GC, AOT cache, JFR), Maven/Gradle toolchains and quality gates, Java vulnerabilities. Use when starting, upgrading, tuning or reviewing plain Java code."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
   verified: 2026-09-18 (JDK 27 GA, Temurin 25.0.4, Maven 3.9.16 / 4.0.0-rc-6, Gradle 9.7.1)
 ---
 

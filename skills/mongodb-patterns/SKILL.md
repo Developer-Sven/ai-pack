@@ -3,7 +3,7 @@ name: mongodb-patterns
 description: "MongoDB with Node driver 7.x, mongoose 9 and PyMongo: one client per process, pools, timeouts, ESR indexes, explain(), aggregation, range pagination, atomic/bulk writes, transactions, schemas, operator-injection defense. Use when writing or reviewing Mongo queries, indexes, schemas or connections."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # MongoDB Patterns
@@ -227,3 +227,4 @@ Application (operator injection — details and full examples in `references/sec
 - Skills `data-layer` (choosing a store, repositories, test databases, search), `orm-patterns` (mongoose traps next to Prisma/Drizzle/Kysely)
 - Agent `performance-optimizer` and skill `backend-performance` — end-to-end latency, event loop, pools, caching
 - Skills `security-review`, `secret-hygiene`, `api-design`, `backend-patterns`, `redis-patterns`
+- Skill `discordbots` §11 — the unified `store.col()` API that runs on MongoDB in the bot template

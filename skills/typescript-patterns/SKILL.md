@@ -3,7 +3,7 @@ name: typescript-patterns
 description: "TypeScript + Node.js for strict ESM-first code (Sept 2026): TS 6/7 tsconfig, removed options, typescript6 shim, Node 22/24/26, type stripping, ESM/CJS, require(esm), zod 4, ESLint 10, Vitest 5. Use when writing or reviewing .ts/.js Node or bot code, editing tsconfig/eslint config, upgrading TS/Node."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
   verified: "2026-09-18"
 ---
 
@@ -11,7 +11,7 @@ metadata:
 
 The compiler and the schema are your first two reviewers. Pairs with the `typescript-reviewer`
 agent (review), `type-design-analyzer` (type modelling) and `build-error-resolver` (red builds).
-Express 5 servers: `express-patterns`. React/Next: `react-patterns`,
+Express 5 servers: `express-patterns`. Discord bots: `discordbots`. React/Next: `react-patterns`,
 `nextjs-patterns`. MongoDB: `mongodb-patterns`. Dependency hygiene: `supply-chain-security`.
 
 Deep dives (load only what the task needs):

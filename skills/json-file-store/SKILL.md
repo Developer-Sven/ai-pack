@@ -3,7 +3,7 @@ name: json-file-store
 description: "JSON and local-file persistence done safely: atomic write (temp, fsync, rename, Windows retry), write queue and cross-process lock, zod/pydantic validation, schemaVersion migrations, backups, corruption recovery, limits and moving to SQLite. Use when an app stores data or settings in JSON files."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # JSON File Store

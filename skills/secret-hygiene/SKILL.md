@@ -4,7 +4,7 @@ description: "Detect hardcoded secrets while working and move them to environmen
 user-invocable: true
 metadata:
   author:
-    - ki
+    - ai-pack contributors
   verified: 2026-09-18 (dotenv 18.0.0, gitleaks 8.30.1, trufflehog 3.97.5)
 ---
 
@@ -105,5 +105,5 @@ does not un-leak a pushed secret. Where to rotate:
   provider console, issue new, check usage logs for abuse.
 - Full matrix for a machine-wide compromise: `supply-chain-security` skill, `references/incident-response.md`.
 
-Domain auditors complement this: `web-security-auditor`, `api-security-auditor`; the checklist lives in
-`security-review`.
+Domain auditors complement this: `web-security-auditor`, `api-security-auditor`,
+`discord-bot-auditor`; the checklist lives in `security-review`.

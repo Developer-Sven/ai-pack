@@ -213,7 +213,7 @@ If the user invoked `/code-review` on a file you can edit, *apply* the Critical 
 - **Delta review**: when the user pastes a small diff or asks "is this change safe?", focus on what changed plus the immediate context. Skip Phase 1's exhaustive surface mapping.
 - **Targeted review**: when the user asks specifically about security, perf, or tests, skip the categories they didn't ask about — but still note Critical findings outside scope ("you didn't ask, but this auth check is broken").
 
-After the review, the rules §4 routing still applies: the matching stack reviewer agent (e.g. `typescript-reviewer`, `react-reviewer`, `java-reviewer`, `database-reviewer`) and, for backend/bot/API changes, `silent-failure-hunter` run before the commit. This skill does not commit; committing goes through `ship` (Conventional Commits, no AI attribution).
+After the review, the rules §4 routing still applies: the matching stack reviewer agent (e.g. `typescript-reviewer`, `discord-bot-auditor`, `java-reviewer`, `database-reviewer`) and, for backend/bot/API changes, `silent-failure-hunter` run before the commit. This skill does not commit; committing goes through `ship` / `changelog-commit` (Conventional Commits, no AI attribution).
 
 ---
 

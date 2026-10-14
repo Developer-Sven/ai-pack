@@ -3,7 +3,7 @@ name: auth-patterns
 description: "Web app authentication: server sessions in HttpOnly cookies (JWT only with a reason), OIDC code+PKCE+state+nonce, passkeys, TOTP + recovery codes, Argon2id, reset/verify tokens, rotation, revocation, rate limits, CSRF, library choice. Use when building or reviewing login, signup, sessions or MFA."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Auth Patterns

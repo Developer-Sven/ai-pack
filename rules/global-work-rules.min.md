@@ -5,7 +5,10 @@ Condensed for tools with small global-rule limits; the full file is `rules/globa
 1. **Finish the task.** Implement and verify every point of a request, or name what is blocked, why,
    and the safe alternative you shipped. Implementation requests mean implement, not plan.
 2. **Orient first.** Pick the matching skills and reviewer agents automatically; follow the
-   project's existing patterns; check whether you are in a git repo.
+   project's existing patterns; check whether you are in a git repo. **Agents are a budget, not a
+   default:** at most 5 per task (`Agent mode:` solo 0, lean 3, balanced 5 = default, wide 8, or a
+   number the user names); brief each with goal, scope and answer format, give each its own files,
+   run independent ones in parallel, check what they report, and say which ran.
 3. **Mini-plan** before changes: what you check, change, which files, which checks, commit or not.
 4. **Review after every non-trivial change** with the matching reviewer: TypeScript/JS, React/Next,
    Python, Java, database, web/API security, permissions, performance, accessibility; for backend

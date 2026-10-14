@@ -3,7 +3,7 @@ name: backend-performance
 description: "Measure-first performance for Node/TS backends, Express APIs and Discord bots (plus Python/Java): profiling, event-loop blocking, pools, concurrency, caching, N+1, sharp/canvas/puppeteer, load tests. Use when a route, command, job or script is slow, leaks memory, fails under load or must get faster."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Backend Performance

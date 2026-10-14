@@ -22,7 +22,7 @@ checklist behind `web-security-auditor`, `api-security-auditor`, `permission-aud
 
 Related skills: `mongodb-patterns` (operator injection, server hardening), `nextjs-patterns`
 (Next/RSC floors, Server Actions), `express-patterns` (app skeleton, error handler),
-`supply-chain-security` (A03), `secret-hygiene`.
+`supply-chain-security` (A03), `secret-hygiene`, `discordbots` (section 16 guards).
 
 ## 0. Non-negotiables
 
@@ -164,8 +164,8 @@ Checklist:
 
 ## 7. Discord bots and dashboards
 
-- Every interaction handler checks who, permission, guild, channel, target, custom-id, validity and
-  rate limit before acting.
+- Interaction handlers follow `discordbots` section 16 (who, permission, guild, channel, target,
+  custom-id, validity, rate limit); the `discord-bot-auditor` agent checks them.
 - `allowedMentions: { parse: [] }` whenever user or model text is echoed.
 - `default_member_permissions` only filters the command picker (server admins can override it under
   Integrations): re-check the permission in the handler and again on modal submit. Custom-ids are client

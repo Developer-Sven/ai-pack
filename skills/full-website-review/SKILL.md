@@ -4,7 +4,7 @@ description: "Full production-readiness review of a website, dashboard or API: f
 user-invocable: true
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Full Website Review (production-ready)

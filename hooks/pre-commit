@@ -53,8 +53,9 @@ if command -v node >/dev/null 2>&1; then
   while IFS= read -r f; do
     case "$f" in *.js|*.cjs|*.mjs) ;; *) continue ;; esac
     # Agent Skills carry template files with {{placeholders}} that are deliberately not valid JS
-    # (SAPUI5 controllers, SAC widgets ...). They are documentation assets, never code we run.
-    case "$f" in skills/*|skills-disabled/*) js_skipped=$((js_skipped + 1)); continue ;; esac
+    # (SAPUI5 controllers, SAC widgets ...). Only skills/<name>/templates/ is exempt: this hook runs
+    # in every repo, and real code that happens to live under a skills/ folder must stay checked.
+    case "$f" in skills/*/templates/*|skills-disabled/*/templates/*) js_skipped=$((js_skipped + 1)); continue ;; esac
     if ! check_blob "$f"; then
       [ "$js_fail" -eq 0 ] && echo "  [x] JavaScript syntax error in staged file(s):"
       echo "        $f"
@@ -62,7 +63,7 @@ if command -v node >/dev/null 2>&1; then
     fi
   done < "$names_file.nl"
   rm -f "$names_file" "$names_file.nl" 2>/dev/null
-  [ "$js_skipped" -gt 0 ] && echo "  [ki pre-commit] $js_skipped JS file(s) under skills/ not syntax-checked (skill assets)"
+  [ "$js_skipped" -gt 0 ] && echo "  [ki pre-commit] $js_skipped skill template file(s) not syntax-checked (placeholders are not valid JS)"
   if [ "$js_fail" -ne 0 ]; then
     echo "  Fix the syntax error(s) before committing (staged content checked)."
     exit 1

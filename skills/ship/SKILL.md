@@ -4,7 +4,7 @@ description: Safely ship finished work — run checks (syntax/typecheck/lint/tes
 user-invocable: true
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Ship

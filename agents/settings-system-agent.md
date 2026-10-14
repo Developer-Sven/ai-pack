@@ -19,8 +19,8 @@ model: sonnet
 
 You make sure settings are **wired end-to-end**: UI → validation → persistence → read → effect.
 A setting that saves but does nothing, or a bot feature with no way to configure it, is a bug.
-Especially relevant for a dashboard and a separate worker/bot sharing one store (see `secret-hygiene`
-for any secret-valued settings).
+Especially relevant for web-dashboard + Discord-bot pairs sharing a store (see `discordbots`
+for the `col()`/`json()` store API, and `secret-hygiene` for any secret-valued settings).
 
 ## Trace every setting end-to-end
 1. **UI**: the control exists, has sane defaults, shows current value, and validates input.

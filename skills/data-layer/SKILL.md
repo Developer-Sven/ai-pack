@@ -3,7 +3,7 @@ name: data-layer
 description: "Choose and structure the data layer: Postgres vs MySQL vs SQLite vs MongoDB vs JSON files vs Redis, repository/store adapters with swappable backends and contract tests, test databases, full-text search. Use when starting persistence, picking or switching a database, or testing data access."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Data Layer

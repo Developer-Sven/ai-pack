@@ -37,8 +37,8 @@ git grep -nE "DATABASE_URL|MONGO(DB)?_UR[IL]|REDIS_URL|SQLITE_PATH|DB_KIND|DATA_
 git grep -nlE "JSON\.parse\(.*readFile|writeFile(Sync)?\(.*JSON\.stringify|json\.dump\(|json\.load\(" -- '*.ts' '*.js' '*.mjs' '*.py' | head  # JSON-file stores
 ```
 
-Apps that hide several backends behind one store API (MongoDB, SQL or JSON files selected by config): review
-the store implementation once, then the queries against it.
+Discord bots built on the `discordbots` template use one store API (`col(name)`) over MongoDB, SQL or JSON
+(`DB_KIND`). Review the store implementation once, then the module queries against it.
 
 Load the skills that match (and only those):
 
@@ -272,7 +272,7 @@ schema/index/migration changes to apply, in order, with their rollout risk and b
 
 - Skills: `data-layer`, `sql-patterns`, `supabase-postgres-best-practices`, `mysql-patterns`, `sqlite-patterns`,
   `mongodb-patterns`, `json-file-store`, `redis-patterns`, `orm-patterns`, `database-migrations`,
-  `backend-performance`, `security-review`, `secret-hygiene`
+  `backend-performance`, `discordbots` (store API), `security-review`, `secret-hygiene`
 - Agents: `data-layer-builder` (implements the fixes), `performance-optimizer` (end-to-end latency),
   `permission-auditor` (tenant/role logic), `api-security-auditor` (endpoints), `silent-failure-hunter`
   (swallowed DB errors)

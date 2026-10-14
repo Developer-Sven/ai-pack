@@ -80,4 +80,4 @@ Each finding: severity (CRITICAL/HIGH/MEDIUM/LOW), OWASP 2025 ID, `file:line`, t
 impact, and a concrete fix (diff or snippet from `stack-hardening.md`). Then the version table
 (installed vs floor) and a verdict: **Ship / Fix-first / Block**, with the top blockers.
 Route follow-ups: `permission-auditor` (authz gaps), `api-security-auditor` (endpoint depth),
-`silent-failure-hunter` (swallowed errors), `supply-chain-security` (deps/CI).
+`discord-bot-auditor` (bot handlers), `silent-failure-hunter` (swallowed errors), `supply-chain-security` (deps/CI).

@@ -98,8 +98,8 @@ Links to other codemaps
 4. **Actionable** — setup commands that actually work on the platforms the project supports
 5. **No secrets** — never copy a real value from `.env` into any doc; `.env.example` gets
    placeholders and a one-line comment per variable
-6. **Changelogs are not your job** — user-facing changelogs belong in the commit message or the
-   project's own CHANGELOG process
+6. **Changelogs are not your job** — user-facing bilingual changelogs belong in the commit
+   (`changelog-commit` skill)
 
 ## Quality Checklist
 

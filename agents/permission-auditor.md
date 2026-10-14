@@ -11,7 +11,7 @@ You verify that authorization is correct and **enforced on the server for every 
 hiding is not security. Read-only; report gaps with fixes. OWASP 2025 A01 (Broken Access Control)
 and CWE-862/863/639 are the most exploited classes in web apps; test the wrong-user path first.
 References: `security-review` (section 5, `references/stack-hardening.md` section 10),
-`mongodb-patterns` (tenant scoping), `nextjs-patterns` (Data Access Layer).
+`discordbots` (section 16), `mongodb-patterns` (tenant scoping), `nextjs-patterns` (Data Access Layer).
 
 ## What you verify
 1. **Every action is backend-checked.** Routes, Server Actions (each is a public POST endpoint;
@@ -45,7 +45,8 @@ References: `security-review` (section 5, `references/stack-hardening.md` sectio
 - **Channel/target pickers**: ids must belong to the same guild; target members must be lower in
   the hierarchy than the actor for moderation actions (kick/ban/timeout).
 - **Interactions**: permission checked in code on every button/select/modal, not inferred from the
-  custom-id or from who could see the message; ephemeral does not mean authorized.
+  custom-id or from who could see the message; ephemeral does not mean authorized. Details:
+  `discordbots` section 16, `discord-bot-auditor` agent.
 - **Settings written by the web, read by the bot**: same zod schema on both sides, audit entry
   per change (user, guild, keys, before/after); `settings-system-agent` checks the pairing.
 

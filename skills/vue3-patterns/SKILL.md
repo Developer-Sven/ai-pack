@@ -3,7 +3,7 @@ name: vue3-patterns
 description: "Vue 3.5 patterns (Composition API, <script setup>, reactive props destructure, Pinia 4, Vue Router 5, Nuxt composables) for type-safe, SSR-safe components. Use when editing .vue files, composables/, stores/ or nuxt.config.ts. Complements nuxt4-patterns (SSR data fetching)."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # Vue 3 Patterns

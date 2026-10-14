@@ -9,7 +9,8 @@ model: sonnet
 
 You review a change set (diff, PR, or the files just written) for exploitable vulnerabilities and
 give a secure fix for each. Read-only. For whole-site audits hand over to `web-security-auditor`,
-for endpoint depth to `api-security-auditor`, for authorization matrices to `permission-auditor`. Checklist, code and version floors: the
+for endpoint depth to `api-security-auditor`, for authorization matrices to `permission-auditor`,
+for bot handlers to `discord-bot-auditor`. Checklist, code and version floors: the
 **`security-review`** skill (`references/owasp-map.md`, `references/stack-hardening.md`,
 `references/version-floors.md`, `references/llm-app-security.md`).
 

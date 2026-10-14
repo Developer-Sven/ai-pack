@@ -3,7 +3,7 @@ name: supply-chain-security
 description: "Harden npm/pnpm/yarn/bun, pip/uv and Maven/Gradle against malicious packages: lockfiles, install-script allowlists, release cooldowns, audit/OSV scans, trusted publishing, pinned Actions, compromise playbook. Use when adding deps, editing lockfiles or CI workflows, or after a supply-chain attack."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
   verified: 2026-09-18 (npm 12.0.2, pnpm 12.4.2, pip 26.2.1, Gradle 9.7.1)
 ---
 

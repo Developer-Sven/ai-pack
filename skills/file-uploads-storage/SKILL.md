@@ -3,7 +3,7 @@ name: file-uploads-storage
 description: "File uploads and object storage (S3, R2): presigned PUT/POST, server-enforced size and magic-byte type checks, private buckets with short signed GETs, tenant keys, sharp in jobs, malware-scan hook, multipart/resumable, orphan cleanup, CDN headers, local disk. Use when users upload files."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # File Uploads and Object Storage

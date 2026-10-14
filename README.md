@@ -5,12 +5,16 @@ agent on your machine with one command.** Claude Code, Codex, OpenCode, Gemini C
 Cursor, Cline, Roo/Kilo, Goose, Windsurf, pi, Hermes and more read the same folder, so every agent
 works the same way.
 
-- **153 skills + 44 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
+- **189 skills + 50 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
   Python/FastAPI/Django, Java/Spring, databases (Postgres, MySQL, SQLite, MongoDB, Redis, JSON files,
   Prisma/Drizzle/Kysely), auth (sessions, OIDC, passkeys), payments and webhooks, background jobs,
   uploads/S3, realtime, i18n, email, SEO, observability, security (OWASP 2025, supply chain, GitHub
   Actions), performance, testing (unit, E2E, load), git, delivery, Cloudflare and AI apps — plus
-  builder agents for whole features and data layers.
+  builder agents for whole features and data layers. A few **extras are off unless you pick them**:
+  Discord bots (`discord`), research (`research`), commit helpers (`commits`), SAP/ABAP (`sap`),
+  proxies and scraping (`proxy`) and general-purpose extras from Everything Claude Code (`ecc`). The
+  Discord skills (`discordbots`, `discord-new-module`, `discord-v15-migration`) and `changelog-commit`
+  are written in German; everything else is English.
 - **Tagged, so you load only your stack.** Every skill and agent has tags (`ts`, `react`, `postgres`,
   `github`, …). The first install asks which tags you use and moves everything else to
   `skills-disabled/` / `agents-disabled/`; change it any time. The repo itself ships everything
@@ -49,6 +53,9 @@ works where scripts are allowed); `node install.mjs` works everywhere. Preview f
 or `recommended +java -python`. Scripts answer with `--tags recommended`; without a terminal
 nothing is asked and everything stays on. `core` (planning, debugging, reviews, shipping) is always on.
 
+It then asks one more thing: **how many subagents one task may use** (Enter = `balanced`, up to 5 —
+see [Agent modes](#agent-modes)). Scripts answer with `--agent-mode lean`.
+
 The installer finds the coding agents you have and adds **one link per skill** to the skill folder
 each of them reads (a junction on Windows: no admin rights needed; `--copy` for drives without
 links). Folders you already have stay as they are — nothing is moved, and a skill of your own with
@@ -66,6 +73,7 @@ you changed since. Restart open agent sessions afterwards.
 | Show all tags, change them | `node install.mjs tags` · `tags ts,react,postgres` (exactly these) · `tags +java -vue` · `tags recommended` · `tags all` ([tag list](#tags)) |
 | Add / remove tags | `node install.mjs enable java vue` · `disable cloudflare` |
 | Turn one skill or agent on / off | `node install.mjs enable nestjs-patterns` — or move its folder between `skills/` and `skills-disabled/`, then run `node install.mjs`. Such a choice beats the tags and survives `tags` and `update` |
+| How many agents one task may use | `node install.mjs mode` (shows them) · `mode lean` · `mode solo` · `mode balanced` · `mode wide` ([Agent modes](#agent-modes)) |
 | List skills/agents with state and tags | `node install.mjs list` · `list postgres mongodb` |
 | Update | `node install.mjs update` (git pull, keeps your tags and choices; new items follow your tags) |
 | Check health | `node install.mjs doctor` |
@@ -74,6 +82,27 @@ you changed since. Restart open agent sessions afterwards.
 | Enforce the git rules too (opt-in) | `node install.mjs --with-git-hooks` (keeps an existing `core.hooksPath` unless `--force`) |
 | Moved this folder | run `node install.mjs` from the new place — it relinks everything |
 | Remove everything | `node install.mjs uninstall` |
+
+## Agent modes
+
+The rules treat subagents as a **budget, not a default** (`rules/global-work-rules.md`, §2a). Agents take
+work that is independent, big enough to be worth briefing, and read-heavy or verifying — parallel
+searches over separate areas, independent reviews, an audit split by concern. Each one gets a written
+brief (goal, scope, what is ruled out, the shape of the answer), its own files (one writer per file) and
+has to return something short and checkable; the main agent verifies what they report and says which
+ones ran. Everything else — small edits, conversation, steps that depend on each other — stays in the
+main thread. The mode sets the cap **per task**:
+
+| Mode | Agents per task | Meant for |
+|---|---|---|
+| `solo` | 0 | quick or cost-sensitive work: review inline, no agents unless you ask |
+| `lean` | 3 | everyday tasks |
+| `balanced` | 5 | the default: a feature with its reviews, a focused audit |
+| `wide` | 8 | whole-codebase audits, migrations, broad sweeps |
+
+`node install.mjs mode lean` switches every connected tool at once: the installer appends one line,
+`Agent mode: lean`, after the rules each tool loads (`balanced` adds nothing). A number you name in a
+request ("use 3 agents") beats the mode, and the reviewers the rules call for count toward the cap.
 
 ## Folder layout
 
@@ -168,8 +197,8 @@ chosen. `core` is always on. `node install.mjs list <tag>` shows what a tag cont
 | backend | `node` 6+2 · `express` 1+0 · `fastify` 1+0 · `nestjs` 1+0 · `hono` 2+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 6+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 2+1 · `email` 1+0 |
 | data | `database` 6+2 · `postgres` 5+2 · `mysql` 5+2 · `sqlite` 5+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 3+2 |
 | quality | `security` 8+4 · `testing` 6+4 · `performance` 5+1 · `docs` 5+1 |
-| delivery | `git` 2+0 · `github` 3+0 · `devops` 7+1 · `observability` 3+0 · `cloudflare` 12+1 |
-| more | `ai` 8+1 · `oss` 1+3 · `proxy` 4+0 |
+| delivery | `git` 2+0 · `github` 3+0 · `devops` 7+1 · `observability` 3+0 · `cloudflare` 12+1 · `commits` 2+0 |
+| more | `ai` 8+1 · `oss` 1+3 · `proxy` 4+0 · `discord` 3+3 · `research` 12+0 · `ecc` 19+3 |
 
 Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `next`, `vite`, `python`, `fastapi`, `api`, `auth`, `jobs`, `uploads`, `realtime`, `webhooks`, `email`, `database`, `postgres`, `sqlite`, `mongodb`, `redis`, `orm`, `security`, `testing`, `performance`, `docs`, `git`, `github`, `devops`, `seo`, `a11y`.
 
@@ -183,15 +212,18 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | Data | `data-layer`, `database-migrations`, `json-file-store`, `mongodb-patterns`, `mysql-patterns`, `orm-patterns`, `prisma-patterns`, `redis-patterns`, `sql-patterns`, `sqlite-patterns`, `supabase-postgres-best-practices` |
 | Design | `canvas-design`, `hallmark`, `make-interfaces-feel-better`, `motion-advanced`, `motion-foundations`, `motion-patterns`, `theme-factory`, `ui-demo` |
 | DevOps | `canary-watch`, `delivery-gate`, `deployment-patterns`, `docker-patterns`, `kubernetes-patterns`, `observability-and-instrumentation`, `otel-instrumentation`, `production-audit`, `sentry-instrument` |
+| Discord bots | `discord-new-module`, `discord-v15-migration`, `discordbots` |
 | Docs | `doc-coauthoring`, `docx`, `pdf`, `pptx`, `xlsx` |
+| ECC extras | `ai-regression-testing`, `architecture-decision-records`, `benchmark`, `benchmark-optimization-loop`, `browser-qa`, `clickhouse-io`, `code-tour`, `codebase-onboarding`, `git-workflow`, `hexagonal-architecture`, `mcp-server-patterns`, `nextjs-turbopack`, `postgres-patterns`, `product-capability`, `product-lens`, `security-bounty-hunter`, `tdd-workflow`, `terminal-ops`, `windows-desktop-e2e` |
 | Frontend | `accessibility`, `design-system`, `frontend-a11y`, `frontend-design`, `i18n-patterns`, `nextjs-patterns`, `react-native-patterns`, `react-patterns`, `react-performance`, `react-testing`, `react19-fullstack`, `seo`, `svelte5-runes`, `tailwind-v4`, `tanstack-patterns`, `vite-patterns`, `web-perf` |
-| Git & delivery | `github-helper`, `ship` |
+| Git & delivery | `changelog-commit`, `commit`, `github-helper`, `ship` |
 | Java | `java-coding-standards`, `java-modern`, `jpa-patterns`, `springboot-patterns`, `springboot-security`, `springboot-tdd`, `springboot-verification` |
 | Open source | `opensource-pipeline` |
 | Payments & email | `email-best-practices`, `stripe-best-practices` |
 | Performance | `backend-performance`, `content-hash-cache-pattern`, `latency-critical-systems` |
 | Proxies & scraping | `proxy-manager`, `proxy-optimizer`, `scraper`, `spend-audit` |
 | Python | `django-patterns`, `django-security`, `django-tdd`, `django-verification`, `fastapi-patterns`, `python-modern-stack`, `python-patterns`, `python-testing` |
+| Research | `data-scraper-agent`, `deep-research`, `documentation-lookup`, `exa-search`, `iterative-retrieval`, `literature-review`, `market-research`, `pubmed-database`, `scholar-evaluation`, `search-first`, `uspto-database`, `x-api` |
 | Review | `agent-self-evaluation`, `code-review`, `coding-standards` |
 | SAP / ABAP | `abap-atc-remediation`, `abap-clean-core-check`, `abap-clean-refactor`, `abap-clean-review`, `abap-rap-bo-design` |
 | Security | `auth-patterns`, `blast-radius-sentinel`, `full-website-review`, `gha-security-review`, `secret-hygiene`, `security-review`, `security-scan`, `supply-chain-security` |
@@ -209,7 +241,9 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | Cloudflare | `cloudflare-workers-reviewer` |
 | Data | `data-layer-builder`, `database-reviewer` |
 | DevOps | `production-readiness-agent` |
+| Discord bots | `discord-bot-auditor`, `discord-bot-feature-builder`, `discord-v15-migrator` |
 | Docs | `doc-updater`, `docs-lookup` |
+| ECC extras | `code-simplifier`, `comment-analyzer`, `seo-specialist` |
 | Frontend | `a11y-architect`, `react-build-resolver`, `react-reviewer`, `ui-polish-agent` |
 | Java | `java-build-resolver`, `java-reviewer` |
 | Open source | `opensource-forker`, `opensource-packager`, `opensource-sanitizer` |
@@ -245,6 +279,8 @@ Linux with Node 18 and 24.
 
 Own content: MIT (see `LICENSE`). Bundled third-party skills and agents keep their licenses (MIT or
 Apache-2.0: everything-claude-code, superpowers, Anthropic, Cloudflare, Stripe, Supabase, Sentry,
-Grafana, Microsoft, Vercel, Hono, Resend, VoltAgent, addyosmani, dash0, hallmark) — which item comes
-from where, and which were modified, is listed in `THIRD_PARTY_NOTICES.md`; license texts in
+Grafana, Microsoft, Vercel, Hono, Resend, VoltAgent, addyosmani, dash0, hallmark, Webshare,
+claude-abap-skills; **MPL-2.0**: the `commit` skill from casper-studios/casper-marketplace — that one
+file stays under the MPL, nothing else in the pack is affected) — which item comes from where, which
+were modified and which were renamed is listed in `THIRD_PARTY_NOTICES.md`; license texts in
 `licenses/`.

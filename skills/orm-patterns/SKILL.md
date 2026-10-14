@@ -3,7 +3,7 @@ name: orm-patterns
 description: "TypeScript and Python ORMs and query builders: Prisma 7 (8 RC), Drizzle 0.45/1.0 RC, Kysely 0.29, TypeORM 1.x, Mongoose 9, SQLAlchemy 2 - choice, versions and shared traps: N+1, raw/unsafe injection, migration drift, pool exhaustion, mass assignment. Use when writing or reviewing ORM code."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # ORM and Query-Builder Patterns

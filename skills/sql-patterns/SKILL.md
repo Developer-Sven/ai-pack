@@ -3,7 +3,7 @@ name: sql-patterns
 description: "Engine-neutral SQL for Postgres, MySQL/MariaDB and SQLite: parameterized queries, allow-listed identifiers, IN/LIKE safety, constraints first, isolation levels and retries, keyset pagination, upserts, JSON columns, portable types. Use when writing or reviewing raw SQL or query-builder code."
 metadata:
   author:
-    - ki
+    - ai-pack contributors
 ---
 
 # SQL Patterns (engine-neutral)

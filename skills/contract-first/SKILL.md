@@ -442,4 +442,5 @@ does not coordinate parallel work or prevent drift.
 - `react-patterns` - consumer-side data access and UI integration
 - `test-driven-development` - test-first implementation discipline
 - `typescript-patterns` - zod 4 schemas, `z.infer`, JSON Schema export (`references/zod4.md`)
+- `discordbots` - bot store API (`col()`/`json()`) the settings documents live in
 - `settings-system-agent` - verifies every setting is saved, read and effective on both sides

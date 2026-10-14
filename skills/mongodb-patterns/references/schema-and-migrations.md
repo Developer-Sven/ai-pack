@@ -107,5 +107,5 @@ Rules:
 - Build new indexes **before** deploying code that depends on them; drop old ones **after** the
   code stops using them.
 - Renaming a field = expand/contract, never an in-place `$rename` while old code runs.
-- If the same data can live in several backends (Mongo, SQL, JSON files behind one store API), migrations
+- In the bot template (`discordbots` §11) the same data may live in SQL/JSON backends — migrations
   must keep all backends' shapes compatible or be backend-specific.
