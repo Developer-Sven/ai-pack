@@ -5,14 +5,16 @@ agent on your machine with one command.** Claude Code, Codex, OpenCode, Gemini C
 Cursor, Cline, Roo/Kilo, Goose, Windsurf, pi, Hermes and more read the same folder, so every agent
 works the same way.
 
-- **189 skills + 50 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
+- **190 skills + 50 agents** — TypeScript/Node/Express, React/Next.js, Vue/Nuxt,
   Python/FastAPI/Django, Java/Spring, databases (Postgres, MySQL, SQLite, MongoDB, Redis, JSON files,
   Prisma/Drizzle/Kysely), auth (sessions, OIDC, passkeys), payments and webhooks, background jobs,
   uploads/S3, realtime, i18n, email, SEO, observability, security (OWASP 2025, supply chain, GitHub
   Actions), performance, testing (unit, E2E, load), git, delivery, Cloudflare and AI apps — plus
   builder agents for whole features and data layers. A few **extras are off unless you pick them**:
   Discord bots (`discord`), research (`research`), commit helpers (`commits`), SAP/ABAP (`sap`),
-  proxies and scraping (`proxy`) and general-purpose extras from Everything Claude Code (`ecc`). The
+  proxies and scraping (`proxy`), frontend design polish (`impeccable` — its helper downloads a
+  checksum-verified CLI from GitHub releases on first use) and general-purpose extras from Everything
+  Claude Code (`ecc`). The
   Discord skills (`discordbots`, `discord-new-module`, `discord-v15-migration`) and `changelog-commit`
   are written in German; everything else is English.
 - **Tagged, so you load only your stack.** Every skill and agent has tags (`ts`, `react`, `postgres`,
@@ -193,7 +195,7 @@ chosen. `core` is always on. `node install.mjs list <tag>` shows what a tag cont
 |---|---|
 | core | `core` 26+11 |
 | languages | `js` 5+2 · `ts` 7+3 · `python` 4+1 · `java` 3+2 · `sap` 5+0 |
-| frontend | `react` 12+3 · `next` 4+1 · `vue` 6+3 · `vite` 2+0 · `svelte` 1+0 · `tanstack` 1+0 · `design` 12+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 |
+| frontend | `react` 12+3 · `next` 4+1 · `vue` 6+3 · `vite` 2+0 · `svelte` 1+0 · `tanstack` 1+0 · `design` 12+1 · `a11y` 2+1 · `seo` 1+0 · `i18n` 1+0 · `impeccable` 1+0 |
 | backend | `node` 6+2 · `express` 1+0 · `fastify` 1+0 · `nestjs` 1+0 · `hono` 2+0 · `bun` 1+0 · `fastapi` 1+1 · `django` 4+0 · `spring` 5+2 · `api` 6+2 · `auth` 1+2 · `jobs` 1+0 · `uploads` 1+0 · `realtime` 1+0 · `webhooks` 0+1 · `payments` 2+1 · `email` 1+0 |
 | data | `database` 6+2 · `postgres` 5+2 · `mysql` 5+2 · `sqlite` 5+2 · `mongodb` 3+2 · `redis` 2+0 · `orm` 3+2 |
 | quality | `security` 8+4 · `testing` 6+4 · `performance` 5+1 · `docs` 5+1 |
@@ -210,7 +212,7 @@ Presets: `all`, and `recommended` = `js`, `ts`, `node`, `express`, `react`, `nex
 | Backend (Node/TS) | `api-connector-builder`, `api-design`, `backend-patterns`, `background-jobs`, `bun-runtime`, `contract-first`, `error-handling`, `express-patterns`, `fastify-schema`, `file-uploads-storage`, `hono`, `hono-rpc`, `nestjs-patterns`, `realtime-patterns`, `typescript-patterns` |
 | Cloudflare | `agents-sdk`, `cloudflare`, `cloudflare-email-service`, `cloudflare-one`, `cloudflare-one-migrations`, `durable-objects`, `nextjs-on-cloudflare`, `sandbox-next`, `sandbox-stable`, `turnstile-spin`, `workers-best-practices`, `wrangler` |
 | Data | `data-layer`, `database-migrations`, `json-file-store`, `mongodb-patterns`, `mysql-patterns`, `orm-patterns`, `prisma-patterns`, `redis-patterns`, `sql-patterns`, `sqlite-patterns`, `supabase-postgres-best-practices` |
-| Design | `canvas-design`, `hallmark`, `make-interfaces-feel-better`, `motion-advanced`, `motion-foundations`, `motion-patterns`, `theme-factory`, `ui-demo` |
+| Design | `canvas-design`, `hallmark`, `impeccable`, `make-interfaces-feel-better`, `motion-advanced`, `motion-foundations`, `motion-patterns`, `theme-factory`, `ui-demo` |
 | DevOps | `canary-watch`, `delivery-gate`, `deployment-patterns`, `docker-patterns`, `kubernetes-patterns`, `observability-and-instrumentation`, `otel-instrumentation`, `production-audit`, `sentry-instrument` |
 | Discord bots | `discord-new-module`, `discord-v15-migration`, `discordbots` |
 | Docs | `doc-coauthoring`, `docx`, `pdf`, `pptx`, `xlsx` |

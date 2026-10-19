@@ -22,7 +22,8 @@
    "design",
    "a11y",
    "seo",
-   "i18n"
+   "i18n",
+   "impeccable"
   ],
   "backend": [
    "node",
@@ -1163,6 +1164,18 @@
    "description": "Web app i18n: next-intl, react-i18next, vue-i18n, Babel; ICU plurals/select, locale negotiation and routing, hreflang and localized sitemaps, Intl dates/currency with explicit time zones, RTL, hydration-safe locale, missing-key CI checks, localized emails. Use when adding languages or formats.",
    "source": "ai-pack",
    "license": "MIT"
+  },
+  {
+   "name": "impeccable",
+   "kind": "skill",
+   "enabled": true,
+   "area": "Design",
+   "tags": [
+    "impeccable"
+   ],
+   "description": "Use when the user wants to design, redesign, shape, critique, audit, polish, simplify, harden, animate, or otherwise improve a frontend interface: websites, landing pages, dashboards, product UI, components, forms, settings, onboarding, empty states, and native iOS or Android screens. Handles UX review, hierarchy, layout, typography, color, motion, UX copy, accessibility, responsive behavior, edge cases, and capturing or documenting design systems (DESIGN.md, tokens). Also for making bland UI bolder, loud UI quieter, or ambitious visual effects. Not for backend-only or non-UI tasks.",
+   "source": "pbakaus/impeccable",
+   "license": "Apache-2.0"
   },
   {
    "name": "intent-driven-development",

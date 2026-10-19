@@ -70,6 +70,12 @@ Each keeps its original license; the full texts are in `licenses/`. Skills that 
 
 `brainstorming`, `dispatching-parallel-agents`, `executing-plans`, `finishing-a-development-branch`, `receiving-code-review`, `requesting-code-review`, `subagent-driven-development`, `systematic-debugging`, `test-driven-development`, `using-git-worktrees`, `using-superpowers`, `verification-before-completion`, `writing-plans`, `writing-skills`
 
+## [pbakaus/impeccable](https://github.com/pbakaus/impeccable) — Apache-2.0 (`licenses/pbakaus-impeccable-Apache-2.0.txt`)
+
+`impeccable`
+
+- `impeccable` contains `reference/ios.md` and `reference/android.md`, distilled from [ehmo/platform-design-skills](https://github.com/ehmo/platform-design-skills) (MIT, by ehmo) - the upstream NOTICE is kept in `licenses/pbakaus-impeccable-Apache-2.0.txt`; its launcher downloads a CLI binary from the project's GitHub releases on first use (verified against a .sha256 file, otherwise refused)
+
 ## [resend/resend-skills](https://github.com/resend/resend-skills) — MIT (`licenses/resend-resend-skills-MIT.txt`)
 
 `email-best-practices`
